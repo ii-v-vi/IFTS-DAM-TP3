@@ -1,15 +1,19 @@
+# IDE
+.idea/
 *.iml
+
+# Gradle
 .gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
 /build
-/captures
+
+# Local
+/local.properties
+local.properties
+.DS_Store
+
+# Native
 .externalNativeBuild
 .cxx
-local.properties
+
+# Captures
+/captures
