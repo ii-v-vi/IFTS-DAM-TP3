@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- HEADER ROJO REUTILIZABLE -->
+    <LinearLayout
+        android:id="@+id/llTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        android:background="#D63A27">
+
+        <!-- SUBCONTENEDOR BOTON VOLVER -->
+        <LinearLayout
+            android:id="@+id/llVolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:orientation="horizontal">
+
+            <!-- ICONO FLECHA -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/flechitavolver">
+            </ImageView>
+
+            <!-- VOLVER -->
+            <TextView
+                android:id="@+id/tvVolver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:text="@string/volver"
+                android:textSize="15sp"
+                android:textColor="@color/white">
+            </TextView>
+        </LinearLayout>
+
+        <!-- TITULO DEL HEADER -->
+        <TextView
+            android:id="@+id/tvTituloNav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:text="@string/tituloNuevoMiembro"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="@color/white">
+        </TextView>
+    </LinearLayout>
+
+    <!-- PASOS 1 - 2 - 3 -->
+    <LinearLayout
+        android:id="@+id/llpasos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="12dp">
+
+        <!-- PASO 1 -->
+        <LinearLayout
+            android:id="@+id/llPaso1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvPaso1"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="1"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:background="@drawable/circulo_activo">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvDatos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Datos"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp">
+            </TextView>
+        </LinearLayout>
+
+        <!-- LINEA -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="#CCCCCC">
+        </View>
+
+        <!-- PASO 2 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvPaso2"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="2"
+                android:gravity="center"
+                android:textColor="#F2F2F2"
+                android:textStyle="bold"
+                android:background="@drawable/circulo_inactivo">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Actividad"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp">
+            </TextView>
+        </LinearLayout>
+
+        <!-- LINEA -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="#CCCCCC">
+        </View>
+
+        <!-- PASO 3 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvPaso3"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="3"
+                android:gravity="center"
+                android:textColor="#F2F2F2"
+                android:textStyle="bold"
+                android:background="@drawable/circulo_inactivo">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cobrar"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp">
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- BOTONES PARA ELEGIR SOCIO O NOSOCIO -->
+    <LinearLayout
+        android:id="@+id/llEleccionTipoMiembro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="15dp">
+
+        <!-- BOTON SOCIO -->
+        <Button
+            android:id="@+id/btnSocio"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:text="Socio"
+            app:cornerRadius="4dp">
+        </Button>
+
+        <!-- BOTON NOSOCIO -->
+        <Button
+            android:id="@+id/btnNoSocio"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="NoSocio"
+            app:cornerRadius="4dp"
+            android:layout_marginLeft="2dp">
+        </Button>
+    </LinearLayout>
+
+    <!-- TITULO -->
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Datos Personales"
+        android:layout_margin="15dp"
+        android:textSize="20sp">
+    </TextView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- FORMULARIO DE DATOS PERSONALES -->
+        <LinearLayout
+            android:id="@+id/formDatosPersonales"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- CONTENEDOR DE NOMBRE Y APELLIDO -->
+            <LinearLayout
+                android:id="@+id/frmDosDatos1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <!-- NOMBRE -->
+                <EditText
+                    android:id="@+id/evNombre"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:hint="Nombre"
+                    android:inputType="text">
+                </EditText>
+
+                <!-- APELLIDO -->
+                <EditText
+                    android:id="@+id/evApellido"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:hint="Apellido"
+                    android:inputType="text">
+                </EditText>
+            </LinearLayout>
+
+            <!-- CONTENEDOR DE DNI Y TELEFONO -->
+            <LinearLayout
+                android:id="@+id/frmDosDatos2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="30dp">
+
+                <!-- DNI -->
+                <EditText
+                    android:id="@+id/evDni"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:hint="DNI"
+                    android:inputType="number">
+                </EditText>
+
+                <!-- TELEFONO -->
+                <EditText
+                    android:id="@+id/evTelefono"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:hint="Teléfono"
+                    android:inputType="number">
+                </EditText>
+            </LinearLayout>
+
+            <!-- CONTENEDOR DE MAIL, FECHA Y FICHA MEDICA -->
+            <LinearLayout
+                android:id="@+id/llMailFechaFicha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <!-- MAIL -->
+                <EditText
+                    android:id="@+id/evMail"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:hint="Mail"
+                    android:inputType="textEmailAddress">
+                </EditText>
+
+                <!-- SUBCONTENDEOR DE FECHA Y FICHA MEDICA -->
+                <LinearLayout
+                    android:id="@+id/llFechaFicha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <!-- SUBCONTENEDOR PARA BUTTON FECHA Y EDIT-TEXT FECHA -->
+                    <LinearLayout
+                        android:id="@+id/llFecha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <!-- BOTON FECHA -->
+                        <Button
+                            android:id="@+id/btnFecha"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Seleccionar fecha"
+                            android:layout_margin="10dp">
+                        </Button>
+
+                        <!-- EDIT-TEXT FECHA -->
+                        <TextView
+                            android:id="@+id/tvFecha"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--/--/--"
+                            android:textSize="18dp">
+                        </TextView>
+                    </LinearLayout>
+
+                    <!-- CHECKBOX FICHA MEDICA -->
+                    <CheckBox
+                        android:id="@+id/chkFichaMedica"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ficha médica"
+                        android:layout_margin="10dp">
+                    </CheckBox>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- BOTON CONTINUAR -->
+            <Button
+                android:id="@+id/btnContinuar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="100dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="@string/continuar">
+            </Button>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+    <!-- FOOTER -->
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@color/cardview_shadow_start_color">
+
+        <!-- BOTON INICIO -->
+        <LinearLayout
+            android:id="@+id/llInicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="15dp"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imgBtnInicio"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:src="@drawable/casita"
+                android:background="@drawable/circulo_inactivo">
+            </ImageButton>
+
+            <TextView
+                android:id="@+id/tvInicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inicio"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp">
+            </TextView>
+        </LinearLayout>
+
+        <!-- BOTON MIEMBROS -->
+        <LinearLayout
+            android:id="@+id/llMiembros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="15dp"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imgBtnMiembros"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:src="@drawable/person"
+                android:background="@drawable/circulo_inactivo">
+            </ImageButton>
+
+            <TextView
+                android:id="@+id/tvMiembros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Miembros"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp">
+            </TextView>
+        </LinearLayout>
+
+        <!-- BOTON  PAGOS -->
+        <LinearLayout
+            android:id="@+id/llPagos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="15dp"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imgBtnPagos"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:src="@drawable/moneda"
+                android:background="@drawable/circulo_inactivo">
+            </ImageButton>
+
+            <TextView
+                android:id="@+id/tvPagos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pagos"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp">
+            </TextView>
+        </LinearLayout>
+
+        <!-- BOTON OTROS - MENU HAMBURGUESA -->
+        <LinearLayout
+            android:id="@+id/llOtros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="15dp"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imgBtnOtros"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:src="@drawable/lineas"
+                android:background="@drawable/circulo_inactivo">
+            </ImageButton>
+
+            <TextView
+                android:id="@+id/tvOtros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Otros"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp">
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+

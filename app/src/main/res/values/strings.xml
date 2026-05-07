@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">dam-comb-grupo4-faigenbom-flores-jara-grau-luccaroni</string>
+    <string name="tituloNuevoMiembro">Nuevo Miembro</string>
+    <string name="volver">Volver</string>
+    <string name="miembros">Miembros</string>
+    <string name="continuar">Continuar</string>
 </resources>
