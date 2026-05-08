@@ -6,6 +6,7 @@ import android.widget.LinearLayout
 import android.widget.Button
 import android.widget.Toast
 import android.content.Intent
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -15,6 +16,7 @@ class NuevoNoSocioActivity : AppCompatActivity() {
         setContentView(R.layout.activity_nuevo_no_socio)
 
         var btnContinuar = findViewById<Button>(R.id.btnContinuar)
+        var btnVolver = findViewById<TextView>(R.id.tvVolver)
         val cardZumba = findViewById<LinearLayout>(R.id.llCardZumba)
         val cardPilates = findViewById<LinearLayout>(R.id.llCardPilates)
         val cardElongacion = findViewById<LinearLayout>(R.id.llCardElongacion)
@@ -59,5 +61,13 @@ class NuevoNoSocioActivity : AppCompatActivity() {
             }
         }
         // ---------- BOTON CONTINUAR ----------
+
+
+        // ---------- BOTON VOLVER ----------
+        btnVolver.setOnClickListener {
+            val intentarVolver = Intent(this, NuevoMiembroActivity::class.java)
+            startActivity(intentarVolver)
+        }
+        // ---------- BOTON VOLVER ----------
     }
 }
