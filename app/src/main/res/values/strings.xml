@@ -4,4 +4,6 @@
     <string name="volver">Volver</string>
     <string name="miembros">Miembros</string>
     <string name="continuar">Continuar</string>
+    <string name="nuevoNoSocio">Nuevo No Socio</string>
+    <string name="nuevoSocio">Nuevo Socio</string>
 </resources>

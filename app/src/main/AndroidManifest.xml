@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Damcombgrupo4faigenbomfloresjaragrauluccaroni">
         <activity
+            android:name=".CobrarActividad1Activity"
+            android:exported="false" />
+        <activity
             android:name=".NuevoNoSocioActivity"
             android:exported="false" />
         <activity

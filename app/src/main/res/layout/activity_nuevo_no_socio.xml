@@ -1,10 +1,555 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NuevoNoSocioActivity">
+    android:gravity="center"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- HEADER ROJO REUTILIZABLE -->
+    <LinearLayout
+        android:id="@+id/llTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        android:background="#D63A27">
+
+        <!-- SUBCONTENEDOR BOTON VOLVER -->
+        <LinearLayout
+            android:id="@+id/llVolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:orientation="horizontal">
+
+            <!-- ICONO FLECHA -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/flechitavolver">
+            </ImageView>
+
+            <!-- VOLVER -->
+            <TextView
+                android:id="@+id/tvVolver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:text="@string/volver"
+                android:textSize="15sp"
+                android:textColor="@color/white">
+            </TextView>
+        </LinearLayout>
+
+        <!-- TITULO DEL HEADER -->
+        <TextView
+            android:id="@+id/tvTituloNav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:text="@string/nuevoNoSocio"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="@color/white">
+        </TextView>
+    </LinearLayout>
+
+    <!-- PASOS 1 - 2 - 3 -->
+    <LinearLayout
+        android:id="@+id/llpasos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="12dp">
+
+        <!-- PASO 1 -->
+        <LinearLayout
+            android:id="@+id/llPaso1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvPaso1"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="✓"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:background="@drawable/circulo_completo">
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvDatos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Datos"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp">
+            </TextView>
+        </LinearLayout>
+
+        <!-- LINEA -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="#CCCCCC">
+        </View>
+
+        <!-- PASO 2 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvPaso2"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="2"
+                android:gravity="center"
+                android:textColor="#F2F2F2"
+                android:textStyle="bold"
+                android:background="@drawable/circulo_activo">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Actividad"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp">
+            </TextView>
+        </LinearLayout>
+
+        <!-- LINEA -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="#CCCCCC">
+        </View>
+
+        <!-- PASO 3 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvPaso3"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="3"
+                android:gravity="center"
+                android:textColor="#F2F2F2"
+                android:textStyle="bold"
+                android:background="@drawable/circulo_inactivo">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cobrar"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp">
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- TITULO -->
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Elegí una actividad"
+        android:layout_margin="10dp"
+        android:textSize="20sp">
+    </TextView>
+
+    <!-- SCROLL VIEW PARA EL PANEL DE ACTIVIDADES -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- PANEL DE ACTIVIDADES -->
+        <LinearLayout
+            android:id="@+id/llActividades"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- SUBCONTENEDOR DE ACTIVIDADES - ZUMBA - PILATES - ELONGACION -->
+            <LinearLayout
+                android:id="@+id/llZumbaPilatesElongacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <!-- CARD ZUMBA -->
+                <LinearLayout
+                    android:id="@+id/llCardZumba"
+                    android:layout_width="150dp"
+                    android:layout_height="130dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginVertical="16dp"
+                    android:background="#DF4A47"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/imgZumba"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/zumba">
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/tvZumba"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Zumba">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/tvPrecioZumba"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$18000">
+                    </TextView>
+                </LinearLayout>
+
+                <!-- CARD PILATES -->
+                <LinearLayout
+                    android:id="@+id/llCardPilates"
+                    android:layout_width="150dp"
+                    android:layout_height="130dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginVertical="16dp"
+                    android:background="#DF4A47"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/imgPilates"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/pilates">
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/tvPilates"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pilates">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/tvPrecioPilates"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$19000">
+                    </TextView>
+                </LinearLayout>
+
+                <!-- CARD ELONGACION -->
+                <LinearLayout
+                    android:id="@+id/llCardElongacion"
+                    android:layout_width="150dp"
+                    android:layout_height="130dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginVertical="16dp"
+                    android:background="#DF4A47"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/imgElongacion"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/elongacion">
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/tvElongacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Elongacion">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/tvPrecioElongacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$15000">
+                    </TextView>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- SUBCONTENEDOR DE ACTIVIDADES - KARATE - SPINNING - HIT -->
+            <LinearLayout
+                android:id="@+id/llKarateSpinningHit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- CARD KARATE -->
+                <LinearLayout
+                    android:id="@+id/llCardKarate"
+                    android:layout_width="150dp"
+                    android:layout_height="130dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginVertical="16dp"
+                    android:background="#DF4A47"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/imgKarate"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/karate">
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/tvKarate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Karate">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/tvPrecioKarate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$20000">
+                    </TextView>
+                </LinearLayout>
+
+                <!-- CARD SPINNING -->
+                <LinearLayout
+                    android:id="@+id/llCardSpinning"
+                    android:layout_width="150dp"
+                    android:layout_height="130dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginVertical="16dp"
+                    android:background="#DF4A47"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/imgSpinning"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/spinning">
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/tvSpinning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Spinning">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/tvPrecioSpinning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$18500">
+                    </TextView>
+                </LinearLayout>
+
+                <!-- CARD HIT -->
+                <LinearLayout
+                    android:id="@+id/llCardHit"
+                    android:layout_width="150dp"
+                    android:layout_height="130dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginVertical="16dp"
+                    android:background="#DF4A47"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/imgHit"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hit">
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/tvHit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hit">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/tvPrecioHit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$17000">
+                    </TextView>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- BOTON CONTINUAR -->
+    <Button
+        android:id="@+id/btnContinuar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="100dp"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="@string/continuar">
+    </Button>
+
+    <!-- FOOTER -->
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@color/cardview_shadow_start_color">
+
+        <!-- BOTON INICIO -->
+        <LinearLayout
+            android:id="@+id/llInicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="15dp"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imgBtnInicio"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:src="@drawable/casita"
+                android:background="@drawable/circulo_inactivo">
+            </ImageButton>
+
+            <TextView
+                android:id="@+id/tvInicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inicio"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp">
+            </TextView>
+        </LinearLayout>
+
+        <!-- BOTON MIEMBROS -->
+        <LinearLayout
+            android:id="@+id/llMiembros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="15dp"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imgBtnMiembros"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:src="@drawable/person"
+                android:background="@drawable/circulo_inactivo">
+            </ImageButton>
+
+            <TextView
+                android:id="@+id/tvMiembros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Miembros"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp">
+            </TextView>
+        </LinearLayout>
+
+        <!-- BOTON  PAGOS -->
+        <LinearLayout
+            android:id="@+id/llPagos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="15dp"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imgBtnPagos"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:src="@drawable/moneda"
+                android:background="@drawable/circulo_inactivo">
+            </ImageButton>
+
+            <TextView
+                android:id="@+id/tvPagos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pagos"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp">
+            </TextView>
+        </LinearLayout>
+
+        <!-- BOTON OTROS - MENU HAMBURGUESA -->
+        <LinearLayout
+            android:id="@+id/llOtros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="15dp"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imgBtnOtros"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:src="@drawable/lineas"
+                android:background="@drawable/circulo_inactivo">
+            </ImageButton>
+
+            <TextView
+                android:id="@+id/tvOtros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Otros"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp">
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
