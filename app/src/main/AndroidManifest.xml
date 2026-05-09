@@ -21,16 +21,10 @@
             android:name=".EleccionNuevoMiembroActivity"
             android:exported="false" />
         <activity
-            android:name=".CobrarActividad1Activity"
-            android:exported="false" />
-        <activity
             android:name=".NuevoNoSocioActivity"
             android:exported="false" />
         <activity
             android:name=".NuevoSocioActivity"
-            android:exported="false" />
-        <activity
-            android:name=".NuevoMiembroActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -35,7 +35,7 @@ class EleccionActividadActivity : AppCompatActivity() {
             cardSeleccionada?.setBackgroundColor(Color.parseColor("#DF4A47"))
 
             // Pintamos la nueva card elegida
-            card.setBackgroundColor(Color.parseColor("#E3F7D4"))
+            card.setBackgroundColor(Color.parseColor("#3AFF12"))
 
             // Remplazamos la instancia de la cardSeleccionada vieja por la nueva
             cardSeleccionada = card
@@ -56,8 +56,7 @@ class EleccionActividadActivity : AppCompatActivity() {
                 Toast.makeText(this, "Debe seleccionar una actividad", Toast.LENGTH_LONG).show()
             }
             else{
-                var intentarCobrarActividad1 = Intent(this, CobrarActividad1Activity::class.java)
-                startActivity(intentarCobrarActividad1)
+                Toast.makeText(this, "INTENT COBRAR ACTIVIDAD", Toast.LENGTH_LONG).show()
             }
         }
         // ---------- BOTON CONTINUAR ----------
