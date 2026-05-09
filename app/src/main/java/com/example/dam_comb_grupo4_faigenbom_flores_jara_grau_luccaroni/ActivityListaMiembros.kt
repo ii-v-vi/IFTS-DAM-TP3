@@ -15,6 +15,15 @@ class ActivityListaMiembros : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+
+            val btnAgregarMiembro = findViewById<Button>(R.id.btnAgregarMiembro)
+
+            btnAgregarMiembro.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java)
+
+                startActivity(intent)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
         }
     }
 }

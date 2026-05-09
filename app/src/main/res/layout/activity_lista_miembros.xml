@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,7 +13,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_flechaatrasnegra"
+        android:drawableStart="@drawable/flechaAtrasNegra"
         android:drawablePadding="6dp"
         android:text="Volver"/>
     <!--Miembro - Agregar -->
@@ -30,9 +31,10 @@
             android:textSize="16sp"/>
 
         <Button
+            android:id="@+id/btnAgregarMiembro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="180dp"
+            android:layout_marginLeft="200dp"
             android:text="Agregar" />
     </LinearLayout>
     <!--Buscador-->
@@ -118,16 +120,15 @@
                         app:cardElevation="14dp">
 
                         <TextView
-                            android:id="@+id/txt_iniciales_administrador"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/montserrat"
                             android:gravity="center"
                             android:text="LL"
                             android:textAlignment="center"
                             android:textColor="@color/titan_card"
                             android:textSize="26sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="DuplicateIds" />
                     </androidx.cardview.widget.CardView>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -150,7 +151,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
                             android:text="DNI 12345678"
-                            android:layout_width="10dp"
                             android:layout_weight="1"/>
                     </LinearLayout>
 
@@ -159,11 +159,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="Vence Hoy"
-                        android:textSize="10sp"/>
+                        android:textSize="10sp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_flechaatrasnegra"
+                        android:drawableStart="@drawable/flechaAtrasNegra"
                         android:rotation="180"
                         android:layout_marginLeft="5dp"/>
                 </LinearLayout>
@@ -191,10 +191,8 @@
                         app:cardElevation="14dp">
 
                         <TextView
-                            android:id="@+id/txt_iniciales_administrador"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/montserrat"
                             android:gravity="center"
                             android:text="IF"
                             android:textAlignment="center"
@@ -223,7 +221,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
                             android:text="DNI 12345678"
-                            android:layout_width="10dp"
                             android:layout_weight="1"/>
                     </LinearLayout>
 
@@ -236,7 +233,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_flechaatrasnegra"
+                        android:drawableStart="@drawable/flechaAtrasNegra"
                         android:rotation="180"
                         android:layout_marginLeft="5dp"/>
                 </LinearLayout>
@@ -264,10 +261,8 @@
                         app:cardElevation="14dp">
 
                         <TextView
-                            android:id="@+id/txt_iniciales_administrador"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/montserrat"
                             android:gravity="center"
                             android:text="MF"
                             android:textAlignment="center"
@@ -308,7 +303,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_flechaatrasnegra"
+                        android:drawableStart="@drawable/flechaAtrasNegra"
                         android:rotation="180"
                         android:layout_marginLeft="5dp"/>
                 </LinearLayout>
@@ -336,16 +331,15 @@
                         app:cardElevation="14dp">
 
                         <TextView
-                            android:id="@+id/txt_iniciales_administrador"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/montserrat"
                             android:gravity="center"
                             android:text="MJ"
                             android:textAlignment="center"
                             android:textColor="@color/titan_card"
                             android:textSize="26sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="DuplicateIds" />
                     </androidx.cardview.widget.CardView>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -380,7 +374,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_flechaatrasnegra"
+                        android:drawableStart="@drawable/flechaAtrasNegra"
                         android:rotation="180"
                         android:layout_marginLeft="5dp"/>
                 </LinearLayout>
@@ -408,16 +402,15 @@
                         app:cardElevation="14dp">
 
                         <TextView
-                            android:id="@+id/txt_iniciales_administrador"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/montserrat"
                             android:gravity="center"
                             android:text="JG"
                             android:textAlignment="center"
                             android:textColor="@color/titan_card"
                             android:textSize="26sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="DuplicateIds" />
                     </androidx.cardview.widget.CardView>
 
                     <LinearLayout
@@ -455,7 +448,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_flechaatrasnegra"
+                        android:drawableStart="@drawable/flechaAtrasNegra"
                         android:rotation="180"
                         android:layout_marginLeft="5dp"/>
                 </LinearLayout>
