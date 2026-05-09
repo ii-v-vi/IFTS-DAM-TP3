@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Damcombgrupo4faigenbomfloresjaragrauluccaroni">
         <activity
+            android:name=".EleccionActividadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CobrarCuotaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EleccionNuevoMiembroActivity"
+            android:exported="false" />
+        <activity
             android:name=".CobrarActividad1Activity"
             android:exported="false" />
         <activity

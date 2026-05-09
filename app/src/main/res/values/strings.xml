@@ -8,4 +8,6 @@
     <string name="nuevoSocio">Nuevo Socio</string>
     <string name="cobrarActividad">Cobrar Actividad</string>
     <string name="cobrarCuota">Cobrar Cuota</string>
+    <string name="socio">Socio</string>
+    <string name="noSocio">No Socio</string>
 </resources>

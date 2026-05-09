@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <!-- HEADER ROJO REUTILIZABLE -->
+    <LinearLayout
+        android:id="@+id/llTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        android:background="#D63A27">
+
+        <!-- SUBCONTENEDOR BOTON VOLVER -->
+        <LinearLayout
+            android:id="@+id/llVolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:orientation="horizontal">
+
+            <!-- ICONO FLECHA -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/flechitavolver">
+            </ImageView>
+
+
+            <!-- VOLVER -->
+            <TextView
+                android:id="@+id/tvVolver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:text="@string/volver"
+                android:textSize="15sp"
+                android:textColor="@color/white">
+            </TextView>
+        </LinearLayout>
+
+        <!-- TITULO DEL HEADER -->
+        <TextView
+            android:id="@+id/tvTituloNav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:text="@string/tituloNuevoMiembro"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="@color/white">
+        </TextView>
+    </LinearLayout>
+
+    <!-- CONTENEDOR CON ELECCION DE SOCIO -->
+    <LinearLayout
+        android:id="@+id/llEleccionMiembro"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="¿Qué miembro desea agregar?"
+            android:textSize="25sp">
+        </TextView>
+
+        <!-- BOTON SOCIO -->
+        <Button
+            android:id="@+id/btnSocio"
+            android:layout_width="250dp"
+            android:layout_height="80dp"
+            android:layout_marginVertical="15dp"
+            android:text="@string/socio"
+            android:textSize="30sp">
+        </Button>
+
+        <!-- BOTON NO SOCIO -->
+        <Button
+            android:id="@+id/btnNoSocio"
+            android:layout_width="250dp"
+            android:layout_height="80dp"
+            android:layout_marginVertical="15dp"
+            android:text="@string/noSocio"
+            android:textSize="30sp">
+        </Button>
+    </LinearLayout>
+</LinearLayout>

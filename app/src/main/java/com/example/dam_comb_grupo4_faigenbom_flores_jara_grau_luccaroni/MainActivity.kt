@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         // Ruteo: ir a NuevoMiembroActivity
         val btnIntentNuevoMiembro = findViewById<Button>(R.id.btnIntentNuevoMiembro)
         btnIntentNuevoMiembro.setOnClickListener {
-            val intentar = Intent(this, NuevoMiembroActivity::class.java)
+            val intentar = Intent(this, EleccionNuevoMiembroActivity::class.java)
             startActivity(intentar)
         }
     }

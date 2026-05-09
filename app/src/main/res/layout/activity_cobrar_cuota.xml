@@ -3,7 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="#F6EFDF"
     android:orientation="vertical">
 
     <!-- HEADER ROJO REUTILIZABLE -->
@@ -49,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
-            android:text="@string/nuevoSocio"
+            android:text="@string/cobrarCuota"
             android:textStyle="bold"
             android:textSize="22sp"
             android:textColor="@color/white">
@@ -64,7 +66,6 @@
         android:background="@color/black"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginBottom="30dp"
         android:padding="12dp">
 
         <!-- PASO 1 -->
@@ -79,11 +80,11 @@
                 android:id="@+id/tvPaso1"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:text="1"
+                android:text="✓"
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:background="@drawable/circulo_activo">
+                android:background="@drawable/circulo_completo">
             </TextView>
 
             <TextView
@@ -122,7 +123,7 @@
                 android:gravity="center"
                 android:textColor="#F2F2F2"
                 android:textStyle="bold"
-                android:background="@drawable/circulo_inactivo">
+                android:background="@drawable/circulo_activo">
             </TextView>
 
             <TextView
@@ -135,169 +136,204 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- TITULO -->
-    <TextView
-        android:id="@+id/tvTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Datos Personales"
-        android:layout_margin="15dp"
-        android:textSize="20sp">
-    </TextView>
-
-    <ScrollView
+    <!-- CONTENEDOR CON DATOS DEL SOCIO -->
+    <LinearLayout
+        android:id="@+id/llSocio"
+        android:layout_marginHorizontal="15dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <!-- FORMULARIO DE DATOS PERSONALES -->
-        <LinearLayout
-            android:id="@+id/formDatosPersonales"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="SOCIO"
+            android:textSize="18sp">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N° de socio"
+            android:textSize="16sp">
+        </TextView>
+
+        <!-- SUBCONTENEDOR N°SOCIO -->
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="30dp"
             android:orientation="vertical"
-            android:layout_marginTop="40dp"
-            android:gravity="center">
+            android:background="#A24A">
 
-            <!-- CONTENEDOR DE NOMBRE Y APELLIDO -->
-            <LinearLayout
-                android:id="@+id/frmDosDatos1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <!-- NOMBRE -->
-                <EditText
-                    android:id="@+id/evNombre"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:hint="Nombre"
-                    android:inputType="text">
-                </EditText>
-
-                <!-- APELLIDO -->
-                <EditText
-                    android:id="@+id/evApellido"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:hint="Apellido"
-                    android:inputType="text">
-                </EditText>
-            </LinearLayout>
-
-            <!-- CONTENEDOR DE DNI Y TELEFONO -->
-            <LinearLayout
-                android:id="@+id/frmDosDatos2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginTop="30dp">
-
-                <!-- DNI -->
-                <EditText
-                    android:id="@+id/evDni"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:hint="DNI"
-                    android:inputType="number">
-                </EditText>
-
-                <!-- TELEFONO -->
-                <EditText
-                    android:id="@+id/evTelefono"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:hint="Teléfono"
-                    android:inputType="number">
-                </EditText>
-            </LinearLayout>
-
-            <!-- CONTENEDOR DE MAIL, FECHA Y FICHA MEDICA -->
-            <LinearLayout
-                android:id="@+id/llMailFechaFicha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <!-- MAIL -->
-                <EditText
-                    android:id="@+id/evMail"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:hint="Mail"
-                    android:inputType="textEmailAddress">
-                </EditText>
-
-                <!-- SUBCONTENDEOR DE FECHA Y FICHA MEDICA -->
-                <LinearLayout
-                    android:id="@+id/llFechaFicha"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:orientation="horizontal"
-                    android:gravity="center">
-
-                    <!-- SUBCONTENEDOR PARA BUTTON FECHA Y EDIT-TEXT FECHA -->
-                    <LinearLayout
-                        android:id="@+id/llFecha"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center">
-
-                        <!-- BOTON FECHA -->
-                        <Button
-                            android:id="@+id/btnFecha"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Seleccionar fecha"
-                            android:layout_margin="10dp">
-                        </Button>
-
-                        <!-- EDIT-TEXT FECHA -->
-                        <TextView
-                            android:id="@+id/tvFecha"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="--/--/--"
-                            android:textSize="18dp">
-                        </TextView>
-                    </LinearLayout>
-
-                    <!-- CHECKBOX FICHA MEDICA -->
-                    <CheckBox
-                        android:id="@+id/chkFichaMedica"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Ficha médica"
-                        android:layout_margin="10dp">
-                    </CheckBox>
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- BOTON CONTINUAR -->
-            <Button
-                android:id="@+id/btnContinuar"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingHorizontal="100dp"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:text="@string/continuar">
-            </Button>
+                android:layout_marginLeft="15dp"
+                android:text="2"
+                android:textSize="20sp">
+            </TextView>
         </LinearLayout>
-    </ScrollView>
+
+        <!-- SUBCONTENEDOR SOCIO - ICONO - INFO - CUOTA -->
+        <LinearLayout
+            android:id="@+id/llInfoSocio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:background="@color/black">
+
+            <!-- ICONO DEL SOCIO -->
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:orientation="vertical"
+                android:background="@drawable/circulo_activo"
+                android:gravity="center|center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LL"
+                    android:textColor="@color/white">
+                </TextView>
+            </LinearLayout>
+
+            <!-- NOMBRE - SOCIO - CUOTA -->
+            <LinearLayout
+                android:layout_weight="1"
+                android:id="@+id/nombreNroActividad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nombreSocio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="15dp"
+                    android:text="Lucas Luccaroni">
+                </TextView>
+
+                <LinearLayout
+                    android:id="@+id/llSocioActividad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/nroSocio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:text="Socio #2   -">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/tvActividad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="18sp"
+                        android:text="Cuota N°1">
+                    </TextView>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- CONTENEDOR TIPOS DE PAGO -->
+    <LinearLayout
+        android:id="@+id/llTipoDePago"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo de Pago"
+            android:textSize="18sp">
+        </TextView>
+
+        <!-- SUBCONTENEDOR PARA RADIOPGROUP / RADIOBUTTONS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- RADIO GROUP PARA TIPOS DE PAGO -->
+            <RadioGroup
+                android:id="@+id/rgTipoDePago"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- RADIOGROUP EFECTIVO -->
+                <RadioButton
+                    android:id="@+id/rbtEfectivo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="15dp"
+                    android:background="#AA93"
+                    android:text="Efectivo">
+                </RadioButton>
+
+                <!-- RADIOGROUP TARJETA 1 CUOTA -->
+                <RadioButton
+                    android:id="@+id/rbtTarjetaUnaCuota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="15dp"
+                    android:background="#AA93"
+                    android:text="Tarjeta - 1 cuota">
+                </RadioButton>
+
+                <!-- RADIOGROUP TARJETA 3 CUOTAS -->
+                <RadioButton
+                    android:id="@+id/rbtTarjetaTresCutoas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="15dp"
+                    android:background="#AA93"
+                    android:text="Tarjeta - 3 cuotas">
+                </RadioButton>
+
+                <!-- RADIOGROUP TARJETA 6 CUOTAS -->
+                <RadioButton
+                    android:id="@+id/rbtTarjetaSeisCutoas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="15dp"
+                    android:background="#AA93"
+                    android:text="Tarjeta - 6 cuotas">
+                </RadioButton>
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
 
 
+    <!-- BOTON CONTINUAR -->
+    <Button
+        android:id="@+id/btnContinuar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="100dp"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="@string/continuar">
+    </Button>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <!-- FOOTER -->
     <LinearLayout
@@ -425,5 +461,3 @@
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
-
-

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#0C0F14</color>
-    <color name="white">##FAFAFA</color>
+    <color name="white">#F2F2F2</color>
     <color name="fondoApp">#F6EFDF</color>
     <color name="rojoFuerte">#D63A27</color>
     <color name="rojoSuave">#CF6A60</color>

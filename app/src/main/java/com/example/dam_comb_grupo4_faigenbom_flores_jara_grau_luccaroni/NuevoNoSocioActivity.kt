@@ -6,7 +6,11 @@ import android.widget.LinearLayout
 import android.widget.Button
 import android.widget.Toast
 import android.content.Intent
+import android.widget.CheckBox
+import android.widget.DatePicker
+import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -15,57 +19,78 @@ class NuevoNoSocioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nuevo_no_socio)
 
-        var btnContinuar = findViewById<Button>(R.id.btnContinuar)
-        var btnVolver = findViewById<TextView>(R.id.tvVolver)
-        val cardZumba = findViewById<LinearLayout>(R.id.llCardZumba)
-        val cardPilates = findViewById<LinearLayout>(R.id.llCardPilates)
-        val cardElongacion = findViewById<LinearLayout>(R.id.llCardElongacion)
-        val cardKarate = findViewById<LinearLayout>(R.id.llCardKarate)
-        val cardSpinning = findViewById<LinearLayout>(R.id.llCardSpinning)
-        val cardHit = findViewById<LinearLayout>(R.id.llCardHit)
-        var cardSeleccionada : LinearLayout? = null
-        var todasLascCards = listOf<LinearLayout>(cardZumba, cardPilates, cardElongacion, cardKarate, cardSpinning, cardHit)
+
+        // Capturamos los elementos del xml que vamos a necesitar
+        val evNombre = findViewById<EditText>(R.id.evNombre)
+        val evApellido = findViewById<EditText>(R.id.evApellido)
+        val evDni = findViewById<EditText>(R.id.evDni)
+        val evTelefono = findViewById<EditText>(R.id.evTelefono)
+        val evMail = findViewById<EditText>(R.id.evMail)
+        val chkFicha = findViewById<CheckBox>(R.id.chkFichaMedica)
+        val btnContinuar = findViewById<Button>(R.id.btnContinuar)
+        val btnVolver = findViewById<TextView>(R.id.tvVolver)
 
 
-        // ---------- SELECCIONAR LAS CARDS ----------
-        // Funcion para pintar la card seleccionada y despintar la anterior (si la hay)
-        fun seleccionarCard(card: LinearLayout){
 
-            // Despintamos la card seleccionada previamente
-            cardSeleccionada?.setBackgroundColor(Color.parseColor("#DF4A47"))
+        // ---------- FECHA ----------
+        // --- Creamos un dialog para que el usuario pueda selecionar una fecha y nosotros podamos capturarla
+        val btnFecha = findViewById<Button>(R.id.btnFecha)
+        val tvFecha = findViewById<TextView>(R.id.tvFecha)
 
-            // Pintamos la nueva card elegida
-            card.setBackgroundColor(Color.parseColor("#E3F7D4"))
+        btnFecha.setOnClickListener {
+            //btnContinuar.setBackgroundColor(colorActivo)
+            val modalSeleccionarFecha = layoutInflater.inflate(R.layout.dialog_seleccionar_fecha, null)
+            val calendario = modalSeleccionarFecha.findViewById<DatePicker>(R.id.calendario)
 
-            // Remplazamos la instancia de la cardSeleccionada vieja por la nueva
-            cardSeleccionada = card
+            val dialogFecha = AlertDialog.Builder(this)
+                .setTitle("Fecha de nacimiento")
+                .setView(modalSeleccionarFecha)
+                .setPositiveButton("Guardar") { _, _ ->
+                    val dia = calendario.dayOfMonth
+                    val mes = calendario.month + 1
+                    val anio = calendario.year
+
+                    val fechaFormateada = "$dia/$mes/$anio"
+                    tvFecha.text = fechaFormateada
+
+                    Toast.makeText(this, "Fecha: $fechaFormateada", Toast.LENGTH_LONG)
+                        .show()
+                }
+                .setNegativeButton("Cancelar", null)
+                .create()
+            dialogFecha.show()
         }
+        // ---------- FECHA ----------
 
-        // Aplicamos un forEach para recorrer el array de cards y aplicar la funcion de pintar en cada una
-        todasLascCards.forEach { card ->
-            card.setOnClickListener {
-                seleccionarCard(card)
-            }
-        }
-        // ---------- SELECCIONAR LAS CARDS ----------
+
 
 
         // ---------- BOTON CONTINUAR ----------
         btnContinuar.setOnClickListener {
-            if(cardSeleccionada == null){
-                Toast.makeText(this, "Debe seleccionar una actividad", Toast.LENGTH_LONG).show()
-            }
-            else{
-                var intentarCobrarActividad1 = Intent(this, CobrarActividad1Activity::class.java)
-                startActivity(intentarCobrarActividad1)
+            if (
+                (chkFicha.isChecked) &&
+                (evNombre.text.isNotEmpty()) &&
+                (evApellido.text.isNotEmpty()) &&
+                (evDni.text .isNotEmpty()) &&
+                (evTelefono.text .isNotEmpty()) &&
+                (evMail.text .isNotEmpty()) &&
+                (tvFecha.text != "--/--/--")
+            ) {
+                Toast.makeText(this , "Creando usuario", Toast.LENGTH_LONG).show()
+                val intentNuevoNoSocio = Intent(this, EleccionActividadActivity::class.java)
+                startActivity(intentNuevoNoSocio)
+
+
+            } else {
+                Toast.makeText(this , "Información incompleta", Toast.LENGTH_LONG).show()
+
             }
         }
         // ---------- BOTON CONTINUAR ----------
 
-
         // ---------- BOTON VOLVER ----------
         btnVolver.setOnClickListener {
-            val intentarVolver = Intent(this, NuevoMiembroActivity::class.java)
+            val intentarVolver = Intent(this, EleccionNuevoMiembroActivity::class.java)
             startActivity(intentarVolver)
         }
         // ---------- BOTON VOLVER ----------
