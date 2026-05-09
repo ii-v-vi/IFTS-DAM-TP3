@@ -52,11 +52,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
+                        android:fontFamily="@font/montserrat_regular"
                         android:text="Miembros"
                         android:textColor="@color/titan_card"
-                        android:textSize="16sp"
-                        android:textStyle="normal"/>
+                        android:textSize="16sp"/>
 
                 </LinearLayout>
 
@@ -76,13 +75,12 @@
                             android:id="@+id/txt_iniciales_no_socio"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/montserrat"
+                            android:fontFamily="@font/montserrat_bold"
                             android:gravity="center"
                             android:text="JG"
                             android:textAlignment="center"
                             android:textColor="@color/titan_card"
-                            android:textSize="32sp"
-                            android:textStyle="bold" />
+                            android:textSize="32sp"/>
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
 
@@ -95,12 +93,11 @@
                         android:id="@+id/txt_nombre_no_socio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
+                        android:fontFamily="@font/montserrat_bold"
                         android:text="Judith Grau"
                         android:textAlignment="center"
                         android:textColor="@color/titan_card"
-                        android:textSize="26sp"
-                        android:textStyle="bold" />
+                        android:textSize="26sp"/>
                 </LinearLayout>
 
                 <!-- Texto socio activo -->
@@ -110,12 +107,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
+                        android:fontFamily="@font/montserrat_regular"
                         android:text="No socio/a"
                         android:textAlignment="center"
                         android:textColor="@color/titan_card"
-                        android:textSize="20sp"
-                        android:textStyle="normal" />
+                        android:textSize="20sp"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -150,11 +146,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="DNI"
-                                android:fontFamily="@font/montserrat"
+                                android:fontFamily="@font/montserrat_bold"
                                 android:textSize="16sp"
                                 android:textAlignment="textStart"
-                                android:textColor="@color/titan_nav_inactive"
-                                android:textStyle="bold"/>
+                                android:textColor="@color/titan_nav_inactive"/>
 
                             <!-- EMAIL -->
                             <TextView
@@ -162,11 +157,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Email"
-                                android:fontFamily="@font/montserrat"
+                                android:fontFamily="@font/montserrat_bold"
                                 android:textSize="16sp"
                                 android:textAlignment="textStart"
-                                android:textColor="@color/titan_nav_inactive"
-                                android:textStyle="bold"/>
+                                android:textColor="@color/titan_nav_inactive"/>
 
                             <!-- TELEFONO -->
                             <TextView
@@ -174,11 +168,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Teléfono"
-                                android:fontFamily="@font/montserrat"
+                                android:fontFamily="@font/montserrat_bold"
                                 android:textSize="16sp"
                                 android:textAlignment="textStart"
-                                android:textColor="@color/titan_nav_inactive"
-                                android:textStyle="bold"/>
+                                android:textColor="@color/titan_nav_inactive"/>
 
                             <!-- NACIMIENTO -->
                             <TextView
@@ -186,11 +179,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Nacimiento"
-                                android:fontFamily="@font/montserrat"
+                                android:fontFamily="@font/montserrat_bold"
                                 android:textSize="16sp"
                                 android:textAlignment="textStart"
-                                android:textColor="@color/titan_nav_inactive"
-                                android:textStyle="bold"/>
+                                android:textColor="@color/titan_nav_inactive"/>
 
                             <!-- FICHA MEDICA -->
                             <TextView
@@ -198,11 +190,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Actividad"
-                                android:fontFamily="@font/montserrat"
+                                android:fontFamily="@font/montserrat_bold"
                                 android:textSize="16sp"
                                 android:textAlignment="textStart"
-                                android:textColor="@color/titan_nav_inactive"
-                                android:textStyle="bold"/>
+                                android:textColor="@color/titan_nav_inactive"/>
                         </LinearLayout>
 
                         <!-- Columna derecha (DATOS) -->
@@ -219,11 +210,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="123456789"
-                                android:fontFamily="@font/montserrat"
+                                android:fontFamily="@font/montserrat_regular"
                                 android:textSize="16sp"
                                 android:textAlignment="textEnd"
-                                android:textColor="@color/titan_text_primary"
-                                android:textStyle="normal"/>
+                                android:textColor="@color/titan_text_primary"/>
 
                             <!-- EMAIL -->
                             <TextView
@@ -232,11 +222,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="judith@gmail.com"
-                                android:fontFamily="@font/montserrat"
+                                android:fontFamily="@font/montserrat_regular"
                                 android:textSize="16sp"
                                 android:textAlignment="textEnd"
-                                android:textColor="@color/titan_text_primary"
-                                android:textStyle="normal"/>
+                                android:textColor="@color/titan_text_primary"/>
 
                             <!-- TELEFONO -->
                             <TextView
@@ -245,11 +234,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="123456789"
-                                android:fontFamily="@font/montserrat"
+                                android:fontFamily="@font/montserrat_regular"
                                 android:textSize="16sp"
                                 android:textAlignment="textEnd"
-                                android:textColor="@color/titan_text_primary"
-                                android:textStyle="normal"/>
+                                android:textColor="@color/titan_text_primary"/>
 
                             <!-- NACIMIENTO -->
                             <TextView
@@ -258,11 +246,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="01/01/2000"
-                                android:fontFamily="@font/montserrat"
+                                android:fontFamily="@font/montserrat_regular"
                                 android:textSize="16sp"
                                 android:textAlignment="textEnd"
-                                android:textColor="@color/titan_text_primary"
-                                android:textStyle="normal"/>
+                                android:textColor="@color/titan_text_primary"/>
 
                             <!-- FICHA MEDICA -->
                             <TextView
@@ -271,11 +258,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Karate"
-                                android:fontFamily="@font/montserrat"
+                                android:fontFamily="@font/montserrat_regular"
                                 android:textSize="16sp"
                                 android:textAlignment="textEnd"
-                                android:textColor="@color/titan_text_primary"
-                                android:textStyle="normal"/>
+                                android:textColor="@color/titan_text_primary"/>
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -310,11 +296,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="HISTORIAL DE PAGOS"
-                            android:fontFamily="@font/montserrat"
+                            android:fontFamily="@font/montserrat_bold"
                             android:textSize="16sp"
                             android:textAlignment="textStart"
-                            android:textColor="@color/titan_nav_inactive"
-                            android:textStyle="bold"/>
+                            android:textColor="@color/titan_nav_inactive"/>
                     </LinearLayout>
 
                     <!-- Datos cuota -->
@@ -338,11 +323,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Último pago"
-                                android:fontFamily="@font/montserrat"
+                                android:fontFamily="@font/montserrat_bold"
                                 android:textSize="16sp"
                                 android:textAlignment="textStart"
-                                android:textColor="@color/titan_nav_inactive"
-                                android:textStyle="bold"/>
+                                android:textColor="@color/titan_nav_inactive" />
 
                             <!-- ACTIVIDAD -->
                             <TextView
@@ -350,11 +334,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Actividad"
-                                android:fontFamily="@font/montserrat"
+                                android:fontFamily="@font/montserrat_bold"
                                 android:textSize="16sp"
                                 android:textAlignment="textStart"
-                                android:textColor="@color/titan_nav_inactive"
-                                android:textStyle="bold"/>
+                                android:textColor="@color/titan_nav_inactive"/>
                         </LinearLayout>
 
                         <!-- Columna derecha (DATOS) -->
@@ -371,11 +354,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="10/03/2026"
-                                android:fontFamily="@font/montserrat"
+                                android:fontFamily="@font/montserrat_regular"
                                 android:textSize="16sp"
                                 android:textAlignment="textEnd"
-                                android:textColor="@color/titan_text_primary"
-                                android:textStyle="normal"/>
+                                android:textColor="@color/titan_text_primary"/>
 
                             <!-- ULTIMA ACTIVIDAD -->
                             <TextView
@@ -384,11 +366,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Karate"
-                                android:fontFamily="@font/montserrat"
+                                android:fontFamily="@font/montserrat_regular"
                                 android:textSize="16sp"
                                 android:textAlignment="textEnd"
-                                android:textColor="@color/titan_text_primary"
-                                android:textStyle="normal"/>
+                                android:textColor="@color/titan_text_primary"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -427,11 +408,10 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:text="Cobrar\nActividad"
-                        android:fontFamily="@font/montserrat"
+                        android:fontFamily="@font/montserrat_bold"
                         android:textAlignment="gravity"
                         android:textColor="@color/titan_text_green"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textSize="14sp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -458,11 +438,10 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:text="Editar"
-                        android:fontFamily="@font/montserrat"
+                        android:fontFamily="@font/montserrat_bold"
                         android:textAlignment="gravity"
                         android:textColor="@color/titan_text_blue"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textSize="14sp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -489,11 +468,10 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:text="Inactivar"
-                        android:fontFamily="@font/montserrat"
+                        android:fontFamily="@font/montserrat_bold"
                         android:textAlignment="gravity"
                         android:textColor="@color/titan_red"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textSize="14sp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
@@ -543,12 +521,11 @@
                 android:id="@+id/nav_text_inicio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/montserrat_bold"
                 android:gravity="center"
                 android:text="Inicio"
                 android:textColor="@color/titan_nav_inactive"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textSize="14sp"/>
         </LinearLayout>
 
         <!-- BOTON MIEMBROS -->
@@ -586,12 +563,11 @@
                 android:id="@+id/nav_text_miembros"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/montserrat_bold"
                 android:gravity="center"
                 android:text="Miembros"
                 android:textColor="@color/titan_red"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textSize="14sp"/>
         </LinearLayout>
 
         <!-- BOTON COBRAR -->
@@ -629,12 +605,11 @@
                 android:id="@+id/nav_text_cobrar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/montserrat_bold"
                 android:gravity="center"
                 android:text="Cobrar"
                 android:textColor="@color/titan_nav_inactive"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textSize="14sp"/>
         </LinearLayout>
 
         <!-- BOTON MAS -->
@@ -672,12 +647,11 @@
                 android:id="@+id/nav_text_mas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/montserrat_bold"
                 android:gravity="center"
                 android:text="Más"
                 android:textColor="@color/titan_nav_inactive"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textSize="14sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
