@@ -6,4 +6,6 @@
     <string name="continuar">Continuar</string>
     <string name="nuevoNoSocio">Nuevo No Socio</string>
     <string name="nuevoSocio">Nuevo Socio</string>
+    <string name="cobrarActividad">Cobrar Actividad</string>
+    <string name="cobrarCuota">Cobrar Cuota</string>
 </resources>
