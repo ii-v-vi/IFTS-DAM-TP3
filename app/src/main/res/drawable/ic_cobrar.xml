@@ -1,0 +1,24 @@
+<!--
+  ~ Copyright (C) 2026 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="9dp"
+    android:height="18dp"
+    android:viewportWidth="9"
+    android:viewportHeight="18">
+  <path
+      android:pathData="M4.199,15.615C3.418,15.615 2.66,15.475 1.924,15.195C1.188,14.915 0.547,14.492 0,13.926L1.201,12.305C1.683,12.721 2.168,13.024 2.656,13.213C3.151,13.402 3.665,13.496 4.199,13.496C4.831,13.496 5.299,13.35 5.605,13.057C5.911,12.757 6.064,12.347 6.064,11.826C6.064,11.442 5.931,11.11 5.664,10.83C5.397,10.55 5.052,10.293 4.629,10.059C4.212,9.818 3.766,9.574 3.291,9.326C2.816,9.072 2.367,8.789 1.943,8.477C1.527,8.164 1.185,7.793 0.918,7.363C0.651,6.934 0.518,6.416 0.518,5.811C0.518,4.658 0.889,3.74 1.631,3.057C2.373,2.367 3.366,2.021 4.609,2.021C5.469,2.021 6.201,2.184 6.807,2.51C7.412,2.829 7.946,3.242 8.408,3.75L7.061,5.186C6.729,4.847 6.367,4.59 5.977,4.414C5.586,4.238 5.153,4.15 4.678,4.15C4.17,4.15 3.77,4.284 3.477,4.551C3.184,4.811 3.037,5.186 3.037,5.674C3.037,6.025 3.171,6.331 3.438,6.592C3.704,6.846 4.046,7.083 4.463,7.305C4.886,7.526 5.332,7.757 5.801,7.998C6.276,8.239 6.725,8.519 7.148,8.838C7.572,9.157 7.917,9.541 8.184,9.99C8.451,10.433 8.584,10.973 8.584,11.611C8.584,12.79 8.203,13.753 7.441,14.502C6.686,15.244 5.605,15.615 4.199,15.615ZM3.594,17.637V14.57H5.381V17.637H3.594ZM3.594,2.871V0H5.381V2.871H3.594Z"
+      android:fillColor="#FAFAFA"/>
+</vector>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fondo del boton -->
+    <solid android:color="@color/titan_background"/>
+
+    <!-- Borde del boton -->
+    <stroke
+        android:width="1dp"
+        android:color="@color/titan_red"/>
+
+    <!-- Borde redondeado -->
+    <corners android:radius="18dp"/>
+</shape>
+<!-- este archivo se selecciona en la propiedad android:background (el fondo cambiara a morado)-->
+<!-- para aplicar el color deseado usar app:backgroundTint en lugar de android:backgroundTint -->

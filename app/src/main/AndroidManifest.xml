@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Damcombgrupo4faigenbomfloresjaragrauluccaroni">
         <activity
+            android:name=".PerfilNoSocioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PerfilSocioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuPrincipalActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

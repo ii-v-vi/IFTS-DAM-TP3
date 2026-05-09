@@ -2,4 +2,21 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="titan_red">#D63A27</color>
+    <color name="titan_bg_red">#FDD6CE</color>
+    <color name="titan_background">#F6EFDF</color>
+    <color name="titan_avatar">#CF6A60</color>
+    <color name="titan_text_primary">#0C0F14</color>
+    <color name="titan_card">#FAFAFA</color>
+    <color name="titan_nav_inactive">#9E9E9E</color>
+    <color name="titan_nav_inactive_background">#D9D9D9</color>
+    <color name="titan_bg_grey">#808080</color>
+
+
+    <color name="titan_text_green">#4A8A19</color>
+    <color name="titan_bg_green">#E3F7D4</color>
+    <color name="titan_text_blue">#1A6FBC</color>
+    <color name="titan_bg_blue">#D2E6F9</color>
+
+
 </resources>
