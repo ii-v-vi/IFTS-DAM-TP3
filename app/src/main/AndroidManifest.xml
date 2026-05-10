@@ -25,6 +25,25 @@
             android:exported="false" />
         <activity
             android:name=".MenuPrincipalActivity"
+            android:name=".ActivityConfirmarPagoNoSocio"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityConfirmarPagoSocio"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityListaMiembros"
+            android:name=".EleccionActividadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CobrarCuotaActivity"
+            android:exported="false" />
+            android:name=".EleccionNuevoMiembroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NuevoNoSocioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NuevoSocioActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
