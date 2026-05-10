@@ -4,20 +4,51 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.content.Intent
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
+
 
 class ActivityListaMiembros : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_miembros)
 
-            val btnAgregarMiembro = findViewById<Button>(R.id.btnAgregarMiembro)
+        val btnVolver = findViewById<TextView>(R.id.tvVolver)
+        val btnAgregarMiembro = findViewById<Button>(R.id.btnAgregarMiembro)
+        val navInicio = findViewById<LinearLayout>(R.id.nav_inicio)
+        val navMiembros = findViewById<LinearLayout>(R.id.nav_miembros)
+        val navCobrar = findViewById<LinearLayout>(R.id.nav_cobrar)
+        val navMas = findViewById<LinearLayout>(R.id.nav_mas)
 
-            btnAgregarMiembro.setOnClickListener {
-                val intent = Intent(this, MainActivity::class.java)
 
-                startActivity(intent)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                startActivity(intent)
+        // --- BOTON AGREGAR MIEMBRO
+        btnAgregarMiembro.setOnClickListener {
+            val intentarAgregarMiembro = Intent(this, EleccionNuevoMiembroActivity::class.java)
+            startActivity(intentarAgregarMiembro)
+        }
+
+        // --- BOTON VOLVER
+        btnVolver.setOnClickListener {
+            val intentarVolver = Intent(this, MenuPrincipalActivity::class.java)
+            startActivity(intentarVolver)
+        }
+
+        // --- LOGICA FOOTER ---
+        navInicio.setOnClickListener {
+            val intentarInicio = Intent(this, MenuPrincipalActivity::class.java)
+            startActivity(intentarInicio)
+        }
+        navMiembros.setOnClickListener {
+            val intentarInicio = Intent(this, ActivityListaMiembros::class.java)
+            startActivity(intentarInicio)
+        }
+        navCobrar.setOnClickListener {
+            val intentarInicio = Intent(this, CobrarCuotaActivity::class.java)
+            startActivity(intentarInicio)
+        }
+        navMas.setOnClickListener {
+            Toast.makeText(this, "EN PROGRESO...", Toast.LENGTH_SHORT).show()
         }
     }
 }

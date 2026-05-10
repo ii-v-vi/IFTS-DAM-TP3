@@ -11,6 +11,7 @@
     android:background="@color/titan_background">
     <!--Volver -->
     <TextView
+        android:id="@+id/tvVolver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/flecha_atras_negra"
@@ -469,6 +470,7 @@
             android:gravity="center">
 
             <LinearLayout
+                android:id="@+id/nav_inicio"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -491,11 +493,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/nav_miembros"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -511,11 +516,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/nav_cobrar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -531,11 +539,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/nav_mas"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true">
 
                 <ImageView
                     android:layout_width="40dp"

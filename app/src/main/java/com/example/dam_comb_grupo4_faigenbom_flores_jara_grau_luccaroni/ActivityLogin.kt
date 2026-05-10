@@ -2,10 +2,9 @@ package com.example.dam_comb_grupo4_faigenbom_flores_jara_grau_luccaroni
 
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
-import android.widget.Toast
+
 
 class ActivityLogin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,12 +13,11 @@ class ActivityLogin : AppCompatActivity() {
 
 
         val btnLogin = findViewById<TextView>(R.id.btnLogin)
+        android.util.Log.d("LOGIN", "btnLogin es null? ${btnLogin == null}")
 
         btnLogin.setOnClickListener {
-            //val intentarLoguear = Intent(this, MenuPrincipalActivity::class.java)
-            //startActivity(intentarLoguear)
-
-            Toast.makeText(this, "ME APRETASTE", Toast.LENGTH_SHORT).show()
+            val intentarLoguear = Intent(this, MenuPrincipalActivity::class.java)
+            startActivity(intentarLoguear)
         }
 
 

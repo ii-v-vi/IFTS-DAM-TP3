@@ -3,6 +3,7 @@ package com.example.dam_comb_grupo4_faigenbom_flores_jara_grau_luccaroni
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
@@ -14,6 +15,10 @@ class CobrarCuotaActivity : AppCompatActivity() {
         setContentView(R.layout.activity_cobrar_cuota)
 
 
+        val navInicio = findViewById<LinearLayout>(R.id.nav_inicio)
+        val navMiembros = findViewById<LinearLayout>(R.id.nav_miembros)
+        val navCobrar = findViewById<LinearLayout>(R.id.nav_cobrar)
+        val navMas = findViewById<LinearLayout>(R.id.nav_mas)
         val btnVolver = findViewById<TextView>(R.id.tvVolver)
         val btnContinuar = findViewById<Button>(R.id.btnContinuar)
         val rbtEfectivo = findViewById<RadioButton>(R.id.rbtEfectivo)
@@ -53,8 +58,8 @@ class CobrarCuotaActivity : AppCompatActivity() {
                 Toast.makeText(this, "Debe seleccionar un medio de pago.", Toast.LENGTH_SHORT).show()
             }
             else{
-                 // val intentarConfirmarPago = Intent()
-                Toast.makeText(this, "INTENT CONFIRMAR PAGO", Toast.LENGTH_SHORT).show()
+                val intentarConfirmarPago = Intent(this, ActivityConfirmarPagoSocio::class.java)
+                startActivity(intentarConfirmarPago)
             }
         }
         // ---------- BOTON CONTINUAR ----------
@@ -67,5 +72,23 @@ class CobrarCuotaActivity : AppCompatActivity() {
             startActivity(intentarVolver)
         }
         // ---------- BOTON VOLVER ----------
+
+
+        // --- LOGICA FOOTER ---
+        navInicio.setOnClickListener {
+            val intentarInicio = Intent(this, MenuPrincipalActivity::class.java)
+            startActivity(intentarInicio)
+        }
+        navMiembros.setOnClickListener {
+            val intentarInicio = Intent(this, ActivityListaMiembros::class.java)
+            startActivity(intentarInicio)
+        }
+        navCobrar.setOnClickListener {
+            val intentarInicio = Intent(this, CobrarCuotaActivity::class.java)
+            startActivity(intentarInicio)
+        }
+        navMas.setOnClickListener {
+            Toast.makeText(this, "EN PROGRESO...", Toast.LENGTH_SHORT).show()
+        }
     }
 }

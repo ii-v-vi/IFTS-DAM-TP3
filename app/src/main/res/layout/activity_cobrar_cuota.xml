@@ -369,7 +369,7 @@
 
             <!-- BOTON INICIO -->
             <LinearLayout
-                android:id="@+id/llInicio"
+                android:id="@+id/nav_inicio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -398,7 +398,7 @@
 
             <!-- BOTON MIEMBROS -->
             <LinearLayout
-                android:id="@+id/llMiembros"
+                android:id="@+id/nav_miembros"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -425,9 +425,9 @@
                 </TextView>
             </LinearLayout>
 
-            <!-- BOTON  PAGOS -->
+            <!-- BOTON  COBRAR -->
             <LinearLayout
-                android:id="@+id/llPagos"
+                android:id="@+id/nav_cobrar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -454,9 +454,9 @@
                 </TextView>
             </LinearLayout>
 
-            <!-- BOTON OTROS - MENU HAMBURGUESA -->
+            <!-- BOTON MAS - MENU HAMBURGUESA -->
             <LinearLayout
-                android:id="@+id/llOtros"
+                android:id="@+id/nav_mas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
