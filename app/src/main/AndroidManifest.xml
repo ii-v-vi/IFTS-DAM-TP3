@@ -12,12 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Damcombgrupo4faigenbomfloresjaragrauluccaroni">
         <activity
+            android:name=".ActivityConfirmarPagoNoSocio"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityConfirmarPagoSocio"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityListaMiembros"
             android:name=".EleccionActividadActivity"
             android:exported="false" />
         <activity
             android:name=".CobrarCuotaActivity"
             android:exported="false" />
-        <activity
             android:name=".EleccionNuevoMiembroActivity"
             android:exported="false" />
         <activity
