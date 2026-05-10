@@ -451,11 +451,13 @@
 
             <!-- BOTON INICIO -->
             <LinearLayout
-                android:id="@+id/llInicio"
+                android:id="@+id/nav_inicio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginHorizontal="15dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center">
 
                 <ImageButton
@@ -480,11 +482,13 @@
 
             <!-- BOTON MIEMBROS -->
             <LinearLayout
-                android:id="@+id/llMiembros"
+                android:id="@+id/nav_miembros"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginHorizontal="15dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center">
 
                 <ImageButton
@@ -498,7 +502,6 @@
                 </ImageButton>
 
                 <TextView
-                    android:id="@+id/tvMiembros"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Miembros"
@@ -509,11 +512,13 @@
 
             <!-- BOTON  PAGOS -->
             <LinearLayout
-                android:id="@+id/llPagos"
+                android:id="@+id/nav_cobrar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginHorizontal="15dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center">
 
                 <ImageButton
@@ -527,7 +532,6 @@
                 </ImageButton>
 
                 <TextView
-                    android:id="@+id/tvPagos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Cobrar"
@@ -538,11 +542,13 @@
 
             <!-- BOTON OTROS - MENU HAMBURGUESA -->
             <LinearLayout
-                android:id="@+id/llOtros"
+                android:id="@+id/nav_mas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginHorizontal="15dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center">
 
                 <ImageButton
@@ -556,7 +562,6 @@
                 </ImageButton>
 
                 <TextView
-                    android:id="@+id/tvOtros"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Más"
@@ -567,4 +572,3 @@
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
-

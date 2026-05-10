@@ -63,6 +63,10 @@
             android:name=".MainActivity"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".EleccionNuevoMiembroActivity"
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>

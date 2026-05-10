@@ -25,7 +25,10 @@ class EleccionActividadActivity : AppCompatActivity() {
         val cardHit = findViewById<LinearLayout>(R.id.llCardHit)
         var cardSeleccionada : LinearLayout? = null
         var todasLascCards = listOf<LinearLayout>(cardZumba, cardPilates, cardElongacion, cardKarate, cardSpinning, cardHit)
-
+        val navInicio = findViewById<LinearLayout>(R.id.nav_inicio)
+        val navMiembros = findViewById<LinearLayout>(R.id.nav_miembros)
+        val navCobrar = findViewById<LinearLayout>(R.id.nav_cobrar)
+        val navMas = findViewById<LinearLayout>(R.id.nav_mas)
 
         // ---------- SELECCIONAR LAS CARDS ----------
         // Funcion para pintar la card seleccionada y despintar la anterior (si la hay)
@@ -47,7 +50,7 @@ class EleccionActividadActivity : AppCompatActivity() {
                 seleccionarCard(card)
             }
         }
-        // ---------- SELECCIONAR LAS CARDS ----------
+// ---------- SELECCIONAR LAS CARDS ----------
 
 
         // ---------- BOTON CONTINUAR ----------
@@ -56,7 +59,8 @@ class EleccionActividadActivity : AppCompatActivity() {
                 Toast.makeText(this, "Debe seleccionar una actividad", Toast.LENGTH_LONG).show()
             }
             else{
-                Toast.makeText(this, "INTENT COBRAR ACTIVIDAD", Toast.LENGTH_LONG).show()
+                val intentCobrarActividad = Intent(this, ActivityConfirmarPagoNoSocio::class.java)
+                startActivity(intentCobrarActividad)
             }
         }
         // ---------- BOTON CONTINUAR ----------
@@ -68,5 +72,23 @@ class EleccionActividadActivity : AppCompatActivity() {
             startActivity(intentarVolver)
         }
         // ---------- BOTON VOLVER ----------
+
+        // --- LOGICA FOOTER ---
+        navInicio.setOnClickListener {
+            val intentarInicio = Intent(this, MenuPrincipalActivity::class.java)
+            startActivity(intentarInicio)
+        }
+        navMiembros.setOnClickListener {
+            val intentarInicio = Intent(this, ActivityListaMiembros::class.java)
+            startActivity(intentarInicio)
+        }
+        navCobrar.setOnClickListener {
+            val intentarInicio = Intent(this, CobrarCuotaActivity::class.java)
+            startActivity(intentarInicio)
+        }
+        navMas.setOnClickListener {
+            Toast.makeText(this, "EN PROGRESO...", Toast.LENGTH_SHORT).show()
+        }
+
     }
 }
