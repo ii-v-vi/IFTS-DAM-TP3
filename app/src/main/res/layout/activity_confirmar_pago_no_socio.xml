@@ -50,7 +50,7 @@
                         android:layout_height="16dp"
                         android:layout_gravity="center"
                         android:layout_marginRight="3dp"
-                        android:src="@drawable/flechaAtrasNegra"
+                        android:src="@drawable/flecha_atras_negra"
                         app:tint="@color/titan_card" />
 
                     <!-- Texto Volver -->
