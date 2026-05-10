@@ -8,14 +8,15 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_eleccion_actividad)
 
-
+        /*
         // Ruteo: ir a NuevoMiembroActivity
         val btnIntentNuevoMiembro = findViewById<Button>(R.id.btnIntentNuevoMiembro)
         btnIntentNuevoMiembro.setOnClickListener {
             val intentar = Intent(this, EleccionNuevoMiembroActivity::class.java)
             startActivity(intentar)
         }
+        */
     }
 }
