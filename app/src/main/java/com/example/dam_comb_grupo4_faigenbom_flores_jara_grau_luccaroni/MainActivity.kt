@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_eleccion_actividad)
+        setContentView(R.layout.activity_login)
 
         /*
         // Ruteo: ir a NuevoMiembroActivity
