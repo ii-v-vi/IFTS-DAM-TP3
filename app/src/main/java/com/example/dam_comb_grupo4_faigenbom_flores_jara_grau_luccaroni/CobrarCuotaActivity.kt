@@ -14,11 +14,6 @@ class CobrarCuotaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cobrar_cuota)
 
-
-        val navInicio = findViewById<LinearLayout>(R.id.nav_inicio)
-        val navMiembros = findViewById<LinearLayout>(R.id.nav_miembros)
-        val navCobrar = findViewById<LinearLayout>(R.id.nav_cobrar)
-        val navMas = findViewById<LinearLayout>(R.id.nav_mas)
         val btnVolver = findViewById<TextView>(R.id.tvVolver)
         val btnContinuar = findViewById<Button>(R.id.btnContinuar)
         val rbtEfectivo = findViewById<RadioButton>(R.id.rbtEfectivo)
@@ -72,23 +67,5 @@ class CobrarCuotaActivity : AppCompatActivity() {
             startActivity(intentarVolver)
         }
         // ---------- BOTON VOLVER ----------
-
-
-        // --- LOGICA FOOTER ---
-        navInicio.setOnClickListener {
-            val intentarInicio = Intent(this, MenuPrincipalActivity::class.java)
-            startActivity(intentarInicio)
-        }
-        navMiembros.setOnClickListener {
-            val intentarInicio = Intent(this, ActivityListaMiembros::class.java)
-            startActivity(intentarInicio)
-        }
-        navCobrar.setOnClickListener {
-            val intentarInicio = Intent(this, CobrarCuotaActivity::class.java)
-            startActivity(intentarInicio)
-        }
-        navMas.setOnClickListener {
-            Toast.makeText(this, "EN PROGRESO...", Toast.LENGTH_SHORT).show()
-        }
     }
 }

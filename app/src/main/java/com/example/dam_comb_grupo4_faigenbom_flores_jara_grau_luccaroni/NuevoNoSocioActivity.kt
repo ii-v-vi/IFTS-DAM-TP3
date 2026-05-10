@@ -29,10 +29,6 @@ class NuevoNoSocioActivity : AppCompatActivity() {
         val chkFicha = findViewById<CheckBox>(R.id.chkFichaMedica)
         val btnContinuar = findViewById<Button>(R.id.btnContinuar)
         val btnVolver = findViewById<TextView>(R.id.tvVolver)
-        val navInicio = findViewById<LinearLayout>(R.id.nav_inicio)
-        val navMiembros = findViewById<LinearLayout>(R.id.nav_miembros)
-        val navCobrar = findViewById<LinearLayout>(R.id.nav_cobrar)
-        val navMas = findViewById<LinearLayout>(R.id.nav_mas)
 
 
 
@@ -99,24 +95,6 @@ class NuevoNoSocioActivity : AppCompatActivity() {
             startActivity(intentarVolver)
         }
         // ---------- BOTON VOLVER ----------
-
-
-        // --- LOGICA FOOTER ---
-        navInicio.setOnClickListener {
-            val intentarInicio = Intent(this, MenuPrincipalActivity::class.java)
-            startActivity(intentarInicio)
-        }
-        navMiembros.setOnClickListener {
-            val intentarInicio = Intent(this, ActivityListaMiembros::class.java)
-            startActivity(intentarInicio)
-        }
-        navCobrar.setOnClickListener {
-            val intentarInicio = Intent(this, CobrarCuotaActivity::class.java)
-            startActivity(intentarInicio)
-        }
-        navMas.setOnClickListener {
-            Toast.makeText(this, "EN PROGRESO...", Toast.LENGTH_SHORT).show()
-        }
 
     }
 }

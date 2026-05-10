@@ -19,14 +19,10 @@ class EleccionNuevoMiembroActivity : AppCompatActivity() {
 
         // ---------- BOTON VOLVER ----------
         btnVolver.setOnClickListener {
-
-            // REEMPLAZAR POR ACTIVITY DE LISTAR MIEMBROS!
-
-            //val intentarVolver = Intent(this, NuevoMiembroActivity::class.java)
-            //startActivity(intentarVolver)
+            val intentarVolver = Intent(this, ActivityListaMiembros::class.java)
+            startActivity(intentarVolver)
         }
         // ---------- BOTON VOLVER ----------
-
 
 
 

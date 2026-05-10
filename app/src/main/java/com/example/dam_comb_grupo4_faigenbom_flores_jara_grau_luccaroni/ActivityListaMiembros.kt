@@ -7,6 +7,7 @@ import android.content.Intent
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 
 
 class ActivityListaMiembros : AppCompatActivity() {
@@ -21,12 +22,46 @@ class ActivityListaMiembros : AppCompatActivity() {
         val navCobrar = findViewById<LinearLayout>(R.id.nav_cobrar)
         val navMas = findViewById<LinearLayout>(R.id.nav_mas)
 
+        val cardview1 = findViewById<Button>(R.id.cardview1)
+        val cardview2 = findViewById<Button>(R.id.cardview2)
+        val cardview3 = findViewById<Button>(R.id.cardview3)
+        val cardview4 = findViewById<TextView>(R.id.cardview4)
+        val cardview5 = findViewById<TextView>(R.id.cardview5)
+
 
         // --- BOTON AGREGAR MIEMBRO
         btnAgregarMiembro.setOnClickListener {
             val intentarAgregarMiembro = Intent(this, EleccionNuevoMiembroActivity::class.java)
             startActivity(intentarAgregarMiembro)
         }
+
+
+        // ---- BOTONES SOBRE LAS CARDS
+        cardview1.setOnClickListener {
+            val intentVencenHoy= Intent(this, ActivityVencenHoy::class.java)
+            startActivity(intentVencenHoy)
+        }
+
+        cardview2.setOnClickListener {
+            val intentVencenHoy= Intent(this, ActivityVencenHoy::class.java)
+            startActivity(intentVencenHoy)
+        }
+
+        cardview3.setOnClickListener {
+            val intentVencenHoy= Intent(this, ActivityVencenHoy::class.java)
+            startActivity(intentVencenHoy)
+        }
+
+        cardview4.setOnClickListener {
+            val intentPerfilSocio= Intent(this, PerfilSocioActivity::class.java)
+            startActivity(intentPerfilSocio)
+        }
+        cardview5.setOnClickListener {
+            val intentPerfilNoSocio= Intent(this, PerfilNoSocioActivity::class.java)
+            startActivity(intentPerfilNoSocio)
+        }
+        // ---- BOTONES SOBRE LAS CARDS
+
 
         // --- BOTON VOLVER
         btnVolver.setOnClickListener {

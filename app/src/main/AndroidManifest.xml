@@ -45,6 +45,9 @@
             android:name=".ActivityConfirmarPagoSocio"
             android:exported="false" />
         <activity
+            android:name=".ActivityConfirmarPagoNoSocio"
+            android:exported="false" />
+        <activity
             android:name=".ActivityListaMiembros"
             android:exported="false" />
         <activity
