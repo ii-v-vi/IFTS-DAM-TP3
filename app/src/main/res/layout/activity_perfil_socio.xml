@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,22 +9,20 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
-
-        <!-- CAJA PRINCIPAL -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- BLOQUE SUPERIOR: HEADER + TARJETA SUPERPUESTA -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="485dp"
                 android:background="@color/titan_background">
-                <!-- HEADER ROJO -->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
@@ -36,7 +33,6 @@
                     android:paddingTop="25dp"
                     android:paddingBottom="40dp">
 
-                    <!-- Volver a miembros -->
                     <LinearLayout
                         android:id="@+id/btn_volver_a_miembros"
                         android:layout_width="wrap_content"
@@ -46,7 +42,7 @@
                         android:padding="6dp"
                         android:clickable="true"
                         android:focusable="true">
-                        <!-- Triangulito -->
+
                         <ImageView
                             android:layout_width="16dp"
                             android:layout_height="16dp"
@@ -63,10 +59,8 @@
                             android:text="Miembros"
                             android:textColor="@color/titan_card"
                             android:textSize="16sp"/>
-
                     </LinearLayout>
 
-                    <!-- Iniciales socio -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -91,7 +85,6 @@
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
 
-                    <!-- Nombre apellido socio -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -107,7 +100,6 @@
                             android:textSize="26sp"/>
                     </LinearLayout>
 
-                    <!-- Texto socio activo -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -122,7 +114,6 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- TARJETA DATOS SOCIO -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="240dp"
@@ -140,14 +131,12 @@
                             android:paddingTop="22dp"
                             android:paddingBottom="2dp">
 
-                            <!-- Columna izquierda (TIPO DE DATOS)-->
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_weight="2"
                                 android:orientation="vertical">
 
-                                <!-- DNI -->
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -158,7 +147,6 @@
                                     android:textAlignment="textStart"
                                     android:textColor="@color/titan_nav_inactive"/>
 
-                                <!-- EMAIL -->
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -169,7 +157,6 @@
                                     android:textAlignment="textStart"
                                     android:textColor="@color/titan_nav_inactive"/>
 
-                                <!-- TELEFONO -->
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -180,7 +167,6 @@
                                     android:textAlignment="textStart"
                                     android:textColor="@color/titan_nav_inactive"/>
 
-                                <!-- NACIMIENTO -->
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -191,7 +177,6 @@
                                     android:textAlignment="textStart"
                                     android:textColor="@color/titan_nav_inactive"/>
 
-                                <!-- FICHA MEDICA -->
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -203,14 +188,12 @@
                                     android:textColor="@color/titan_nav_inactive"/>
                             </LinearLayout>
 
-                            <!-- Columna derecha (DATOS) -->
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:orientation="vertical">
 
-                                <!-- DNI -->
                                 <TextView
                                     android:id="@+id/datos_socio_dni"
                                     android:layout_width="match_parent"
@@ -222,7 +205,6 @@
                                     android:textAlignment="textEnd"
                                     android:textColor="@color/titan_text_primary"/>
 
-                                <!-- EMAIL -->
                                 <TextView
                                     android:id="@+id/datos_socio_email"
                                     android:layout_width="match_parent"
@@ -234,7 +216,6 @@
                                     android:textAlignment="textEnd"
                                     android:textColor="@color/titan_text_primary"/>
 
-                                <!-- TELEFONO -->
                                 <TextView
                                     android:id="@+id/datos_socio_telefono"
                                     android:layout_width="match_parent"
@@ -246,7 +227,6 @@
                                     android:textAlignment="textEnd"
                                     android:textColor="@color/titan_text_primary"/>
 
-                                <!-- NACIMIENTO -->
                                 <TextView
                                     android:id="@+id/datos_socio_nacimiento"
                                     android:layout_width="match_parent"
@@ -258,7 +238,6 @@
                                     android:textAlignment="textEnd"
                                     android:textColor="@color/titan_text_primary"/>
 
-                                <!-- FICHA MEDICA -->
                                 <TextView
                                     android:id="@+id/datos_socio_ficha_medica"
                                     android:layout_width="match_parent"
@@ -273,16 +252,13 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
-
             </FrameLayout>
 
-            <!-- TARJETA ESTADO DE CUOTA -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
                 android:layout_marginVertical="20dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_gravity="bottom">
+                android:layout_marginHorizontal="20dp">
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -292,7 +268,6 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <!-- Titulo -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -309,7 +284,6 @@
                                 android:textColor="@color/titan_nav_inactive"/>
                         </LinearLayout>
 
-                        <!-- Datos cuota -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -317,14 +291,12 @@
                             android:paddingHorizontal="22dp"
                             android:paddingBottom="2dp">
 
-                            <!-- Columna izquierda (TIPO DE DATOS)-->
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_weight="2"
                                 android:orientation="vertical">
 
-                                <!-- CUOTA NRO -->
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -335,7 +307,6 @@
                                     android:textAlignment="textStart"
                                     android:textColor="@color/titan_nav_inactive"/>
 
-                                <!-- VENCE -->
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -346,7 +317,6 @@
                                     android:textAlignment="textStart"
                                     android:textColor="@color/titan_nav_inactive"/>
 
-                                <!-- ULTIMO PAGO -->
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -356,17 +326,14 @@
                                     android:textSize="16sp"
                                     android:textAlignment="textStart"
                                     android:textColor="@color/titan_nav_inactive"/>
-
                             </LinearLayout>
 
-                            <!-- Columna derecha (DATOS) -->
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:orientation="vertical">
 
-                                <!-- CUOTA NRO -->
                                 <TextView
                                     android:id="@+id/datos_socio_cuota_nro"
                                     android:layout_width="match_parent"
@@ -378,7 +345,6 @@
                                     android:textAlignment="textEnd"
                                     android:textColor="@color/titan_text_primary"/>
 
-                                <!-- VENCE -->
                                 <TextView
                                     android:id="@+id/datos_socio_vence_cuota"
                                     android:layout_width="match_parent"
@@ -390,7 +356,6 @@
                                     android:textAlignment="textEnd"
                                     android:textColor="@color/titan_text_primary"/>
 
-                                <!-- ULTIMO PAGO -->
                                 <TextView
                                     android:id="@+id/datos_socio_ultimo_pago"
                                     android:layout_width="match_parent"
@@ -401,14 +366,12 @@
                                     android:textSize="16sp"
                                     android:textAlignment="textEnd"
                                     android:textColor="@color/titan_text_primary"/>
-
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
-            <!-- BOTONES DE ACCION -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
@@ -417,7 +380,6 @@
                 android:paddingHorizontal="30dp"
                 android:layout_marginBottom="20dp">
 
-                <!-- COBRAR CUOTA -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/btn_datos_socios_cobrar_cuota"
                     android:layout_width="0dp"
@@ -433,8 +395,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-
-                        <!-- Texto -->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -447,7 +407,6 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- EDITAR -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/btn_datos_socios_editar"
                     android:layout_width="0dp"
@@ -463,8 +422,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-
-                        <!-- Texto -->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -477,7 +434,6 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- INACTIVAR -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/btn_datos_socios_inactivar"
                     android:layout_width="0dp"
@@ -493,8 +449,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-
-                        <!-- Texto -->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -508,11 +462,8 @@
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
         </LinearLayout>
-
     </ScrollView>
 
-
-    <!-- BARRA INFERIOR/NAVEGACION -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="72dp"
@@ -521,7 +472,6 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <!-- BOTON INICIO -->
         <LinearLayout
             android:id="@+id/nav_inicio"
             android:layout_width="0dp"
@@ -532,7 +482,6 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <!-- Fondo -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/nav_bg_inicio"
                 android:layout_width="42dp"
@@ -541,7 +490,6 @@
                 app:cardCornerRadius="21dp"
                 app:cardElevation="0.1dp">
 
-                <!-- Icono -->
                 <ImageView
                     android:id="@+id/nav_ic_inicio"
                     android:layout_width="22dp"
@@ -551,7 +499,6 @@
                     app:tint="@color/titan_nav_inactive" />
             </androidx.cardview.widget.CardView>
 
-            <!-- Texto -->
             <TextView
                 android:id="@+id/nav_text_inicio"
                 android:layout_width="wrap_content"
@@ -563,7 +510,6 @@
                 android:textSize="14sp"/>
         </LinearLayout>
 
-        <!-- BOTON MIEMBROS -->
         <LinearLayout
             android:id="@+id/nav_miembros"
             android:layout_width="0dp"
@@ -574,7 +520,6 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <!-- Fondo -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/nav_bg_miembros"
                 android:layout_width="42dp"
@@ -583,7 +528,6 @@
                 app:cardCornerRadius="21dp"
                 app:cardElevation="0.1dp">
 
-                <!-- Icono -->
                 <ImageView
                     android:id="@+id/nav_ic_miembros"
                     android:layout_width="28dp"
@@ -593,7 +537,6 @@
                     app:tint="@color/titan_card" />
             </androidx.cardview.widget.CardView>
 
-            <!-- Texto -->
             <TextView
                 android:id="@+id/nav_text_miembros"
                 android:layout_width="wrap_content"
@@ -605,7 +548,6 @@
                 android:textSize="14sp"/>
         </LinearLayout>
 
-        <!-- BOTON COBRAR -->
         <LinearLayout
             android:id="@+id/nav_cobrar"
             android:layout_width="0dp"
@@ -616,7 +558,6 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <!-- Fondo -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/nav_bg_cobrar"
                 android:layout_width="42dp"
@@ -625,7 +566,6 @@
                 app:cardCornerRadius="21dp"
                 app:cardElevation="0.1dp">
 
-                <!-- Icono -->
                 <ImageView
                     android:id="@+id/nav_ic_cobrar"
                     android:layout_width="22dp"
@@ -635,7 +575,6 @@
                     app:tint="@color/titan_nav_inactive" />
             </androidx.cardview.widget.CardView>
 
-            <!-- Texto -->
             <TextView
                 android:id="@+id/nav_text_cobrar"
                 android:layout_width="wrap_content"
@@ -647,7 +586,6 @@
                 android:textSize="14sp"/>
         </LinearLayout>
 
-        <!-- BOTON MAS -->
         <LinearLayout
             android:id="@+id/nav_mas"
             android:layout_width="0dp"
@@ -658,7 +596,6 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <!-- Fondo -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/nav_bg_mas"
                 android:layout_width="42dp"
@@ -667,7 +604,6 @@
                 app:cardCornerRadius="21dp"
                 app:cardElevation="0.1dp">
 
-                <!-- Icono -->
                 <ImageView
                     android:id="@+id/nav_ic_mas"
                     android:layout_width="22dp"
@@ -677,7 +613,6 @@
                     app:tint="@color/titan_nav_inactive" />
             </androidx.cardview.widget.CardView>
 
-            <!-- Texto -->
             <TextView
                 android:id="@+id/nav_text_mas"
                 android:layout_width="wrap_content"

@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_gravity="top"
-                android:background="@color/titan_bg_grey"
+                android:background="@color/titan_red"
                 android:orientation="vertical"
                 android:paddingHorizontal="6dp"
                 android:paddingTop="25dp"
@@ -39,7 +39,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="71dp"
                         android:layout_height="71dp"
-                        app:cardBackgroundColor="@color/titan_nav_inactive"
+                        app:cardBackgroundColor="@color/titan_bg_avatar"
                         app:cardCornerRadius="40dp"
                         app:cardElevation="5dp">
                         <TextView
