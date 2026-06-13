@@ -15,7 +15,6 @@ class ActivityListaMiembros : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_miembros)
 
-        val btnVolver = findViewById<TextView>(R.id.tvVolver)
         val btnAgregarMiembro = findViewById<Button>(R.id.btnAgregarMiembro)
         val navInicio = findViewById<LinearLayout>(R.id.nav_inicio)
         val navMiembros = findViewById<LinearLayout>(R.id.nav_miembros)
