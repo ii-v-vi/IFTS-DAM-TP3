@@ -15,10 +15,14 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class NuevoNoSocioActivity : AppCompatActivity() {
+
+    lateinit var helper: SQLiteHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nuevo_no_socio)
 
+        helper = SQLiteHelper(this)
 
         // Capturamos los elementos del xml que vamos a necesitar
         val evNombre = findViewById<EditText>(R.id.evNombre)
@@ -30,16 +34,11 @@ class NuevoNoSocioActivity : AppCompatActivity() {
         val btnContinuar = findViewById<Button>(R.id.btnContinuar)
         val btnVolver = findViewById<TextView>(R.id.tvVolver)
 
-
-
-
         // ---------- FECHA ----------
-        // --- Creamos un dialog para que el usuario pueda selecionar una fecha y nosotros podamos capturarla
         val btnFecha = findViewById<Button>(R.id.btnFecha)
         val tvFecha = findViewById<TextView>(R.id.tvFecha)
 
         btnFecha.setOnClickListener {
-            //btnContinuar.setBackgroundColor(colorActivo)
             val modalSeleccionarFecha = layoutInflater.inflate(R.layout.dialog_seleccionar_fecha, null)
             val calendario = modalSeleccionarFecha.findViewById<DatePicker>(R.id.calendario)
 
@@ -63,28 +62,37 @@ class NuevoNoSocioActivity : AppCompatActivity() {
         }
         // ---------- FECHA ----------
 
-
-
-
         // ---------- BOTON CONTINUAR ----------
         btnContinuar.setOnClickListener {
             if (
-                (chkFicha.isChecked) &&
-                (evNombre.text.isNotEmpty()) &&
-                (evApellido.text.isNotEmpty()) &&
-                (evDni.text .isNotEmpty()) &&
-                (evTelefono.text .isNotEmpty()) &&
-                (evMail.text .isNotEmpty()) &&
-                (tvFecha.text != "--/--/--")
+                chkFicha.isChecked &&
+                evNombre.text.isNotEmpty() &&
+                evApellido.text.isNotEmpty() &&
+                evDni.text.isNotEmpty() &&
+                evTelefono.text.isNotEmpty() &&
+                evMail.text.isNotEmpty() &&
+                tvFecha.text != "--/--/--"
             ) {
-                Toast.makeText(this , "Creando usuario", Toast.LENGTH_LONG).show()
+                val noSocio = NoSocio(
+                    nombre = evNombre.text.toString(),
+                    apellido = evApellido.text.toString(),
+                    dni = evDni.text.toString(),
+                    telefono = evTelefono.text.toString(),
+                    mail = evMail.text.toString(),
+                    fechaNacimiento = tvFecha.text.toString(),
+                    fichaMedica = chkFicha.isChecked
+                )
+
+                RepositorioNoSocios.listaNoSocios.add(noSocio)
+                helper.insertarNoSocio(noSocio)
+
+                Toast.makeText(this, "No Socio guardado correctamente", Toast.LENGTH_SHORT).show()
+                
                 val intentNuevoNoSocio = Intent(this, EleccionActividadActivity::class.java)
                 startActivity(intentNuevoNoSocio)
 
-
             } else {
                 Toast.makeText(this , "Información incompleta", Toast.LENGTH_LONG).show()
-
             }
         }
         // ---------- BOTON CONTINUAR ----------

@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Damcombgrupo4faigenbomfloresjaragrauluccaroni">
         <activity
+            android:name=".ActivityListaSocios"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityListaNoSocios"
+            android:exported="false" />
+        <activity
             android:name=".ActivitySplash"
             android:exported="false" />
         <activity
@@ -64,12 +70,10 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".EleccionNuevoMiembroActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>

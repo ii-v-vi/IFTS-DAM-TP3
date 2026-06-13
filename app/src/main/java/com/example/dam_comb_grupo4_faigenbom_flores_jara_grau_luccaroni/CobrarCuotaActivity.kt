@@ -14,7 +14,7 @@ class CobrarCuotaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cobrar_cuota)
 
-        val btnVolver = findViewById<TextView>(R.id.tvVolver)
+        val btnVolver = findViewById<LinearLayout>(R.id.llVolver)
         val btnContinuar = findViewById<Button>(R.id.btnContinuar)
         val rbtEfectivo = findViewById<RadioButton>(R.id.rbtEfectivo)
         val rbtUnaCuota = findViewById<RadioButton>(R.id.rbtTarjetaUnaCuota)
@@ -37,7 +37,7 @@ class CobrarCuotaActivity : AppCompatActivity() {
         }
 
         rbtTresCuotas.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked) medioDePago = unaCuota
+            if(isChecked) medioDePago = tresCuotas
         }
 
         rbtSeisCuotas.setOnCheckedChangeListener { _, isChecked ->
@@ -62,10 +62,13 @@ class CobrarCuotaActivity : AppCompatActivity() {
 
 
         // ---------- BOTON VOLVER ----------
+        /*btnVolver.setOnClickListener {
+            finish()
+        }*/
+        // ---------- BOTON VOLVER ----------
         btnVolver.setOnClickListener {
-            val intentarVolver = Intent(this, NuevoSocioActivity::class.java)
+            val intentarVolver = Intent(this, ActivityListaMiembros::class.java)
             startActivity(intentarVolver)
         }
-        // ---------- BOTON VOLVER ----------
     }
 }
