@@ -74,11 +74,6 @@ class ActivityListaMiembros : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // --- BOTON VOLVER
-        btnVolver.setOnClickListener {
-            val intentarVolver = Intent(this, MenuPrincipalActivity::class.java)
-            startActivity(intentarVolver)
-        }
 
         // --- LOGICA FOOTER ---
         navInicio.setOnClickListener {

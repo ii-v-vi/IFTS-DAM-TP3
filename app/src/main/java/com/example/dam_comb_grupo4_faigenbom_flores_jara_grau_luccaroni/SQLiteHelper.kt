@@ -130,6 +130,7 @@ class SQLiteHelper(context: Context): SQLiteOpenHelper(context, "clubdeportivo.d
         }
         cursor.close()
         db.close()
+
         return listaNoSocios
     }
 
