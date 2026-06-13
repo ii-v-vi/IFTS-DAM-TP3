@@ -496,7 +496,8 @@
                     android:layout_width="22dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/casita"
+                    android:src="@drawable/ic_casita"
+                    app:tint="@color/titan_nav_inactive"
                     />
             </androidx.cardview.widget.CardView>
             <TextView
