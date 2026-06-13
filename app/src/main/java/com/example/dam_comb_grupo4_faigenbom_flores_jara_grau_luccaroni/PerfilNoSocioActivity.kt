@@ -3,66 +3,81 @@ package com.example.dam_comb_grupo4_faigenbom_flores_jara_grau_luccaroni
 import android.content.Intent
 import android.os.Bundle
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 
-class PerfilNoSocioActivity: AppCompatActivity() {
+class PerfilNoSocioActivity : AppCompatActivity() {
+
+    private lateinit var helper: SQLiteHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil_no_socio)
 
-        val btnMiembros = findViewById<LinearLayout>(R.id.btn_volver_a_miembros)
+        helper = SQLiteHelper(this)
+
+        val btnVolver = findViewById<LinearLayout>(R.id.btn_volver_a_miembros)
+        val txtIniciales = findViewById<TextView>(R.id.txt_iniciales_no_socio)
+        val txtNombreCompleto = findViewById<TextView>(R.id.txt_nombre_no_socio)
+
+        val tvDni = findViewById<TextView>(R.id.datos_no_socio_dni)
+        val tvEmail = findViewById<TextView>(R.id.datos_no_socio_email)
+        val tvTelefono = findViewById<TextView>(R.id.datos_no_socio_telefono)
+        val tvNacimiento = findViewById<TextView>(R.id.datos_no_socio_nacimiento)
+        val tvActividad = findViewById<TextView>(R.id.datos_no_socio_ficha_medica)
+
+        // Vinculación corregida de botones usando las IDs exactas de tu XML
         val btnCobrarActividad = findViewById<CardView>(R.id.btn_datos_no_socios_cobrar_actividad)
         val btnEditarNoSocio = findViewById<CardView>(R.id.btn_datos_no_socios_editar)
         val btnInactivarNoSocio = findViewById<CardView>(R.id.btn_datos_no_socios_inactivar)
-        val navInicio = findViewById<LinearLayout>(R.id.nav_inicio)
-        val navMiembros = findViewById<LinearLayout>(R.id.nav_miembros)
-        val navCobrar = findViewById<LinearLayout>(R.id.nav_cobrar)
-        val navMas = findViewById<LinearLayout>(R.id.nav_mas)
 
+        val dniRecibido = intent.getStringExtra("MEMBER_DNI")
 
-        // --- BOTON VOLVER A MIEMBROS
-        btnMiembros.setOnClickListener {
-            val volverAMiembros = Intent(this, ActivityListaMiembros::class.java)
-            startActivity(volverAMiembros)
+        if (dniRecibido != null) {
+            val noSocio = helper.obtenerNoSocioPorDni(dniRecibido)
+
+            if (noSocio != null) {
+                txtNombreCompleto.text = String.format("%s %s", noSocio.nombre, noSocio.apellido)
+                tvDni.text = noSocio.dni
+                tvEmail.text = noSocio.mail
+                tvTelefono.text = noSocio.telefono
+                tvNacimiento.text = noSocio.fechaNacimiento
+
+                val iniN = noSocio.nombre.take(1).uppercase()
+                val iniA = noSocio.apellido.take(1).uppercase()
+                txtIniciales.text = String.format("%s%s", iniN, iniA)
+
+                if (noSocio.fichaMedica) {
+                    tvActividad.text = "Pase Libre (Apto)"
+                    tvActividad.setTextColor(getColor(R.color.titan_text_primary))
+                } else {
+                    tvActividad.text = "Falta Ficha Médica"
+                    tvActividad.setTextColor(getColor(R.color.titan_red))
+                }
+            } else {
+                Toast.makeText(this, "Error BD", Toast.LENGTH_SHORT).show()
+            }
         }
 
-        // --- BOTON COBRAR ACTIVIDAD
+        btnVolver.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         btnCobrarActividad.setOnClickListener {
-            val intentarCobrarCuota = Intent(this, EleccionActividadActivity::class.java)
-            startActivity(intentarCobrarCuota)
+            // CAMBIO: Ahora va primero a elegir la actividad
+            val intentActividad = Intent(this, EleccionActividadActivity::class.java)
+            intentActividad.putExtra("MEMBER_DNI", dniRecibido)
+            startActivity(intentActividad)
         }
 
-        // --- BOTON EDITAR NO SOCIO
         btnEditarNoSocio.setOnClickListener {
-            Toast.makeText(this, "EN PROGRESO...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Edit", Toast.LENGTH_SHORT).show()
         }
 
-
-        // --- BOTON INACTIVAR NO SOCIO
         btnInactivarNoSocio.setOnClickListener {
-            Toast.makeText(this, "EN PROGRESO...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Inactive", Toast.LENGTH_SHORT).show()
         }
-
-
-        // --- LOGICA FOOTER ---
-        navInicio.setOnClickListener {
-            val intentarInicio = Intent(this, MenuPrincipalActivity::class.java)
-            startActivity(intentarInicio)
-        }
-        navMiembros.setOnClickListener {
-            val intentarInicio = Intent(this, ActivityListaMiembros::class.java)
-            startActivity(intentarInicio)
-        }
-        navCobrar.setOnClickListener {
-            val intentarInicio = Intent(this, CobrarCuotaActivity::class.java)
-            startActivity(intentarInicio)
-        }
-        navMas.setOnClickListener {
-            Toast.makeText(this, "EN PROGRESO...", Toast.LENGTH_SHORT).show()
-        }
-
-
     }
 }

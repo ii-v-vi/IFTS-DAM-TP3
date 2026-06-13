@@ -9,64 +9,50 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-
 class EleccionActividadActivity : AppCompatActivity() {
+
+    private var dniRecibido: String? = null
+    private var cardSeleccionada: LinearLayout? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_eleccion_actividad)
 
-        var btnContinuar = findViewById<Button>(R.id.btnContinuar)
-        var btnVolver = findViewById<TextView>(R.id.tvVolver)
-        val cardZumba = findViewById<LinearLayout>(R.id.llCardZumba)
-        val cardPilates = findViewById<LinearLayout>(R.id.llCardPilates)
-        val cardElongacion = findViewById<LinearLayout>(R.id.llCardElongacion)
-        val cardKarate = findViewById<LinearLayout>(R.id.llCardKarate)
-        val cardSpinning = findViewById<LinearLayout>(R.id.llCardSpinning)
-        val cardHit = findViewById<LinearLayout>(R.id.llCardHit)
-        var cardSeleccionada : LinearLayout? = null
-        var todasLascCards = listOf<LinearLayout>(cardZumba, cardPilates, cardElongacion, cardKarate, cardSpinning, cardHit)
+        dniRecibido = intent.getStringExtra("MEMBER_DNI")
 
-        // ---------- SELECCIONAR LAS CARDS ----------
-        // Funcion para pintar la card seleccionada y despintar la anterior (si la hay)
-        fun seleccionarCard(card: LinearLayout){
+        val btnContinuar = findViewById<Button>(R.id.btnContinuar)
+        val btnVolver = findViewById<TextView>(R.id.tvVolver)
 
-            // Despintamos la card seleccionada previamente
-            cardSeleccionada?.setBackgroundColor(Color.parseColor("#DF4A47"))
-
-            // Pintamos la nueva card elegida
-            card.setBackgroundColor(Color.parseColor("#3AFF12"))
-
-            // Remplazamos la instancia de la cardSeleccionada vieja por la nueva
-            cardSeleccionada = card
-        }
-
-        // Aplicamos un forEach para recorrer el array de cards y aplicar la funcion de pintar en cada una
-        todasLascCards.forEach { card ->
-            card.setOnClickListener {
-                seleccionarCard(card)
+        val tarjetas = listOf(R.id.llCardZumba, R.id.llCardPilates, R.id.llCardElongacion, R.id.llCardKarate, R.id.llCardSpinning, R.id.llCardHit)
+        tarjetas.forEach { id ->
+            findViewById<LinearLayout>(id).setOnClickListener { card ->
+                cardSeleccionada?.setBackgroundColor(Color.parseColor("#DF4A47"))
+                card.setBackgroundColor(Color.parseColor("#3AFF12"))
+                cardSeleccionada = card as LinearLayout
             }
         }
-        // ---------- SELECCIONAR LAS CARDS ----------
 
-
-        // ---------- BOTON CONTINUAR ----------
         btnContinuar.setOnClickListener {
-            if(cardSeleccionada == null){
+            if (cardSeleccionada == null) {
                 Toast.makeText(this, "Debe seleccionar una actividad", Toast.LENGTH_LONG).show()
-            }
-            else{
-                val intentCobrarActividad = Intent(this, ActivityConfirmarPagoNoSocio::class.java)
-                startActivity(intentCobrarActividad)
+            } else {
+                val nombreTv = when(cardSeleccionada!!.id) {
+                    R.id.llCardZumba -> R.id.tvZumba; R.id.llCardPilates -> R.id.tvPilates; R.id.llCardElongacion -> R.id.tvElongacion
+                    R.id.llCardKarate -> R.id.tvKarate; R.id.llCardSpinning -> R.id.tvSpinning; else -> R.id.tvHit
+                }
+                val precioTv = when(cardSeleccionada!!.id) {
+                    R.id.llCardZumba -> R.id.tvPrecioZumba; R.id.llCardPilates -> R.id.tvPrecioPilates; R.id.llCardElongacion -> R.id.tvPrecioElongacion
+                    R.id.llCardKarate -> R.id.tvPrecioKarate; R.id.llCardSpinning -> R.id.tvPrecioSpinning; else -> R.id.tvPrecioHit
+                }
+
+                val intentConfirmar = Intent(this, ActivityConfirmarPagoNoSocio::class.java).apply {
+                    putExtra("MEMBER_DNI", dniRecibido)
+                    putExtra("ACTIVIDAD_NOMBRE", findViewById<TextView>(nombreTv).text.toString())
+                    putExtra("ACTIVIDAD_PRECIO", findViewById<TextView>(precioTv).text.toString().replace("$", ""))
+                }
+                startActivity(intentConfirmar)
             }
         }
-        // ---------- BOTON CONTINUAR ----------
-
-
-        // ---------- BOTON VOLVER ----------
-        btnVolver.setOnClickListener {
-            val intentarVolver = Intent(this, NuevoNoSocioActivity::class.java)
-            startActivity(intentarVolver)
-        }
-        // ---------- BOTON VOLVER ----------
+        btnVolver.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
     }
 }

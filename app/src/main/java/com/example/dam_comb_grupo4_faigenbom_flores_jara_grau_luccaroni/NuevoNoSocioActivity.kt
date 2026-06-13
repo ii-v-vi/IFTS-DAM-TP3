@@ -80,8 +80,7 @@ class NuevoNoSocioActivity : AppCompatActivity() {
                     telefono = evTelefono.text.toString(),
                     mail = evMail.text.toString(),
                     fechaNacimiento = tvFecha.text.toString(),
-                    fichaMedica = chkFicha.isChecked
-                )
+                    fichaMedica = chkFicha.isChecked)
 
                 RepositorioNoSocios.listaNoSocios.add(noSocio)
                 helper.insertarNoSocio(noSocio)

@@ -3,66 +3,79 @@ package com.example.dam_comb_grupo4_faigenbom_flores_jara_grau_luccaroni
 import android.content.Intent
 import android.os.Bundle
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 
 class PerfilSocioActivity : AppCompatActivity() {
+
+    private lateinit var helper: SQLiteHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil_socio)
 
-        val btnMiembros = findViewById<LinearLayout>(R.id.btn_volver_a_miembros)
-        val btnCobrarCuota = findViewById<CardView>(R.id.btn_datos_socios_cobrar_cuota)
-        val btnEditarSocio = findViewById<CardView>(R.id.btn_datos_socios_editar)
-        val btnInactivarSocio = findViewById<CardView>(R.id.btn_datos_socios_inactivar)
-        val navInicio = findViewById<LinearLayout>(R.id.nav_inicio)
-        val navMiembros = findViewById<LinearLayout>(R.id.nav_miembros)
-        val navCobrar = findViewById<LinearLayout>(R.id.nav_cobrar)
-        val navMas = findViewById<LinearLayout>(R.id.nav_mas)
+        helper = SQLiteHelper(this)
 
+        val btnVolver = findViewById<LinearLayout>(R.id.btn_volver_a_miembros)
+        val txtIniciales = findViewById<TextView>(R.id.txt_iniciales_socio)
+        val txtNombreCompleto = findViewById<TextView>(R.id.txt_nombre_socio)
 
-        // --- BOTON VOLVER A MIEMBROS
-        btnMiembros.setOnClickListener {
-            val volverAMiembros = Intent(this, ActivityListaMiembros::class.java)
-            startActivity(volverAMiembros)
+        val tvDni = findViewById<TextView>(R.id.datos_socio_dni)
+        val tvEmail = findViewById<TextView>(R.id.datos_socio_email)
+        val tvTelefono = findViewById<TextView>(R.id.datos_socio_telefono)
+        val tvNacimiento = findViewById<TextView>(R.id.datos_socio_nacimiento)
+        val tvFichaMedica = findViewById<TextView>(R.id.datos_socio_ficha_medica)
+
+        val btnCobrar = findViewById<CardView>(R.id.btn_datos_socios_cobrar_cuota)
+        val btnEditar = findViewById<CardView>(R.id.btn_datos_socios_editar)
+        val btnInactivar = findViewById<CardView>(R.id.btn_datos_socios_inactivar)
+
+        val dniRecibido = intent.getStringExtra("MEMBER_DNI")
+
+        if (dniRecibido != null) {
+            val socio = helper.obtenerSocioPorDni(dniRecibido)
+
+            if (socio != null) {
+                txtNombreCompleto.text = String.format("%s %s", socio.nombre, socio.apellido)
+                tvDni.text = socio.dni
+                tvEmail.text = socio.mail
+                tvTelefono.text = socio.telefono
+                tvNacimiento.text = socio.fechaNacimiento
+
+                val iniN = socio.nombre.take(1).uppercase()
+                val iniA = socio.apellido.take(1).uppercase()
+                txtIniciales.text = String.format("%s%s", iniN, iniA)
+
+                if (socio.fichaMedica) {
+                    tvFichaMedica.text = "✓ Completa"
+                    tvFichaMedica.setTextColor(getColor(R.color.titan_text_green))
+                } else {
+                    tvFichaMedica.text = "❌ Pendiente"
+                    tvFichaMedica.setTextColor(getColor(R.color.titan_red))
+                }
+            } else {
+                Toast.makeText(this, "Error BD", Toast.LENGTH_SHORT).show()
+            }
         }
 
-        // --- BOTON COBRAR CUOTA
-        btnCobrarCuota.setOnClickListener {
-            val intentarCobrarCuota = Intent(this, CobrarCuotaActivity::class.java)
-            startActivity(intentarCobrarCuota)
+        btnVolver.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
         }
 
-        // --- BOTON EDITAR SOCIO
-        btnEditarSocio.setOnClickListener {
-            Toast.makeText(this, "EN PROGRESO...", Toast.LENGTH_SHORT).show()
+        btnCobrar.setOnClickListener {
+            val intentCobrar = Intent(this, CobrarCuotaActivity::class.java)
+            intentCobrar.putExtra("MEMBER_DNI", dniRecibido)
+            startActivity(intentCobrar)
         }
 
-
-        // --- BOTON INACTIVAR SOCIO
-        btnInactivarSocio.setOnClickListener {
-            Toast.makeText(this, "EN PROGRESO...", Toast.LENGTH_SHORT).show()
+        btnEditar.setOnClickListener {
+            Toast.makeText(this, "Edit", Toast.LENGTH_SHORT).show()
         }
 
-
-        // --- LOGICA FOOTER ---
-        navInicio.setOnClickListener {
-            val intentarInicio = Intent(this, MenuPrincipalActivity::class.java)
-            startActivity(intentarInicio)
+        btnInactivar.setOnClickListener {
+            Toast.makeText(this, "Inactive", Toast.LENGTH_SHORT).show()
         }
-        navMiembros.setOnClickListener {
-            val intentarInicio = Intent(this, ActivityListaMiembros::class.java)
-            startActivity(intentarInicio)
-        }
-        navCobrar.setOnClickListener {
-            val intentarInicio = Intent(this, CobrarCuotaActivity::class.java)
-            startActivity(intentarInicio)
-        }
-        navMas.setOnClickListener {
-            Toast.makeText(this, "EN PROGRESO...", Toast.LENGTH_SHORT).show()
-        }
-
-
     }
 }

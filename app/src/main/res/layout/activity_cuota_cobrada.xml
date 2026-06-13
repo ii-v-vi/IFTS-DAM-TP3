@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/titan_background"
@@ -48,7 +49,8 @@
                             android:layout_height="match_parent"
                             android:fontFamily="@font/montserrat_bold"
                             android:gravity="center"
-                            android:text="LL"
+                            android:text=""
+                            tools:text="LL"
                             android:textAlignment="center"
                             android:textColor="@color/titan_card"
                             android:textSize="32sp"/>
@@ -126,7 +128,8 @@
                             android:layout_weight="5"
                             android:fontFamily="@font/montserrat_bold"
                             android:gravity="center"
-                            android:text="$45.000"
+                            android:text=""
+                            tools:text="$45.000"
                             android:textAlignment="gravity"
                             android:textColor="@color/titan_text_primary"
                             android:textSize="26sp"/>
@@ -151,7 +154,8 @@
                             android:layout_weight="1"
                             android:fontFamily="@font/montserrat_bold"
                             android:gravity="center"
-                            android:text="Efectivo"
+                            android:text=""
+                            tools:text="Efectivo"
                             android:textAlignment="gravity"
                             android:textColor="@color/titan_nav_inactive"
                             android:textSize="14sp"/>
@@ -164,7 +168,8 @@
                             android:layout_weight="1"
                             android:fontFamily="@font/montserrat_bold"
                             android:gravity="center"
-                            android:text="10/04/2026"
+                            android:text=""
+                            tools:text="10/04/2026"
                             android:textAlignment="gravity"
                             android:textColor="@color/titan_nav_inactive"
                             android:textSize="14sp" />
@@ -191,7 +196,6 @@
 
                 <!-- BOTON -->
                 <androidx.cardview.widget.CardView
-
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -229,11 +233,9 @@
 
                 <!-- BOTON -->
                 <androidx.cardview.widget.CardView
-
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
-
                     app:cardBackgroundColor="@color/titan_card"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="2dp">

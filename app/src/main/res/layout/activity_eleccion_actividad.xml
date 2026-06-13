@@ -232,7 +232,7 @@
                         android:id="@+id/tvPrecioZumba"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="$18000">
+                        android:text="18000">
                     </TextView>
                 </LinearLayout>
 
@@ -341,7 +341,7 @@
                         android:id="@+id/tvPrecioKarate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="$20000">
+                        android:text="20000">
                     </TextView>
                 </LinearLayout>
 
