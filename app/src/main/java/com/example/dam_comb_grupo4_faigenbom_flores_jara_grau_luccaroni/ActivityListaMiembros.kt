@@ -109,11 +109,10 @@ class ActivityListaMiembros : AppCompatActivity() {
         }
     }
 
-    // Método que lee SQLite y mapea a nuestro objeto visual unificado
     private fun cargarDatosDesdeBaseDeDatos() {
         listaCompletaUnificada.clear()
 
-        // Traemos todos los socios reales usando el método correcto en español
+
         val sociosBD = helper.obtenerSocios()
         for (s in sociosBD) {
             listaCompletaUnificada.add(
@@ -126,8 +125,7 @@ class ActivityListaMiembros : AppCompatActivity() {
                 )
             )
         }
-
-        // Traemos todos los no socios reales usando el método correcto en español
+        
         val noSociosBD = helper.obtenerNoSocios()
         for (ns in noSociosBD) {
             listaCompletaUnificada.add(
