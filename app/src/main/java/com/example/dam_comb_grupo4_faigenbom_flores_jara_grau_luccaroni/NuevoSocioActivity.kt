@@ -14,9 +14,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class NuevoSocioActivity : AppCompatActivity() {
+
+    lateinit var helper: SQLiteHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nuevo_socio)
+
+        helper = SQLiteHelper(this)
 
 
         // Capturamos los elementos del xml que vamos a necesitar
@@ -67,19 +72,48 @@ class NuevoSocioActivity : AppCompatActivity() {
         // ---------- BOTON CONTINUAR ----------
         btnContinuar.setOnClickListener {
             if (
-                (chkFicha.isChecked) &&
-                (evNombre.text.isNotEmpty()) &&
-                (evApellido.text.isNotEmpty()) &&
-                (evDni.text .isNotEmpty()) &&
-                (evTelefono.text .isNotEmpty()) &&
-                (evMail.text .isNotEmpty()) &&
-                (tvFecha.text != "--/--/--")
+                chkFicha.isChecked &&
+                evNombre.text.isNotEmpty() &&
+                evApellido.text.isNotEmpty() &&
+                evDni.text.isNotEmpty() &&
+                evTelefono.text.isNotEmpty() &&
+                evMail.text.isNotEmpty() &&
+                tvFecha.text != "--/--/--"
             ) {
-                Toast.makeText(this , "Creando usuario", Toast.LENGTH_LONG).show()
-                val intentNuevoSocio = Intent(this, CobrarCuotaActivity::class.java)
+
+                val socio = Socio(
+                    nombre = evNombre.text.toString(),
+                    apellido = evApellido.text.toString(),
+                    dni = evDni.text.toString(),
+                    telefono = evTelefono.text.toString(),
+                    mail = evMail.text.toString(),
+                    fechaNacimiento = tvFecha.text.toString(),
+                    fichaMedica = chkFicha.isChecked
+                )
+
+                RepositorioSocios.listaSocios.add(socio)
+                helper.insertarSocio(socio)
+
+                Toast.makeText(
+                    this,
+                    //"Socio agregado correctamente",
+                    "Socios guardados: ${RepositorioSocios.listaSocios.size}",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                val intentNuevoSocio =
+                    Intent(this, CobrarCuotaActivity::class.java)
+
                 startActivity(intentNuevoSocio)
+
             } else {
-                Toast.makeText(this , "Información incompleta", Toast.LENGTH_LONG).show()
+
+                Toast.makeText(
+                    this,
+                    "Información incompleta",
+                    Toast.LENGTH_LONG
+                ).show()
+
             }
         }
         // ---------- BOTON CONTINUAR ----------
