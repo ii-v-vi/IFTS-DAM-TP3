@@ -60,8 +60,19 @@ class ActivityListaMiembros : AppCompatActivity() {
             val intentPerfilNoSocio= Intent(this, PerfilNoSocioActivity::class.java)
             startActivity(intentPerfilNoSocio)
         }
-        // ---- BOTONES SOBRE LAS CARDS
+        // ---- BOTONES DE FILTRADO ----
+        val btnSocios = findViewById<Button>(R.id.btnSocios)
+        val btnNoSocios = findViewById<Button>(R.id.btnNoSocios)
 
+        btnSocios.setOnClickListener {
+            val intent = Intent(this, ActivityListaSocios::class.java)
+            startActivity(intent)
+        }
+
+        btnNoSocios.setOnClickListener {
+            val intent = Intent(this, ActivityListaNoSocios::class.java)
+            startActivity(intent)
+        }
 
         // --- BOTON VOLVER
         btnVolver.setOnClickListener {
