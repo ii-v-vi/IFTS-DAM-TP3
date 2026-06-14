@@ -28,7 +28,6 @@ class ActivityConfirmarPagoSocio : AppCompatActivity() {
         formaPagoRecibida = intent.getStringExtra("FORMA_PAGO") ?: "Efectivo"
 
         // 2. VINCULACIÓN SEGURO USANDO 'VIEW' PARA EVITAR CONFLICTOS DE CASTEO
-        val btnVolver = findViewById<View>(R.id.tvVolver)
         val btnConfirmarPago = findViewById<View>(R.id.btn_pago_registrado_compartir_comprobante)
 
         // Usamos la ID interna del CardView que sí está indexada sin problemas
@@ -66,19 +65,24 @@ class ActivityConfirmarPagoSocio : AppCompatActivity() {
             }
         }
 
-        // --- BOTÓN CONFIRMAR ---
+        // --- BOTÓN CONFIRMAR (Corregido para no saltearse nada) ---
         btnConfirmarPago.setOnClickListener {
-            val intentarCuotaCobrada = Intent(this, CuotaCobradaActivity::class.java)
-            intentarCuotaCobrada.putExtra("MEMBER_DNI", dniRecibido)
+            if (dniRecibido != null && formaPagoRecibida != null) {
+
+                // 1. IMPACTAMOS EN LA BASE DE DATOS
+                // Ejecutamos tu función del Helper. Esto actualiza el socio, el pago y genera la actividad reciente ("verde")
+                val montoCuota = 0.0
+                helper.registrarPagoYActualizarVencimiento(dniRecibido!!, formaPagoRecibida!!, montoCuota)
+            }
+
+            // 2. AVANZAMOS AL COMPROBANTE FINAL
+            // Pasamos el DNI por si la pantalla del ticket necesita mostrar datos finales
+            val intentarCuotaCobrada = Intent(this, CuotaCobradaActivity::class.java).apply {
+                putExtra("MEMBER_DNI", dniRecibido)
+            }
             startActivity(intentarCuotaCobrada)
-            finish()
+            finish() // Cerramos la previsualización para que no se pueda volver atrás a pagar dos veces
         }
-
-        // --- BOTÓN VOLVER ---
-        btnVolver.setOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
-        }
-
         // --- BOTÓN CANCELAR ---
         btnCancelar.setOnClickListener {
             val intentarCancelar = Intent(this, ActivityListaMiembros::class.java)

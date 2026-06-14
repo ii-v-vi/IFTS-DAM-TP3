@@ -23,26 +23,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:paddingLeft="15dp"
-            android:orientation="horizontal">
-
-            <!-- ICONO FLECHA -->
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/flechitavolver">
-            </ImageView>
-
-            <!-- VOLVER -->
-            <TextView
-                android:id="@+id/tvVolver"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="15dp"
-                android:text="@string/volver"
-                android:textSize="15sp"
-                android:textColor="@color/white">
-            </TextView>
-        </LinearLayout>
+            android:orientation="horizontal"/>
 
         <!-- TITULO DEL HEADER -->
         <TextView
@@ -50,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
+            android:paddingTop="30dp"
             android:text="@string/nuevoSocio"
             android:textStyle="bold"
             android:textSize="22sp"

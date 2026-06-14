@@ -14,7 +14,8 @@ data class WrapperMiembro(
     val apellido: String,
     val dni: String,
     val esSocio: Boolean,
-    val deudorVencido: Boolean = false
+    val deudorVencido: Boolean = false,
+    val fechaVencimiento: String? = null
 )
 
 class MiembroAdapter(
@@ -48,7 +49,7 @@ class MiembroAdapter(
         val iniA = miembro.apellido.take(1).uppercase()
         holder.tvIniciales.text = "$iniN$iniA"
 
-        // 3. Modificamos el botón contextual según el tipo de miembro o estado
+        // 3. Modificamos el texto del botón según el estado (Visual)
         if (miembro.deudorVencido) {
             holder.btnAccionCard.text = "Vence Hoy"
         } else if (miembro.esSocio) {
@@ -57,19 +58,17 @@ class MiembroAdapter(
             holder.btnAccionCard.text = "No Socio"
         }
 
-        // 4. AQUÍ ESTÁ EL CAMBIO: Lógica de clics enviando el DNI real a cada Perfil
+        // 4. CORRECCIÓN: Ahora el clic decide según el TIPO de miembro, ignorando si debe o no
         holder.btnAccionCard.setOnClickListener {
-            if (miembro.deudorVencido) {
-                val intent = Intent(context, ActivityVencenHoy::class.java)
+            if (miembro.esSocio) {
+                // Si es Socio (deba o esté al día), va directo a su perfil de Socio
+                val intent = Intent(context, PerfilSocioActivity::class.java)
                 intent.putExtra("MEMBER_DNI", miembro.dni)
                 context.startActivity(intent)
-            } else if (miembro.esSocio) {
-                val intent = Intent(context, PerfilSocioActivity::class.java)
-                intent.putExtra("MEMBER_DNI", miembro.dni) // <--- Viaja el DNI a la pantalla de Socio
-                context.startActivity(intent)
             } else {
+                // Si es No Socio, va a su perfil de No Socio
                 val intent = Intent(context, PerfilNoSocioActivity::class.java)
-                intent.putExtra("MEMBER_DNI", miembro.dni) // <--- Viaja el DNI a la pantalla de No Socio
+                intent.putExtra("MEMBER_DNI", miembro.dni)
                 context.startActivity(intent)
             }
         }

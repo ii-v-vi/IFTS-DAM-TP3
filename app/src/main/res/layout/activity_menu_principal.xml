@@ -5,18 +5,18 @@
     android:layout_height="match_parent"
     android:background="@color/titan_background"
     android:orientation="vertical">
-    <!-- CAJA PRINCIPAL -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
-        <!-- BLOQUE SUPERIOR: HEADER + TARJETAS SUPERPUESTAS -->
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="230dp"
             android:background="@color/titan_background">
-            <!-- HEADER ROJO -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
@@ -26,7 +26,7 @@
                 android:paddingHorizontal="20dp"
                 android:paddingTop="30dp"
                 android:paddingBottom="40dp">
-                <!-- Bloque izquierdo -->
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -34,7 +34,6 @@
                     android:gravity="top"
                     android:orientation="vertical">
 
-                    <!-- Bienvenido, -->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -43,7 +42,6 @@
                         android:textColor="@color/titan_card"
                         android:textSize="18sp"/>
 
-                    <!-- Nombre usuario -->
                     <TextView
                         android:id="@+id/txt_administrador_nombre"
                         android:layout_width="match_parent"
@@ -53,19 +51,17 @@
                         android:textColor="@color/titan_card"
                         android:textSize="28sp"/>
 
-                    <!-- Date time -->
                     <TextView
                         android:id="@+id/datetime_inicio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/montserrat_regular"
-                        android:text="Viernes 10 de abril, 2026"
+                        android:text="Cargando fecha..."
                         android:textColor="@color/titan_card"
-                        android:textSize="16sp"/>
+                        android:textSize="14sp"/>
                 </LinearLayout>
 
-                <!-- Bloque derecho -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -94,7 +90,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- TARJETAS DE RESUMEN SUPERPUESTAS -->
             <LinearLayout
                 android:id="@+id/seccionTarjetasResumen"
                 android:layout_width="match_parent"
@@ -102,13 +97,12 @@
                 android:layout_gravity="bottom"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="30dp">
+                android:paddingHorizontal="15dp">
 
-                <!-- SOCIOS ACTIVOS -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="86dp"
-                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginHorizontal="6dp"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/titan_card"
                     app:cardCornerRadius="12dp"
@@ -119,35 +113,34 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="4dp">
+                        android:padding="2dp">
 
-                        <!-- Numero -->
                         <TextView
                             android:id="@+id/card_cantidad_socios_activos"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_bold"
-                            android:text="42"
+                            android:text="0"
                             android:textColor="@color/titan_text_primary"
-                            android:textSize="28sp"/>
+                            android:textSize="24sp"/>
 
-                        <!-- Texto -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_regular"
-                            android:text="Socios\nactivos"
+                            android:text="Socios Activos"
+                            android:singleLine="true"
+                            android:ellipsize="end"
                             android:textAlignment="center"
                             android:textColor="@color/titan_nav_inactive"
-                            android:textSize="14sp"/>
+                            android:textSize="12sp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- VENCIMIENTOS -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="86dp"
-                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginHorizontal="6dp"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/titan_card"
                     app:cardCornerRadius="12dp"
@@ -158,587 +151,115 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="4dp">
+                        android:padding="2dp">
 
-                        <!-- Numero -->
-                        <TextView
-                            android:id="@+id/card_cantidad_vencimientos"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat_bold"
-                            android:text="5"
-                            android:textColor="@color/titan_red"
-                            android:textSize="28sp" />
-
-                        <!-- Texto -->
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat_regular"
-                            android:text="Vencen\nhoy"
-                            android:textAlignment="center"
-                            android:textColor="@color/titan_nav_inactive"
-                            android:textSize="14sp"/>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <!-- NO SOCIOS -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="86dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/titan_card"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="6dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="4dp">
-
-                        <!-- Numero -->
                         <TextView
                             android:id="@+id/card_cantidad_no_socios"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_bold"
-                            android:text="10"
+                            android:text="0"
                             android:textColor="@color/titan_text_primary"
-                            android:textSize="28sp"/>
+                            android:textSize="24sp"/>
 
-                        <!-- Texto -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
                             android:fontFamily="@font/montserrat_regular"
-                            android:text="No socios"
+                            android:text="No Socios"
+                            android:singleLine="true"
+                            android:ellipsize="end"
                             android:textAlignment="center"
                             android:textColor="@color/titan_nav_inactive"
-                            android:textSize="14sp" />
-
+                            android:textSize="12sp" />
                     </LinearLayout>
-
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
         </FrameLayout>
 
-        <!-- BOTON AVISO VENCIMIENTOS -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="10dp">
+
             <LinearLayout
                 android:id="@+id/btn_aviso_socios_vencen_hoy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="40dp"
-                android:paddingVertical="20dp"
-                android:layout_marginHorizontal="32dp"
-                android:layout_marginVertical="20dp"
+                android:paddingHorizontal="30dp"
+                android:paddingVertical="18dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginVertical="10dp"
                 android:background="@drawable/bg_boton_redondeado"
                 android:backgroundTint="@color/titan_red"
-                android:textColor="@color/titan_card"
                 android:orientation="horizontal"
                 android:clickable="true"
                 android:focusable="true">
-                
-                <!-- Numero variable -->
+
                 <TextView
                     android:id="@+id/txt_cantidad_socios_vencen_hoy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"
-                    android:text="5"
+                    android:text="0"
                     android:fontFamily="@font/montserrat_bold"
                     android:textColor="@color/titan_card"
                     android:textSize="20sp"/>
 
-                <!-- Texto -->
                 <TextView
                     android:id="@+id/txt_socios_vencen_hoy"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="10dp"
                     android:layout_gravity="center_vertical"
                     android:text="socios vencen hoy"
                     android:fontFamily="@font/montserrat_bold"
                     android:textColor="@color/titan_card"
-                    android:textSize="20sp"/>
+                    android:textSize="18sp"/>
 
-                <!-- Triangulito -->
                 <ImageView
                     android:id="@+id/img_flecha_vencimientos"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:layout_marginTop="2dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_btn_socios_vencen_hoy_triangulo"
                     app:tint="@color/titan_card"/>
             </LinearLayout>
         </LinearLayout>
 
-        <!-- ACTIVIDAD RECIENTE -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:paddingVertical="30dp"
+            android:paddingVertical="20dp"
             android:paddingHorizontal="20dp"
             android:orientation="vertical">
 
-            <!-- TITULO -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="15dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="ACTIVIDAD RECIENTE"
                 android:textColor="@color/titan_nav_inactive"
-                android:textSize="18sp"/>
+                android:textSize="16sp"/>
 
-            <!-- LISTA SCROLLEABLE -->
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fillViewport="true">
 
                 <LinearLayout
+                    android:id="@+id/contenedor_actividades_dinamico"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <!-- Elemento 1 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingVertical="0dp"
-                        android:paddingRight="10dp">
-
-                        <!-- Puntito de color de estado -->
-                        <TextView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/bg_punto_verde" />
-
-                        <!-- Contenido -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <!-- Texto info socio/no socio -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:maxLines="3"
-                                android:text="Cuota cobrada · Matías J. · #158"
-                                android:textColor="@color/titan_text_primary"
-                                android:textSize="16sp" />
-
-                            <!-- Texto hora -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:gravity="end"
-                                android:text="12:00"
-                                android:textColor="@color/titan_nav_inactive"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Separador -->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="12dp"
-                        android:layout_marginHorizontal="10dp"
-                        android:background="@color/titan_nav_inactive"/>
-
-                    <!-- Elemento 2 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingVertical="0dp"
-                        android:paddingRight="10dp">
-
-                        <!-- Puntito de color de estado -->
-                        <TextView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/bg_punto_azul" />
-
-                        <!-- Contenido -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <!-- Texto info socio/no socio -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:maxLines="3"
-                                android:text="Nuevo socio registrado · Mauro F. · #159"
-                                android:textColor="@color/titan_text_primary"
-                                android:textSize="16sp" />
-
-                            <!-- Texto hora -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:gravity="end"
-                                android:text="12:00"
-                                android:textColor="@color/titan_nav_inactive"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Separador -->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="12dp"
-                        android:layout_marginHorizontal="10dp"
-                        android:background="@color/titan_nav_inactive"/>
-
-                    <!-- Elemento 3 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingVertical="0dp"
-                        android:paddingRight="10dp">
-
-                        <!-- Puntito de color de estado -->
-                        <TextView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/bg_punto_marron" />
-
-                        <!-- Contenido -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <!-- Texto info socio/no socio -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:maxLines="3"
-                                android:text="Pago actividad · Judith Grau · Karate"
-                                android:textColor="@color/titan_text_primary"
-                                android:textSize="16sp" />
-
-                            <!-- Texto hora -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:gravity="end"
-                                android:text="12:00"
-                                android:textColor="@color/titan_nav_inactive"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Separador -->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="12dp"
-                        android:layout_marginHorizontal="10dp"
-                        android:background="@color/titan_nav_inactive"/>
-
-                    <!-- Elemento 4 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingVertical="0dp"
-                        android:paddingRight="10dp">
-
-                        <!-- Puntito de color de estado -->
-                        <TextView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/bg_punto_rojo" />
-
-                        <!-- Contenido -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <!-- Texto info socio/no socio -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:maxLines="3"
-                                android:text="Cuota vencida · Lucas Luccaroni · #2"
-                                android:textColor="@color/titan_text_primary"
-                                android:textSize="16sp" />
-
-                            <!-- Texto hora -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:gravity="end"
-                                android:text="12:00"
-                                android:textColor="@color/titan_nav_inactive"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Separador -->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="12dp"
-                        android:layout_marginHorizontal="10dp"
-                        android:background="@color/titan_nav_inactive"/>
-
-                    <!-- Elemento 5 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingVertical="0dp"
-                        android:paddingRight="10dp">
-                        <!-- Puntito de color de estado -->
-                        <TextView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/bg_punto_verde" />
-
-                        <!-- Contenido -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <!-- Texto info socio/no socio -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:maxLines="3"
-                                android:text="Cuota cobrada · Ivan Fangenboim · #157"
-                                android:textColor="@color/titan_text_primary"
-                                android:textSize="16sp" />
-
-                            <!-- Texto hora -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:gravity="end"
-                                android:text="12:00"
-                                android:textColor="@color/titan_nav_inactive"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Separador -->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="12dp"
-                        android:layout_marginHorizontal="10dp"
-                        android:background="@color/titan_nav_inactive"/>
-
-                    <!-- Elemento 6 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingVertical="0dp"
-                        android:paddingRight="10dp">
-
-                        <!-- Puntito de color de estado -->
-                        <TextView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/bg_punto_rojo" />
-
-                        <!-- Contenido -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <!-- Texto info socio/no socio -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:maxLines="3"
-                                android:text="Cuota vencida · Edinson Cavani · #144"
-                                android:textColor="@color/titan_text_primary"
-                                android:textSize="16sp" />
-
-                            <!-- Texto hora -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:gravity="end"
-                                android:text="12:00"
-                                android:textColor="@color/titan_nav_inactive"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Separador -->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="12dp"
-                        android:layout_marginHorizontal="10dp"
-                        android:background="@color/titan_nav_inactive"/>
-
-                    <!-- Elemento 7 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingVertical="0dp"
-                        android:paddingRight="10dp">
-
-                        <!-- Puntito de color de estado -->
-                        <TextView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/bg_punto_marron" />
-
-                        <!-- Contenido -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-                            <!-- Texto info socio/no socio -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:maxLines="3"
-                                android:text="Pago actividad · Paulo Dybala · Futbol"
-                                android:textColor="@color/titan_text_primary"
-                                android:textSize="16sp" />
-
-                            <!-- Texto hora -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:gravity="end"
-                                android:text="12:00"
-                                android:textColor="@color/titan_nav_inactive"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Separador -->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="12dp"
-                        android:layout_marginHorizontal="10dp"
-                        android:background="@color/titan_nav_inactive"/>
-
-                    <!-- Elemento 8 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingVertical="0dp"
-                        android:paddingRight="10dp">
-
-                        <!-- Puntito de color de estado -->
-                        <TextView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/bg_punto_marron" />
-
-                        <!-- Contenido -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-                            <!-- Texto info socio/no socio -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:maxLines="3"
-                                android:text="Pago actividad · Lionel Messi · Futbol"
-                                android:textColor="@color/titan_text_primary"
-                                android:textSize="16sp" />
-
-                            <!-- Texto hora -->
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_regular"
-                                android:gravity="end"
-                                android:text="12:00"
-                                android:textColor="@color/titan_nav_inactive"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
+                    android:orientation="vertical" />
             </ScrollView>
         </LinearLayout>
     </LinearLayout>
 
-    <!-- BARRA INFERIOR/NAVEGACION -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="72dp"
@@ -747,7 +268,6 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <!-- BOTON INICIO -->
         <LinearLayout
             android:id="@+id/nav_inicio"
             android:layout_width="0dp"
@@ -757,27 +277,22 @@
             android:focusable="true"
             android:gravity="center"
             android:orientation="vertical">
-
-            <!-- Fondo -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/nav_bg_inicio"
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 app:cardBackgroundColor="@color/titan_red"
                 app:cardCornerRadius="21dp"
-                app:cardElevation="0.1dp">
-
-                <!-- Icono -->
+                app:cardElevation="0.1dp"
+                app:tint="@color/titan_nav_inactive" >
                 <ImageView
                     android:id="@+id/nav_ic_inicio"
                     android:layout_width="22dp"
-                    android:layout_height="22dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_inicio"
-                    app:tint="@color/titan_card" />
+                    android:src="@drawable/ic_casita"
+                    app:tint="@color/titan_card"/>
             </androidx.cardview.widget.CardView>
-
-            <!-- Texto -->
             <TextView
                 android:id="@+id/nav_text_inicio"
                 android:layout_width="wrap_content"
@@ -786,10 +301,9 @@
                 android:gravity="center"
                 android:text="Inicio"
                 android:textColor="@color/titan_red"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- BOTON MIEMBROS -->
         <LinearLayout
             android:id="@+id/nav_miembros"
             android:layout_width="0dp"
@@ -799,8 +313,6 @@
             android:focusable="true"
             android:gravity="center"
             android:orientation="vertical">
-
-            <!-- Fondo -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/nav_bg_miembros"
                 android:layout_width="42dp"
@@ -808,18 +320,13 @@
                 app:cardBackgroundColor="@color/titan_nav_inactive_background"
                 app:cardCornerRadius="21dp"
                 app:cardElevation="0.1dp">
-
-                <!-- Icono -->
                 <ImageView
                     android:id="@+id/nav_ic_miembros"
                     android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_miembros"
-                    app:tint="@color/titan_nav_inactive" />
+                    android:src="@drawable/ic_miembros_inactive"/>
             </androidx.cardview.widget.CardView>
-
-            <!-- Texto -->
             <TextView
                 android:id="@+id/nav_text_miembros"
                 android:layout_width="wrap_content"
@@ -831,49 +338,8 @@
                 android:textSize="14sp"/>
         </LinearLayout>
 
-        <!-- BOTON COBRAR -->
-        <LinearLayout
-            android:id="@+id/nav_cobrar"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical">
 
-            <!-- Fondo -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/nav_bg_cobrar"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                app:cardBackgroundColor="@color/titan_nav_inactive_background"
-                app:cardCornerRadius="21dp"
-                app:cardElevation="0.1dp">
 
-                <!-- Icono -->
-                <ImageView
-                    android:id="@+id/nav_ic_cobrar"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_cobrar"
-                    app:tint="@color/titan_nav_inactive" />
-            </androidx.cardview.widget.CardView>
-
-            <!-- Texto -->
-            <TextView
-                android:id="@+id/nav_text_cobrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:gravity="center"
-                android:text="Cobrar"
-                android:textColor="@color/titan_nav_inactive"
-                android:textSize="14sp"/>
-        </LinearLayout>
-
-        <!-- BOTON MAS -->
         <LinearLayout
             android:id="@+id/nav_mas"
             android:layout_width="0dp"
@@ -883,8 +349,6 @@
             android:focusable="true"
             android:gravity="center"
             android:orientation="vertical">
-
-            <!-- Fondo -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/nav_bg_mas"
                 android:layout_width="42dp"
@@ -892,8 +356,6 @@
                 app:cardBackgroundColor="@color/titan_nav_inactive_background"
                 app:cardCornerRadius="21dp"
                 app:cardElevation="0.1dp">
-
-                <!-- Icono -->
                 <ImageView
                     android:id="@+id/nav_ic_mas"
                     android:layout_width="22dp"
@@ -902,8 +364,6 @@
                     android:src="@drawable/ic_mas"
                     app:tint="@color/titan_nav_inactive" />
             </androidx.cardview.widget.CardView>
-
-            <!-- Texto -->
             <TextView
                 android:id="@+id/nav_text_mas"
                 android:layout_width="wrap_content"

@@ -30,7 +30,6 @@ class NuevoSocioActivity : AppCompatActivity() {
         val evMail = findViewById<EditText>(R.id.evMail)
         val chkFicha = findViewById<CheckBox>(R.id.chkFichaMedica)
         val btnContinuar = findViewById<Button>(R.id.btnContinuar)
-        val btnVolver = findViewById<TextView>(R.id.tvVolver)
         val btnFecha = findViewById<Button>(R.id.btnFecha)
         val tvFecha = findViewById<TextView>(R.id.tvFecha)
 
@@ -56,7 +55,7 @@ class NuevoSocioActivity : AppCompatActivity() {
                 .show()
         }
 
-        // ---------- BOTON CONTINUAR (GUARDADO EN BD) ----------
+        // ---------- BOTON CONTINUAR (GUARDADO EN BD Y RETORNO) ----------
         btnContinuar.setOnClickListener {
             val dniIngresado = evDni.text.toString().trim()
 
@@ -90,17 +89,20 @@ class NuevoSocioActivity : AppCompatActivity() {
                 if (idGenerado != -1L) {
                     Toast.makeText(
                         this,
-                        "Socio guardado en BD con ID: $idGenerado",
+                        "Socio guardado con éxito",
                         Toast.LENGTH_SHORT
                     ).show()
 
-                    // 4. Vamos a cobrar la cuota y le pasamos el DNI del socio para que la siguiente pantalla lo busque
-                    val intentNuevoSocio = Intent(this, CobrarCuotaActivity::class.java).apply {
-                        putExtra("SOCIO_DNI", socio.dni)
-                        putExtra("ES_SOCIO", true)
+                    // 4. NUEVO ENFOQUE MODULAR: Forzamos la vuelta al Menú Principal limpiando la pila
+                    val intentMenu = Intent(this, MenuPrincipalActivity::class.java).apply {
+                        // FLAG_ACTIVITY_CLEAR_TOP barre cualquier activity residual del alta
+                        // FLAG_ACTIVITY_SINGLE_TOP reutiliza la instancia del menú si ya estaba viva
+                        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                     }
-                    startActivity(intentNuevoSocio)
-                    finish() // Cerramos esta actividad para que no quede en el historial de navegación
+                    startActivity(intentMenu)
+
+                    // Destruimos el formulario definitivamente
+                    finish()
                 } else {
                     Toast.makeText(this, "Error al guardar en la base de datos", Toast.LENGTH_LONG).show()
                 }
@@ -113,13 +115,6 @@ class NuevoSocioActivity : AppCompatActivity() {
                     Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_LONG).show()
                 }
             }
-        }
-
-        // ---------- BOTON VOLVER ----------
-        btnVolver.setOnClickListener {
-            val intentarVolver = Intent(this, EleccionNuevoMiembroActivity::class.java)
-            startActivity(intentarVolver)
-            finish()
         }
     }
 }

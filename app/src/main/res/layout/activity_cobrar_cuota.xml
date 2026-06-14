@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@color/fondoApp">
 
-    <!-- 1. HEADER ROJO REUTILIZABLE (FIJO ARRIBA) -->
     <LinearLayout
         android:id="@+id/llTitulo"
         android:layout_width="match_parent"
@@ -17,40 +16,12 @@
         android:orientation="vertical"
         android:background="#D63A27">
 
-        <!-- SUBCONTENEDOR BOTON VOLVER -->
-        <LinearLayout
-            android:id="@+id/llVolver"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingLeft="15dp"
-            android:orientation="horizontal">
-
-            <!-- ICONO FLECHA -->
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/flechitavolver">
-            </ImageView>
-
-            <!-- VOLVER -->
-            <TextView
-                android:id="@+id/tvVolver"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="15dp"
-                android:text="@string/volver"
-                android:textSize="15sp"
-                android:textColor="@color/white">
-            </TextView>
-        </LinearLayout>
-
-        <!-- TITULO DEL HEADER -->
         <TextView
             android:id="@+id/tvTituloNav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
+            android:paddingTop="15dp"
             android:text="@string/cobrarCuota"
             android:textStyle="bold"
             android:textSize="22sp"
@@ -58,169 +29,12 @@
         </TextView>
     </LinearLayout>
 
-    <!-- 2. BARRA INFERIOR DE NAVEGACIÓN (FIJA ABAJO) -->
-    <LinearLayout
-        android:id="@+id/barraNavegacionInferior"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="15dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <!-- INICIO -->
-        <LinearLayout
-            android:id="@+id/nav_inicio"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-            <androidx.cardview.widget.CardView
-                android:id="@+id/nav_bg_inicio"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                app:cardBackgroundColor="@color/titan_nav_inactive_background"
-                app:cardCornerRadius="21dp"
-                app:cardElevation="0.1dp">
-                <ImageView
-                    android:id="@+id/nav_ic_inicio"
-                    android:layout_width="22dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_casita"
-                    app:tint="@color/titan_nav_inactive" />
-            </androidx.cardview.widget.CardView>
-            <TextView
-                android:id="@+id/nav_text_inicio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:gravity="center"
-                android:text="Inicio"
-                android:textColor="@color/titan_nav_inactive"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <!-- MIEMBROS -->
-        <LinearLayout
-            android:id="@+id/nav_miembros"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-            <androidx.cardview.widget.CardView
-                android:id="@+id/nav_bg_miembros"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                app:cardBackgroundColor="@color/titan_nav_inactive_background"
-                app:cardCornerRadius="21dp"
-                app:cardElevation="0.1dp">
-                <ImageView
-                    android:id="@+id/nav_ic_miembros"
-                    android:layout_width="28dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_miembros_inactive"/>
-            </androidx.cardview.widget.CardView>
-            <TextView
-                android:id="@+id/nav_text_miembros"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:gravity="center"
-                android:text="Miembros"
-                android:textColor="@color/titan_nav_inactive"
-                android:textSize="14sp"/>
-        </LinearLayout>
-
-        <!-- COBRAR -->
-        <LinearLayout
-            android:id="@+id/nav_cobrar"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-            <androidx.cardview.widget.CardView
-                android:id="@+id/nav_bg_cobrar"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                app:cardBackgroundColor="@color/titan_red"
-                app:cardCornerRadius="21dp"
-                app:cardElevation="0.1dp">
-                <ImageView
-                    android:id="@+id/nav_ic_cobrar"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_cobrar" />
-            </androidx.cardview.widget.CardView>
-            <TextView
-                android:id="@+id/nav_text_cobrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:gravity="center"
-                android:text="Cobrar"
-                android:textColor="@color/titan_red"
-                android:textSize="14sp"/>
-        </LinearLayout>
-
-        <!-- MAS -->
-        <LinearLayout
-            android:id="@+id/nav_mas"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-            <androidx.cardview.widget.CardView
-                android:id="@+id/nav_bg_mas"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                app:cardBackgroundColor="@color/titan_nav_inactive_background"
-                app:cardCornerRadius="21dp"
-                app:cardElevation="0.1dp">
-                <ImageView
-                    android:id="@+id/nav_ic_mas"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_mas"
-                    app:tint="@color/titan_nav_inactive" />
-            </androidx.cardview.widget.CardView>
-            <TextView
-                android:id="@+id/nav_text_mas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:gravity="center"
-                android:text="Más"
-                android:textColor="@color/titan_nav_inactive"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- 3. CONTENEDOR CON SCROLL (ZONA CENTRAL CONFIGURADA ENTRE EL HEADER Y LA NAV BAR) -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/llTitulo"
-        android:layout_above="@id/barraNavegacionInferior"
         android:fillViewport="true">
 
-        <!-- ÚNICO HIJO DIRECTO DEL SCROLLVIEW -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -228,7 +42,6 @@
             android:gravity="center_horizontal"
             android:paddingBottom="20dp">
 
-            <!-- PASOS 1 - 2 -->
             <LinearLayout
                 android:id="@+id/llpasos"
                 android:layout_width="match_parent"
@@ -237,7 +50,6 @@
                 android:gravity="center"
                 android:padding="12dp">
 
-                <!-- PASO 1 -->
                 <LinearLayout
                     android:id="@+id/llPaso1"
                     android:layout_width="wrap_content"
@@ -264,7 +76,6 @@
                     </TextView>
                 </LinearLayout>
 
-                <!-- LINEA INTERMEDIA -->
                 <View
                     android:layout_width="0dp"
                     android:layout_height="2dp"
@@ -274,7 +85,6 @@
                     android:background="#CCCCCC">
                 </View>
 
-                <!-- PASO 2 -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -300,7 +110,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- CONTENEDOR CON DATOS DEL SOCIO -->
             <LinearLayout
                 android:id="@+id/llSocio"
                 android:layout_width="match_parent"
@@ -323,7 +132,6 @@
                     android:textSize="16sp">
                 </TextView>
 
-                <!-- SUBCONTENEDOR N°SOCIO -->
                 <LinearLayout
                     android:layout_width="80dp"
                     android:layout_height="30dp"
@@ -335,24 +143,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:text="2"
+                        android:text=""
                         android:textSize="20sp">
                     </TextView>
                 </LinearLayout>
 
-                <!-- SUBCONTENEDOR SOCIO - ICONO - INFO - CUOTA -->
                 <LinearLayout
                     android:id="@+id/llInfoSocio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:padding="10dp"
+                    android:padding="12dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:elevation="5dp"
                     android:background="@color/white">
 
-                    <!-- ICONO DEL SOCIO -->
                     <LinearLayout
                         android:layout_width="50dp"
                         android:layout_height="50dp"
@@ -368,7 +174,6 @@
                         </TextView>
                     </LinearLayout>
 
-                    <!-- NOMBRE - SOCIO - CUOTA -->
                     <LinearLayout
                         android:id="@+id/nombreNroActividad"
                         android:layout_width="0dp"
@@ -376,39 +181,47 @@
                         android:layout_weight="1"
                         android:layout_marginLeft="15dp"
                         android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/nombreSocio"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="20sp"
-                            android:text="Lucas Luccaroni">
+                            android:textStyle="bold"
+                            android:text="">
                         </TextView>
+
                         <LinearLayout
                             android:id="@+id/llSocioActividad"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:layout_marginTop="2dp"
+                            android:orientation="vertical">
+
                             <TextView
                                 android:id="@+id/nroSocio"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="18sp"
-                                android:text="Socio #2   -">
+                                android:textSize="15sp"
+                                android:textColor="#555555"
+                                android:text="">
                             </TextView>
+
                             <TextView
                                 android:id="@+id/tvActividad"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:textSize="18sp"
-                                android:text="Cuota N°1">
+                                android:layout_marginTop="1dp"
+                                android:textSize="15sp"
+                                android:textStyle="italic"
+                                android:textColor="@color/titan_red"
+                                android:text="">
                             </TextView>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- CONTENEDOR TIPOS DE PAGO -->
             <LinearLayout
                 android:id="@+id/llTipoDePago"
                 android:layout_width="match_parent"
@@ -477,7 +290,6 @@
                 </RadioGroup>
             </LinearLayout>
 
-            <!-- BOTON CONTINUAR -->
             <Button
                 android:id="@+id/btnContinuar"
                 android:layout_width="wrap_content"

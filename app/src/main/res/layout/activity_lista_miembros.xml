@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:paddingTop="30dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:gravity="center_vertical">
 
         <TextView
@@ -121,21 +123,23 @@
             android:focusable="true"
             android:gravity="center"
             android:orientation="vertical">
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/nav_bg_inicio"
-                android:layout_width="42dp"
+                android:layout_width="38dp"
                 android:layout_height="42dp"
                 app:cardBackgroundColor="@color/titan_nav_inactive_background"
                 app:cardCornerRadius="21dp"
                 app:cardElevation="0.1dp"
-                app:tint="@color/titan_nav_inactive" >
+                app:tint="@color/titan_nav_inactive">
+
                 <ImageView
                     android:id="@+id/nav_ic_inicio"
                     android:layout_width="22dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_casita"
-                    app:tint="@color/titan_nav_inactive"/>
+                    app:tint="@color/titan_nav_inactive" />
             </androidx.cardview.widget.CardView>
             <TextView
                 android:id="@+id/nav_text_inicio"
@@ -182,40 +186,7 @@
                 android:textSize="14sp"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/nav_cobrar"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-            <androidx.cardview.widget.CardView
-                android:id="@+id/nav_bg_cobrar"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                app:cardBackgroundColor="@color/titan_nav_inactive_background"
-                app:cardCornerRadius="21dp"
-                app:cardElevation="0.1dp">
-                <ImageView
-                    android:id="@+id/nav_ic_cobrar"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_cobrar"
-                    app:tint="@color/titan_nav_inactive" />
-            </androidx.cardview.widget.CardView>
-            <TextView
-                android:id="@+id/nav_text_cobrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:gravity="center"
-                android:text="Cobrar"
-                android:textColor="@color/titan_nav_inactive"
-                android:textSize="14sp"/>
-        </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/nav_mas"

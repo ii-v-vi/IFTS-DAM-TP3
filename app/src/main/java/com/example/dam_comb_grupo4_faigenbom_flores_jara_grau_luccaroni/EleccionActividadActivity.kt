@@ -21,7 +21,6 @@ class EleccionActividadActivity : AppCompatActivity() {
         dniRecibido = intent.getStringExtra("MEMBER_DNI")
 
         val btnContinuar = findViewById<Button>(R.id.btnContinuar)
-        val btnVolver = findViewById<TextView>(R.id.tvVolver)
 
         val tarjetas = listOf(R.id.llCardZumba, R.id.llCardPilates, R.id.llCardElongacion, R.id.llCardKarate, R.id.llCardSpinning, R.id.llCardHit)
         tarjetas.forEach { id ->
@@ -53,6 +52,5 @@ class EleccionActividadActivity : AppCompatActivity() {
                 startActivity(intentConfirmar)
             }
         }
-        btnVolver.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
     }
 }

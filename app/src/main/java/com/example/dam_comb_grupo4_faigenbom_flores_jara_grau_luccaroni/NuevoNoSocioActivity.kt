@@ -1,18 +1,17 @@
 package com.example.dam_comb_grupo4_faigenbom_flores_jara_grau_luccaroni
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.widget.LinearLayout
 import android.widget.Button
-import android.widget.Toast
-import android.content.Intent
 import android.widget.CheckBox
 import android.widget.DatePicker
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-
 
 class NuevoNoSocioActivity : AppCompatActivity() {
 
@@ -32,7 +31,6 @@ class NuevoNoSocioActivity : AppCompatActivity() {
         val evMail = findViewById<EditText>(R.id.evMail)
         val chkFicha = findViewById<CheckBox>(R.id.chkFichaMedica)
         val btnContinuar = findViewById<Button>(R.id.btnContinuar)
-        val btnVolver = findViewById<TextView>(R.id.tvVolver)
 
         // ---------- FECHA ----------
         val btnFecha = findViewById<Button>(R.id.btnFecha)
@@ -53,8 +51,7 @@ class NuevoNoSocioActivity : AppCompatActivity() {
                     val fechaFormateada = "$dia/$mes/$anio"
                     tvFecha.text = fechaFormateada
 
-                    Toast.makeText(this, "Fecha: $fechaFormateada", Toast.LENGTH_LONG)
-                        .show()
+                    Toast.makeText(this, "Fecha: $fechaFormateada", Toast.LENGTH_LONG).show()
                 }
                 .setNegativeButton("Cancelar", null)
                 .create()
@@ -62,7 +59,7 @@ class NuevoNoSocioActivity : AppCompatActivity() {
         }
         // ---------- FECHA ----------
 
-        // ---------- BOTON CONTINUAR ----------
+        // ---------- BOTON CONTINUAR (NUEVO FLUJO MODULAR) ----------
         btnContinuar.setOnClickListener {
             if (
                 chkFicha.isChecked &&
@@ -73,6 +70,7 @@ class NuevoNoSocioActivity : AppCompatActivity() {
                 evMail.text.isNotEmpty() &&
                 tvFecha.text != "--/--/--"
             ) {
+                // Creamos la instancia con los datos ingresados
                 val noSocio = NoSocio(
                     nombre = evNombre.text.toString(),
                     apellido = evApellido.text.toString(),
@@ -80,28 +78,30 @@ class NuevoNoSocioActivity : AppCompatActivity() {
                     telefono = evTelefono.text.toString(),
                     mail = evMail.text.toString(),
                     fechaNacimiento = tvFecha.text.toString(),
-                    fichaMedica = chkFicha.isChecked)
+                    fichaMedica = chkFicha.isChecked
+                )
 
+                // Guardamos localmente en memoria y en la base de datos persistente
                 RepositorioNoSocios.listaNoSocios.add(noSocio)
                 helper.insertarNoSocio(noSocio)
 
                 Toast.makeText(this, "No Socio guardado correctamente", Toast.LENGTH_SHORT).show()
-                
-                val intentNuevoNoSocio = Intent(this, EleccionActividadActivity::class.java)
-                startActivity(intentNuevoNoSocio)
+
+                // RETORNO SEGURO AL MENÚ PRINCIPAL (Igual que en NuevoSocioActivity)
+                val intentMenu = Intent(this, MenuPrincipalActivity::class.java).apply {
+                    // FLAG_ACTIVITY_CLEAR_TOP barre las pantallas intermedias del alta (como la de elección)
+                    // FLAG_ACTIVITY_SINGLE_TOP trae al frente tu Menú Principal existente
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                }
+                startActivity(intentMenu)
+
+                // Cerramos el alta definitivamente
+                finish()
 
             } else {
-                Toast.makeText(this , "Información incompleta", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Información incompleta", Toast.LENGTH_LONG).show()
             }
         }
         // ---------- BOTON CONTINUAR ----------
-
-        // ---------- BOTON VOLVER ----------
-        btnVolver.setOnClickListener {
-            val intentarVolver = Intent(this, EleccionNuevoMiembroActivity::class.java)
-            startActivity(intentarVolver)
-        }
-        // ---------- BOTON VOLVER ----------
-
     }
 }

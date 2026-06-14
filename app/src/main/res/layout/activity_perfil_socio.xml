@@ -18,330 +18,333 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="485dp"
-                android:background="@color/titan_background">
+                android:layout_height="wrap_content"
+                android:background="@color/titan_red"
+                android:orientation="vertical"
+                android:paddingHorizontal="6dp"
+                android:paddingTop="25dp"
+                android:paddingBottom="50dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:layout_gravity="top"
-                    android:background="@color/titan_red"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="6dp"
-                    android:paddingTop="25dp"
-                    android:paddingBottom="40dp">
+                    android:id="@+id/btn_volver_a_miembros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:orientation="horizontal"
+                    android:padding="6dp"
+                    android:clickable="true"
+                    android:focusable="true">
 
-                    <LinearLayout
-                        android:id="@+id/btn_volver_a_miembros"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:orientation="horizontal"
-                        android:padding="6dp"
-                        android:clickable="true"
-                        android:focusable="true">
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="3dp"
+                        android:rotation="180"
+                        android:src="@drawable/ic_btn_socios_vencen_hoy_triangulo"
+                        app:tint="@color/titan_card" />
 
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="3dp"
-                            android:rotation="180"
-                            android:src="@drawable/ic_btn_socios_vencen_hoy_triangulo"
-                            app:tint="@color/titan_card" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat_regular"
-                            android:text="Miembros"
-                            android:textColor="@color/titan_card"
-                            android:textSize="16sp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="10sp"
-                        android:gravity="center_horizontal">
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="71dp"
-                            android:layout_height="71dp"
-                            app:cardBackgroundColor="@color/titan_bg_avatar"
-                            app:cardCornerRadius="40dp"
-                            app:cardElevation="5dp">
-                            <TextView
-                                android:id="@+id/txt_iniciales_socio"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:fontFamily="@font/montserrat_bold"
-                                android:gravity="center"
-                                android:text="MF"
-                                android:textAlignment="center"
-                                android:textColor="@color/titan_card"
-                                android:textSize="32sp"/>
-                        </androidx.cardview.widget.CardView>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp">
-                        <TextView
-                            android:id="@+id/txt_nombre_socio"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat_bold"
-                            android:text="Mauro Flores"
-                            android:textAlignment="center"
-                            android:textColor="@color/titan_card"
-                            android:textSize="26sp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat_regular"
-                            android:text="Socio activo"
-                            android:textAlignment="center"
-                            android:textColor="@color/titan_card"
-                            android:textSize="20sp" />
-                    </LinearLayout>
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="Miembros"
+                        android:textColor="@color/titan_card"
+                        android:textSize="14sp"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="240dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_gravity="bottom">
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10sp"
+                    android:gravity="center_horizontal">
                     <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:cardCornerRadius="22dp">
-                        <LinearLayout
+                        android:layout_width="71dp"
+                        android:layout_height="71dp"
+                        app:cardBackgroundColor="@color/titan_bg_avatar"
+                        app:cardCornerRadius="40dp"
+                        app:cardElevation="5dp">
+                        <TextView
+                            android:id="@+id/txt_iniciales_socio"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            android:paddingHorizontal="22dp"
-                            android:paddingTop="22dp"
-                            android:paddingBottom="2dp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="2"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="DNI"
-                                    android:fontFamily="@font/montserrat_bold"
-                                    android:textSize="16sp"
-                                    android:textAlignment="textStart"
-                                    android:textColor="@color/titan_nav_inactive"/>
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="Email"
-                                    android:fontFamily="@font/montserrat_bold"
-                                    android:textSize="16sp"
-                                    android:textAlignment="textStart"
-                                    android:textColor="@color/titan_nav_inactive"/>
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="Teléfono"
-                                    android:fontFamily="@font/montserrat_bold"
-                                    android:textSize="16sp"
-                                    android:textAlignment="textStart"
-                                    android:textColor="@color/titan_nav_inactive"/>
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="Nacimiento"
-                                    android:fontFamily="@font/montserrat_bold"
-                                    android:textSize="16sp"
-                                    android:textAlignment="textStart"
-                                    android:textColor="@color/titan_nav_inactive"/>
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="Ficha médica"
-                                    android:fontFamily="@font/montserrat_bold"
-                                    android:textSize="16sp"
-                                    android:textAlignment="textStart"
-                                    android:textColor="@color/titan_nav_inactive"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/datos_socio_dni"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="123456789"
-                                    android:fontFamily="@font/montserrat_regular"
-                                    android:textSize="16sp"
-                                    android:textAlignment="textEnd"
-                                    android:textColor="@color/titan_text_primary"/>
-
-                                <TextView
-                                    android:id="@+id/datos_socio_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="mauro@gmail.com"
-                                    android:fontFamily="@font/montserrat_regular"
-                                    android:textSize="16sp"
-                                    android:textAlignment="textEnd"
-                                    android:textColor="@color/titan_text_primary"/>
-
-                                <TextView
-                                    android:id="@+id/datos_socio_telefono"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="123456789"
-                                    android:fontFamily="@font/montserrat_regular"
-                                    android:textSize="16sp"
-                                    android:textAlignment="textEnd"
-                                    android:textColor="@color/titan_text_primary"/>
-
-                                <TextView
-                                    android:id="@+id/datos_socio_nacimiento"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="01/01/2000"
-                                    android:fontFamily="@font/montserrat_regular"
-                                    android:textSize="16sp"
-                                    android:textAlignment="textEnd"
-                                    android:textColor="@color/titan_text_primary"/>
-
-                                <TextView
-                                    android:id="@+id/datos_socio_ficha_medica"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="✓ Completa"
-                                    android:fontFamily="@font/montserrat_regular"
-                                    android:textSize="16sp"
-                                    android:textAlignment="textEnd"
-                                    android:textColor="@color/titan_text_green"/>
-                            </LinearLayout>
-                        </LinearLayout>
+                            android:fontFamily="@font/montserrat_bold"
+                            android:gravity="center"
+                            android:text="MF"
+                            android:textAlignment="center"
+                            android:textColor="@color/titan_card"
+                            android:textSize="32sp"/>
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
-            </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:id="@+id/txt_nombre_socio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="Mauro Flores"
+                        android:textAlignment="center"
+                        android:textColor="@color/titan_card"
+                        android:textSize="26sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txt_estado_membresia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="Socio activo"
+                        android:textAlignment="center"
+                        android:textColor="@color/titan_card"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:layout_marginVertical="20dp"
-                android:layout_marginHorizontal="20dp">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="-30dp"
+                android:layout_marginBottom="15dp">
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:cardCornerRadius="22dp">
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="4dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="22dp"
+                        android:paddingVertical="14dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingHorizontal="22dp"
-                            android:paddingTop="22dp"
-                            android:paddingBottom="22dp">
+                            android:paddingVertical="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:text="ESTADO DE CUOTA"
+                                android:layout_weight="4"
+                                android:text="DNI"
                                 android:fontFamily="@font/montserrat_bold"
-                                android:textSize="16sp"
-                                android:textAlignment="textStart"
+                                android:textSize="14sp"
                                 android:textColor="@color/titan_nav_inactive"/>
+                            <TextView
+                                android:id="@+id/datos_socio_dni"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="6"
+                                android:text="123456789"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:textSize="14sp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/titan_text_primary"/>
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            android:paddingHorizontal="22dp"
-                            android:paddingBottom="2dp">
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Email"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:textSize="14sp"
+                                android:textColor="@color/titan_nav_inactive"/>
+                            <TextView
+                                android:id="@+id/datos_socio_email"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="6"
+                                android:text="mauro@gmail.com"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:textSize="14sp"
+                                android:textAlignment="textEnd"
+                                android:singleLine="true"
+                                android:ellipsize="end"
+                                android:textColor="@color/titan_text_primary"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Teléfono"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:textSize="14sp"
+                                android:textColor="@color/titan_nav_inactive"/>
+                            <TextView
+                                android:id="@+id/datos_socio_telefono"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="6"
+                                android:text="123456789"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:textSize="14sp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/titan_text_primary"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Nacimiento"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:textSize="14sp"
+                                android:textColor="@color/titan_nav_inactive"/>
+                            <TextView
+                                android:id="@+id/datos_socio_nacimiento"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="6"
+                                android:text="01/01/2000"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:textSize="14sp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/titan_text_primary"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:text="Ficha médica"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:textSize="14sp"
+                                android:textColor="@color/titan_nav_inactive"/>
+                            <TextView
+                                android:id="@+id/datos_socio_ficha_medica"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="6"
+                                android:text="✓ Completa"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:textSize="14sp"
+                                android:textAlignment="textEnd"
+                                android:textColor="@color/titan_text_green"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="20dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="22dp"
+                        android:paddingVertical="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="ESTADO DE CUOTA"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textSize="14sp"
+                            android:layout_marginBottom="12dp"
+                            android:textColor="@color/titan_nav_inactive"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
                                 android:orientation="vertical">
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
+                                    android:paddingVertical="4dp"
                                     android:text="Cuota N°"
                                     android:fontFamily="@font/montserrat_bold"
-                                    android:textSize="16sp"
-                                    android:textAlignment="textStart"
+                                    android:textSize="14sp"
                                     android:textColor="@color/titan_nav_inactive"/>
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
+                                    android:paddingVertical="4dp"
                                     android:text="Vence"
                                     android:fontFamily="@font/montserrat_bold"
-                                    android:textSize="16sp"
-                                    android:textAlignment="textStart"
+                                    android:textSize="14sp"
                                     android:textColor="@color/titan_nav_inactive"/>
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
+                                    android:paddingVertical="4dp"
                                     android:text="Último pago"
                                     android:fontFamily="@font/montserrat_bold"
-                                    android:textSize="16sp"
-                                    android:textAlignment="textStart"
+                                    android:textSize="14sp"
                                     android:textColor="@color/titan_nav_inactive"/>
                             </LinearLayout>
 
                             <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="6"
                                 android:orientation="vertical">
 
                                 <TextView
                                     android:id="@+id/datos_socio_cuota_nro"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
+                                    android:paddingVertical="4dp"
                                     android:text="1"
                                     android:fontFamily="@font/montserrat_regular"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:textAlignment="textEnd"
                                     android:textColor="@color/titan_text_primary"/>
 
@@ -349,10 +352,10 @@
                                     android:id="@+id/datos_socio_vence_cuota"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
+                                    android:paddingVertical="4dp"
                                     android:text="11/05/2026"
                                     android:fontFamily="@font/montserrat_regular"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:textAlignment="textEnd"
                                     android:textColor="@color/titan_text_primary"/>
 
@@ -360,10 +363,10 @@
                                     android:id="@+id/datos_socio_ultimo_pago"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
+                                    android:paddingVertical="4dp"
                                     android:text="11/04/2026"
                                     android:fontFamily="@font/montserrat_regular"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:textAlignment="textEnd"
                                     android:textColor="@color/titan_text_primary"/>
                             </LinearLayout>
@@ -374,254 +377,124 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:gravity="center"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:paddingHorizontal="30dp"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="25dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btn_datos_socios_cobrar_cuota"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/titan_bg_green"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp"
-                    android:clickable="true"
-                    android:focusable="true">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <TextView
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_datos_socios_cobrar_cuota"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/titan_bg_green"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="Cobrar\nCuota"
-                            android:fontFamily="@font/montserrat_bold"
-                            android:textAlignment="gravity"
-                            android:textColor="@color/titan_text_green"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Cobrar\nCuota"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:textColor="@color/titan_text_green"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btn_datos_socios_editar"
-                    android:layout_width="0dp"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_datos_socios_editar"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="8dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/titan_bg_blue"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Editar"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:textColor="@color/titan_text_blue"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/titan_bg_blue"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp"
-                    android:clickable="true"
-                    android:focusable="true">
+                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <TextView
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_datos_socios_inactivar"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/titan_bg_red"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="Editar"
-                            android:fontFamily="@font/montserrat_bold"
-                            android:textAlignment="gravity"
-                            android:textColor="@color/titan_text_blue"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Inactivar"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:textColor="@color/titan_red"
+                                android:textSize="14sp"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btn_datos_socios_inactivar"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/titan_bg_red"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <TextView
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_datos_socios_eliminar"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="8dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/titan_bg_red"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="Inactivar"
-                            android:fontFamily="@font/montserrat_bold"
-                            android:textAlignment="gravity"
-                            android:textColor="@color/titan_red"
-                            android:textSize="14sp"/>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Eliminar\nSocio"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:textColor="@color/titan_text_primary"
+                                android:textSize="14sp"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:layout_marginHorizontal="20sp"
-        android:layout_marginBottom="15dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:id="@+id/nav_inicio"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/nav_bg_inicio"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                app:cardBackgroundColor="@color/titan_nav_inactive_background"
-                app:cardCornerRadius="21dp"
-                app:cardElevation="0.1dp">
-
-                <ImageView
-                    android:id="@+id/nav_ic_inicio"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_inicio"
-                    app:tint="@color/titan_nav_inactive" />
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/nav_text_inicio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:gravity="center"
-                android:text="Inicio"
-                android:textColor="@color/titan_nav_inactive"
-                android:textSize="14sp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/nav_miembros"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/nav_bg_miembros"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                app:cardBackgroundColor="@color/titan_red"
-                app:cardCornerRadius="21dp"
-                app:cardElevation="0.1dp">
-
-                <ImageView
-                    android:id="@+id/nav_ic_miembros"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_miembros"
-                    app:tint="@color/titan_card" />
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/nav_text_miembros"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:gravity="center"
-                android:text="Miembros"
-                android:textColor="@color/titan_red"
-                android:textSize="14sp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/nav_cobrar"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/nav_bg_cobrar"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                app:cardBackgroundColor="@color/titan_nav_inactive_background"
-                app:cardCornerRadius="21dp"
-                app:cardElevation="0.1dp">
-
-                <ImageView
-                    android:id="@+id/nav_ic_cobrar"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_cobrar"
-                    app:tint="@color/titan_nav_inactive" />
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/nav_text_cobrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:gravity="center"
-                android:text="Cobrar"
-                android:textColor="@color/titan_nav_inactive"
-                android:textSize="14sp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/nav_mas"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/nav_bg_mas"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                app:cardBackgroundColor="@color/titan_nav_inactive_background"
-                app:cardCornerRadius="21dp"
-                app:cardElevation="0.1dp">
-
-                <ImageView
-                    android:id="@+id/nav_ic_mas"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_mas"
-                    app:tint="@color/titan_nav_inactive" />
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/nav_text_mas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:gravity="center"
-                android:text="Más"
-                android:textColor="@color/titan_nav_inactive"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </LinearLayout>
 </LinearLayout>

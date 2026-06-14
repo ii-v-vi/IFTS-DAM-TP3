@@ -2,6 +2,8 @@ package com.example.dam_comb_grupo4_faigenbom_flores_jara_grau_luccaroni
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -16,20 +18,22 @@ class ActivityListaMiembros : AppCompatActivity() {
     private lateinit var helper: SQLiteHelper
     private lateinit var rvMiembros: RecyclerView
     private lateinit var tvContadorMiembros: TextView
+    private lateinit var etBuscar: EditText
 
-    // Listas para gestionar los filtros dinámicos
     private val listaCompletaUnificada = mutableListOf<WrapperMiembro>()
     private val listaFiltradaVisual = mutableListOf<WrapperMiembro>()
     private lateinit var adaptador: MiembroAdapter
+
+    private var filtroEstadoActual: String = "TODOS"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_miembros)
 
-        // Inicializamos componentes
         helper = SQLiteHelper(this)
         rvMiembros = findViewById(R.id.rvMiembros)
         tvContadorMiembros = findViewById(R.id.tvContadorMiembros)
+        etBuscar = findViewById(R.id.etBuscar)
 
         val btnAgregarMiembro = findViewById<Button>(R.id.btnAgregarMiembro)
         val btnFiltroTodos = findViewById<Button>(R.id.btnFiltroTodos)
@@ -37,95 +41,90 @@ class ActivityListaMiembros : AppCompatActivity() {
         val btnNoSocios = findViewById<Button>(R.id.btnNoSocios)
         val btnFiltroVencenHoy = findViewById<Button>(R.id.btnFiltroVencenHoy)
 
-        // Botones de navegación inferior
         val navInicio = findViewById<LinearLayout>(R.id.nav_inicio)
         val navMiembros = findViewById<LinearLayout>(R.id.nav_miembros)
-        val navCobrar = findViewById<LinearLayout>(R.id.nav_cobrar)
         val navMas = findViewById<LinearLayout>(R.id.nav_mas)
 
-        // 1. CARGA INICIAL DE DATOS DESDE SQLITE
-        cargarDatosDesdeBaseDeDatos()
+        // --------------------------------------------------------------------------
+        // CORRECCIÓN CLAVE: Leemos el Intent para saber si venimos del botón del Home
+        // --------------------------------------------------------------------------
+        val modoFiltroHome = intent.getStringExtra("FILTRO_MODO")
+        if (modoFiltroHome == "FILTRO_VENCEN_HOY") {
+            filtroEstadoActual = "VENCENHOY"
+        }
 
-        // 2. CONFIGURACIÓN DEL RECYCLERVIEW
-        listaFiltradaVisual.addAll(listaCompletaUnificada) // Al principio mostramos todos
+        // Configuración inicial del RecyclerView (Se hace una sola vez en el onCreate)
         adaptador = MiembroAdapter(listaFiltradaVisual)
         rvMiembros.layoutManager = LinearLayoutManager(this)
         rvMiembros.adapter = adaptador
-        actualizarContador()
 
-        // 3. LOGICA DE FILTRADO DE BOTONES
         btnFiltroTodos.setOnClickListener {
-            listaFiltradaVisual.clear()
-            listaFiltradaVisual.addAll(listaCompletaUnificada)
-            adaptador.notifyDataSetChanged()
-            actualizarContador()
+            filtroEstadoActual = "TODOS"
+            aplicarBusquedaYFiltro(etBuscar.text.toString())
         }
 
         btnSocios.setOnClickListener {
-            listaFiltradaVisual.clear()
-            listaFiltradaVisual.addAll(listaCompletaUnificada.filter { it.esSocio })
-            adaptador.notifyDataSetChanged()
-            actualizarContador()
+            filtroEstadoActual = "SOCIOS"
+            aplicarBusquedaYFiltro(etBuscar.text.toString())
         }
 
         btnNoSocios.setOnClickListener {
-            listaFiltradaVisual.clear()
-            listaFiltradaVisual.addAll(listaCompletaUnificada.filter { !it.esSocio })
-            adaptador.notifyDataSetChanged()
-            actualizarContador()
+            filtroEstadoActual = "NOSOCIOS"
+            aplicarBusquedaYFiltro(etBuscar.text.toString())
         }
 
         btnFiltroVencenHoy.setOnClickListener {
-            listaFiltradaVisual.clear()
-            // Filtrará los miembros que tengan la flag de deuda activa
-            listaFiltradaVisual.addAll(listaCompletaUnificada.filter { it.deudorVencido })
-            adaptador.notifyDataSetChanged()
-            actualizarContador()
+            filtroEstadoActual = "VENCENHOY"
+            aplicarBusquedaYFiltro(etBuscar.text.toString())
         }
 
-        // 4. ACCIÓN AGREGAR MIEMBRO
+        etBuscar.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                aplicarBusquedaYFiltro(s.toString())
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
         btnAgregarMiembro.setOnClickListener {
             val intentarAgregarMiembro = Intent(this, EleccionNuevoMiembroActivity::class.java)
             startActivity(intentarAgregarMiembro)
         }
 
-        // 5. NAVEGACIÓN DEL FOOTER
         navInicio.setOnClickListener {
             val intentarInicio = Intent(this, MenuPrincipalActivity::class.java)
             startActivity(intentarInicio)
+            onBackPressedDispatcher.onBackPressed()
             finish()
         }
         navMiembros.setOnClickListener {
-            // Ya estamos aquí, hacemos scroll al inicio de la lista
             rvMiembros.smoothScrollToPosition(0)
-        }
-        navCobrar.setOnClickListener {
-            val intentarCobrar = Intent(this, CobrarCuotaActivity::class.java)
-            startActivity(intentarCobrar)
-            finish()
         }
         navMas.setOnClickListener {
             Toast.makeText(this, "EN PROGRESO...", Toast.LENGTH_SHORT).show()
         }
     }
 
+    // El secreto está aquí: onResume se ejecuta al iniciar Y al volver desde otra pantalla
+    override fun onResume() {
+        super.onResume()
+
+        // 1. Re-consultamos la base de datos de manera limpia
+        cargarDatosDesdeBaseDeDatos()
+
+        // 2. Ejecutamos la lógica de filtros respetando el texto que ya estuviera escrito en el buscador
+        // Nota: Como alteramos el filtroEstadoActual en el onCreate si venía del Home,
+        // acá ya va a procesar "VENCENHOY" de entrada.
+        aplicarBusquedaYFiltro(etBuscar.text.toString())
+    }
+
     private fun cargarDatosDesdeBaseDeDatos() {
         listaCompletaUnificada.clear()
 
+        // Llamamos a la consulta inteligente de la Base de datos
+        val sociosUnificados = helper.obtenerSociosCompleto()
+        listaCompletaUnificada.addAll(sociosUnificados)
 
-        val sociosBD = helper.obtenerSocios()
-        for (s in sociosBD) {
-            listaCompletaUnificada.add(
-                WrapperMiembro(
-                    nombre = s.nombre,
-                    apellido = s.apellido,
-                    dni = s.dni,
-                    esSocio = true,
-                    deudorVencido = false
-                )
-            )
-        }
-        
         val noSociosBD = helper.obtenerNoSocios()
         for (ns in noSociosBD) {
             listaCompletaUnificada.add(
@@ -134,10 +133,37 @@ class ActivityListaMiembros : AppCompatActivity() {
                     apellido = ns.apellido,
                     dni = ns.dni,
                     esSocio = false,
-                    deudorVencido = false
+                    deudorVencido = false,
+                    fechaVencimiento = null
                 )
             )
         }
+    }
+
+    private fun aplicarBusquedaYFiltro(textoBusqueda: String) {
+        listaFiltradaVisual.clear()
+
+        val listaPorCategoria = when (filtroEstadoActual) {
+            "SOCIOS" -> listaCompletaUnificada.filter { it.esSocio }
+            "NOSOCIOS" -> listaCompletaUnificada.filter { !it.esSocio }
+            "VENCENHOY" -> listaCompletaUnificada.filter { it.deudorVencido }
+            else -> listaCompletaUnificada
+        }
+
+        if (textoBusqueda.isEmpty()) {
+            listaFiltradaVisual.addAll(listaPorCategoria)
+        } else {
+            val query = textoBusqueda.lowercase().trim()
+            val filtradosPorTexto = listaPorCategoria.filter { miembro ->
+                miembro.nombre.lowercase().contains(query) ||
+                        miembro.apellido.lowercase().contains(query) ||
+                        miembro.dni.contains(query)
+            }
+            listaFiltradaVisual.addAll(filtradosPorTexto)
+        }
+
+        adaptador.notifyDataSetChanged()
+        actualizarContador()
     }
 
     private fun actualizarContador() {

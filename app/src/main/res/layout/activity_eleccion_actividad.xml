@@ -17,40 +17,13 @@
         android:orientation="vertical"
         android:background="#D63A27">
 
-        <!-- SUBCONTENEDOR BOTON VOLVER -->
-        <LinearLayout
-            android:id="@+id/llVolver"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingLeft="15dp"
-            android:orientation="horizontal">
-
-            <!-- ICONO FLECHA -->
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/flechitavolver">
-            </ImageView>
-
-            <!-- VOLVER -->
-            <TextView
-                android:id="@+id/tvVolver"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="15dp"
-                android:text="@string/volver"
-                android:textSize="15sp"
-                android:textColor="@color/white">
-            </TextView>
-        </LinearLayout>
-
         <!-- TITULO DEL HEADER -->
         <TextView
             android:id="@+id/tvTituloNav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
+            android:paddingTop="30dp"
             android:text="@string/nuevoNoSocio"
             android:textStyle="bold"
             android:textSize="22sp"
