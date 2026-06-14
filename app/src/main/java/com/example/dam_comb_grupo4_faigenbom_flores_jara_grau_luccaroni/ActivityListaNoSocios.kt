@@ -19,7 +19,6 @@ class ActivityListaNoSocios : AppCompatActivity() {
 
         val helper = SQLiteHelper(this)
         
-        // Sincronizar memoria con base de datos
         RepositorioNoSocios.listaNoSocios.clear()
         RepositorioNoSocios.listaNoSocios.addAll(helper.obtenerNoSocios())
 

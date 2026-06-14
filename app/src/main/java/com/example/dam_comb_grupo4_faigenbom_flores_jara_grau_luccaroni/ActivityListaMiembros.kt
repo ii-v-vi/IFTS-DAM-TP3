@@ -45,15 +45,12 @@ class ActivityListaMiembros : AppCompatActivity() {
         val navMiembros = findViewById<LinearLayout>(R.id.nav_miembros)
         val navMas = findViewById<LinearLayout>(R.id.nav_mas)
 
-        // --------------------------------------------------------------------------
-        // CORRECCIÓN CLAVE: Leemos el Intent para saber si venimos del botón del Home
-        // --------------------------------------------------------------------------
+
         val modoFiltroHome = intent.getStringExtra("FILTRO_MODO")
         if (modoFiltroHome == "FILTRO_VENCEN_HOY") {
             filtroEstadoActual = "VENCENHOY"
         }
 
-        // Configuración inicial del RecyclerView (Se hace una sola vez en el onCreate)
         adaptador = MiembroAdapter(listaFiltradaVisual)
         rvMiembros.layoutManager = LinearLayoutManager(this)
         rvMiembros.adapter = adaptador
@@ -105,23 +102,17 @@ class ActivityListaMiembros : AppCompatActivity() {
         }
     }
 
-    // El secreto está aquí: onResume se ejecuta al iniciar Y al volver desde otra pantalla
     override fun onResume() {
         super.onResume()
 
-        // 1. Re-consultamos la base de datos de manera limpia
         cargarDatosDesdeBaseDeDatos()
 
-        // 2. Ejecutamos la lógica de filtros respetando el texto que ya estuviera escrito en el buscador
-        // Nota: Como alteramos el filtroEstadoActual en el onCreate si venía del Home,
-        // acá ya va a procesar "VENCENHOY" de entrada.
         aplicarBusquedaYFiltro(etBuscar.text.toString())
     }
 
     private fun cargarDatosDesdeBaseDeDatos() {
         listaCompletaUnificada.clear()
 
-        // Llamamos a la consulta inteligente de la Base de datos
         val sociosUnificados = helper.obtenerSociosCompleto()
         listaCompletaUnificada.addAll(sociosUnificados)
 

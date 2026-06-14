@@ -72,10 +72,8 @@ class SocioAdapter(
                         val socioAEliminar = lista[currentPosition]
                         val helper = SQLiteHelper(context)
                         
-                        // Eliminar de la base de datos
                         helper.eliminarSocio(socioAEliminar.dni)
                         
-                        // Eliminar de la lista de la interfaz
                         lista.removeAt(currentPosition)
                         notifyItemRemoved(currentPosition)
                         notifyItemRangeChanged(currentPosition, lista.size)

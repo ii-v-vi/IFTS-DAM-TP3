@@ -33,13 +33,11 @@ class ActivityConfirmarPagoNoSocio : AppCompatActivity() {
         findViewById<TextView>(R.id.pago_registrado_vencimiento2).text = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
         findViewById<TextView>(R.id.pago_registrado_monto2).text = "$$precioAct"
 
-        // BOTÓN: Confirmar Pago / Ver Comprobante
+
         findViewById<View>(R.id.btn_pago_registrado_compartir_comprobante).setOnClickListener {
 
-            // 1. Convertimos el precio String a Double de forma segura para la BD
             val montoDouble = precioAct.replace("$", "").trim().toDoubleOrNull() ?: 0.0
 
-            // 2. FIJACIÓN DE LA LÓGICA ROTA: Guardamos el pase diario en la tabla PagosNoSocios
             if (dni.isNotEmpty()) {
                 val exito = helper.registrarPagoNoSocio(dni, nombreAct, montoDouble)
                 if (!exito) {
@@ -47,7 +45,6 @@ class ActivityConfirmarPagoNoSocio : AppCompatActivity() {
                 }
             }
 
-            // 3. Redirige a la pantalla del comprobante (ActividadCobradaActivity)
             val intent = Intent(this, ActividadCobradaActivity::class.java).apply {
                 putExtra("NOMBRE_COMPLETO", nombreCompleto)
                 putExtra("ACTIVIDAD_NOMBRE", nombreAct)

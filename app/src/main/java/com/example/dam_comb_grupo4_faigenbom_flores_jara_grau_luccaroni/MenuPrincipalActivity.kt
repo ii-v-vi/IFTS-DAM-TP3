@@ -29,7 +29,6 @@ class MenuPrincipalActivity : AppCompatActivity() {
 
         helper = SQLiteHelper(this)
 
-        // Inicializaciones de componentes visuales
         tvFechaInicio = findViewById(R.id.datetime_inicio)
         tvCantSociosActivos = findViewById(R.id.card_cantidad_socios_activos)
         tvCantNoSocios = findViewById(R.id.card_cantidad_no_socios)
@@ -41,16 +40,13 @@ class MenuPrincipalActivity : AppCompatActivity() {
         val navMiembros = findViewById<LinearLayout>(R.id.nav_miembros)
         val navMas = findViewById<LinearLayout>(R.id.nav_mas)
 
-        // --- BOTÓN VENCEN HOY REDIRECCIONA CON FILTRO ---
         btnVencenHoy.setOnClickListener {
             val intentLista = Intent(this, ActivityListaMiembros::class.java)
             intentLista.putExtra("FILTRO_MODO", "FILTRO_VENCEN_HOY")
             startActivity(intentLista)
         }
 
-        // --- LÓGICA FOOTER NAVEGACIÓN ---
         navInicio.setOnClickListener {
-            // Ya estamos en la actividad de inicio
         }
         navMiembros.setOnClickListener {
             startActivity(Intent(this, ActivityListaMiembros::class.java))
@@ -66,13 +62,11 @@ class MenuPrincipalActivity : AppCompatActivity() {
     }
 
     private fun sincronizarDashboard() {
-        // --- CORRECCIÓN API 24: FECHA CON CALENDAR Y SIMPLEDATEFORMAT ---
         val calendar = Calendar.getInstance()
         val formatoSencillo = SimpleDateFormat("EEEE d 'de' MMMM, yyyy", Locale("es", "ES"))
         val fechaFormateada = formatoSencillo.format(calendar.time).replaceFirstChar { it.uppercase() }
         tvFechaInicio.text = fechaFormateada
 
-        // --- ASIGNACIÓN DE DATOS REALES DE BD ---
         val activos = helper.contarSociosActivos()
         val noSocios = helper.contarNoSocios()
         val vencenHoy = helper.contarSociosVencenHoy()
@@ -81,7 +75,6 @@ class MenuPrincipalActivity : AppCompatActivity() {
         tvCantNoSocios.text = noSocios.toString()
         tvCantVencenHoyBoton.text = vencenHoy.toString()
 
-        // --- INFLAR ACTIVIDAD RECIENTE DE FORMA DINÁMICA ---
         contenedorActividades.removeAllViews()
         val actividadesRecientes = helper.obtenerActividadesRecientes()
 
@@ -98,10 +91,8 @@ class MenuPrincipalActivity : AppCompatActivity() {
             contenedorActividades.addView(tvVacio)
         } else {
             for (act in actividadesRecientes) {
-                // CORRECCIÓN: Inflamos pasándole el contenedor correcto
                 val itemLayout = layoutInflater.inflate(R.layout.item_actividad_reciente, contenedorActividades, false)
 
-                // CORRECCIÓN: Buscamos las referencias ADENTRO del itemLayout inflado
                 val puntoEstado = itemLayout.findViewById<View>(R.id.punto_color_estado)
                 val txtDescripcion = itemLayout.findViewById<TextView>(R.id.txt_actividad_descripcion)
                 val txtHora = itemLayout.findViewById<TextView>(R.id.txt_actividad_hora)
@@ -109,7 +100,6 @@ class MenuPrincipalActivity : AppCompatActivity() {
                 txtDescripcion.text = act.first
                 txtHora.text = act.second
 
-                // Mapeo dinámico de recursos de puntos de fondo
                 val drawableRes = when (act.third) {
                     "verde" -> R.drawable.bg_punto_verde
                     "azul" -> R.drawable.bg_punto_azul

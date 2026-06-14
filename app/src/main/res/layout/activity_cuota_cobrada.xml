@@ -50,7 +50,7 @@
                             android:fontFamily="@font/montserrat_bold"
                             android:gravity="center"
                             android:text=""
-                            tools:text="LL"
+                            tools:text=""
                             android:textAlignment="center"
                             android:textColor="@color/titan_card"
                             android:textSize="32sp"/>
@@ -155,7 +155,7 @@
                             android:fontFamily="@font/montserrat_bold"
                             android:gravity="center"
                             android:text=""
-                            tools:text="Efectivo"
+                            tools:text=""
                             android:textAlignment="gravity"
                             android:textColor="@color/titan_nav_inactive"
                             android:textSize="14sp"/>
@@ -169,7 +169,7 @@
                             android:fontFamily="@font/montserrat_bold"
                             android:gravity="center"
                             android:text=""
-                            tools:text="10/04/2026"
+                            tools:text=""
                             android:textAlignment="gravity"
                             android:textColor="@color/titan_nav_inactive"
                             android:textSize="14sp" />

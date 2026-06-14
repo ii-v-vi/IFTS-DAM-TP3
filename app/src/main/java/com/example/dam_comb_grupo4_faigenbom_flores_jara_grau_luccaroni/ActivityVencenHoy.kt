@@ -17,14 +17,11 @@ class ActivityVencenHoy : AppCompatActivity() {
         val navMas = findViewById<LinearLayout>(R.id.nav_mas)
         val btnVolver = findViewById<LinearLayout>(R.id.btnVolver)
 
-        // ---------- BOTON VOLVER ----------
         btnVolver.setOnClickListener {
             val intentarVolver = Intent(this, ActivityListaMiembros::class.java)
             startActivity(intentarVolver)
         }
-        // ---------- BOTON VOLVER ----------
 
-        // --- LOGICA FOOTER ---
         navInicio.setOnClickListener {
             val intentarInicio = Intent(this, MenuPrincipalActivity::class.java)
             startActivity(intentarInicio)

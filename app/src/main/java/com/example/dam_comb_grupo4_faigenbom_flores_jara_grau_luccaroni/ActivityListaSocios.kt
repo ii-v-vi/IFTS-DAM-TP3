@@ -16,7 +16,6 @@ class ActivityListaSocios : AppCompatActivity() {
         setContentView(R.layout.activity_lista_socios)
 
         val helper = SQLiteHelper(this)
-        // Cargamos la lista desde la base de datos para que sea persistente
         RepositorioSocios.listaSocios.clear()
         RepositorioSocios.listaSocios.addAll(helper.obtenerSocios())
 
@@ -36,7 +35,6 @@ class ActivityListaSocios : AppCompatActivity() {
         rvSocios.adapter =
             adapter
 
-        // ---------- BOTON VOLVER ----------
         btnVolver.setOnClickListener {
             finish()
         }

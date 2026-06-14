@@ -21,11 +21,9 @@ class CuotaCobradaActivity : AppCompatActivity() {
 
         helper = SQLiteHelper(this)
 
-        // 1. CAPTURAMOS EL DNI Y LA FORMA DE PAGO QUE ENVIAMOS EN EL INTENT
         dniRecibido = intent.getStringExtra("MEMBER_DNI")
         formaPagoRecibida = intent.getStringExtra("FORMA_PAGO") ?: "Efectivo"
 
-        // 2. VINCULAMOS LOS TEXTVIEWS DEL COMPROBANTE (IDs exactas de tu XML)
         val tvIniciales = findViewById<TextView>(R.id.txt_iniciales_socio)
         val tvMontoPagado = findViewById<TextView>(R.id.pago_registrado_monto_pagado)
         val tvMedioPago = findViewById<TextView>(R.id.pago_registrado_medio_de_pago)
@@ -36,29 +34,24 @@ class CuotaCobradaActivity : AppCompatActivity() {
 
         var nombreSocioCompleto = "Socio"
 
-        // 3. INYECTAMOS LOS DATOS REALES SI EXISTE EL DNI
         if (dniRecibido != null) {
             val socio = helper.obtenerSocioPorDni(dniRecibido!!)
             if (socio != null) {
                 nombreSocioCompleto = "${socio.nombre} ${socio.apellido}"
 
-                // Calculamos las iniciales dinámicamente (Ej: Lucas Luccaroni -> LL)
                 val letraNombre = socio.nombre.firstOrNull()?.uppercase() ?: ""
                 val letraApellido = socio.apellido.firstOrNull()?.uppercase() ?: ""
                 tvIniciales.text = "$letraNombre$letraApellido"
             }
         }
 
-        // Asignamos los datos fijos/calculados a la tarjeta visual del XML
         tvMontoPagado.text = "$45.000"
         tvMedioPago.text = formaPagoRecibida
 
-        // Seteamos la fecha y hora exacta actual del cobro
         val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
         val fechaActual = sdf.format(Date())
         tvFechaHora.text = fechaActual
 
-        // ---------- BOTÓN COMPARTIR (CON DATOS DINÁMICOS) ----------
         btnCompartir.setOnClickListener {
             val textoACompartir = """
                 ÚLTIMO COMPROBANTE DE PAGO - TITAN CLUB
@@ -81,7 +74,6 @@ class CuotaCobradaActivity : AppCompatActivity() {
             startActivity(Intent.createChooser(shareIntent, "Compartir comprobante vía:"))
         }
 
-        // ---------- BOTÓN VOLVER AL INICIO (Limpia la pila de pantallas) ----------
         btnPagoRegistradoVolverAInicio.setOnClickListener {
             val intentarVolver = Intent(this, MenuPrincipalActivity::class.java)
             intentarVolver.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK

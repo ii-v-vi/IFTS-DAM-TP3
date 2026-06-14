@@ -15,8 +15,6 @@ class SQLiteHelper(context: Context): SQLiteOpenHelper(context, "clubdeportivo.d
         db.execSQL("CREATE TABLE NoSocios(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, apellido TEXT, dni TEXT, telefono TEXT, mail TEXT, fechaNacimiento TEXT, fichaMedica INTEGER)")
         db.execSQL("CREATE TABLE Pagos(id INTEGER PRIMARY KEY AUTOINCREMENT, dniSocio TEXT, fechaPago TEXT, formaPago TEXT, monto REAL)")
         db.execSQL("CREATE TABLE PagosNoSocios(id INTEGER PRIMARY KEY AUTOINCREMENT, dniNoSocio TEXT, fechaPago TEXT, actividad TEXT, monto REAL)")
-
-        // TABLA NUEVA PARA REQUERIMIENTO 6 (ACTIVIDAD RECIENTE AUTOMÁTICA)
         db.execSQL("CREATE TABLE Actividades(id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion TEXT, hora TEXT, tipoPunto TEXT)")
     }
 
@@ -29,7 +27,6 @@ class SQLiteHelper(context: Context): SQLiteOpenHelper(context, "clubdeportivo.d
         onCreate(db)
     }
 
-    // --- ENCAPSULACIÓN INTERNA DE AUDITORÍA ---
     private fun registrarActividad(db: SQLiteDatabase, descripcion: String, tipoPunto: String) {
         val horaActual = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"))
         val valores = ContentValues().apply {
@@ -54,7 +51,6 @@ class SQLiteHelper(context: Context): SQLiteOpenHelper(context, "clubdeportivo.d
         return lista
     }
 
-    // --- NUEVOS MÉTODOS DE CONTEO PARA DASHBOARD (PUNTOS 3 Y 5) ---
     fun contarSociosActivos(): Int {
         val db = readableDatabase
         val cursor = db.rawQuery("SELECT COUNT(*) FROM Socios WHERE activo = 1", null)
@@ -259,7 +255,6 @@ class SQLiteHelper(context: Context): SQLiteOpenHelper(context, "clubdeportivo.d
         return resultado
     }
 
-    // --- EL RESTO DE TUS MÉTODOS DE CONSULTA PERMANECEN IDÉNTICOS ---
     fun obtenerSociosCompleto(): MutableList<WrapperMiembro> {
         val lista = mutableListOf<WrapperMiembro>()
         val db = readableDatabase

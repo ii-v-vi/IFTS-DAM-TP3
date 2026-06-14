@@ -51,7 +51,6 @@ class PerfilSocioActivity : AppCompatActivity() {
         val btnEditar = findViewById<CardView>(R.id.btn_datos_socios_editar)
         btnInactivar = findViewById<CardView>(R.id.btn_datos_socios_inactivar)
 
-        // ---------- SOLUCIÓN XML: VINCULACIÓN DEL BOTÓN ELIMINAR ----------
         val btnEliminar = findViewById<CardView>(R.id.btn_datos_socios_eliminar)
 
         dniRecibido = intent.getStringExtra("MEMBER_DNI")
@@ -76,7 +75,6 @@ class PerfilSocioActivity : AppCompatActivity() {
             mostrarDialogoEditar()
         }
 
-        // ---------- SOLUCIÓN KOTLIN: ASIGNACIÓN DE DISPARADOR ----------
         btnEliminar.setOnClickListener {
             mostrarDialogoConfirmarEliminar()
         }
@@ -155,7 +153,6 @@ class PerfilSocioActivity : AppCompatActivity() {
         }
     }
 
-    // ---------- SOLUCIÓN LOGICA: CUADRO DE DIÁLOGO DE ADVERTENCIA ----------
     private fun mostrarDialogoConfirmarEliminar() {
         if (dniRecibido == null) return
 
@@ -168,7 +165,6 @@ class PerfilSocioActivity : AppCompatActivity() {
                 if (filasAfectadas > 0) {
                     Toast.makeText(this, "Socio eliminado correctamente", Toast.LENGTH_SHORT).show()
 
-                    // Limpiamos la pila de pantallas para forzar el refresco de listas en el Home
                     val intentVolver = Intent(this, MenuPrincipalActivity::class.java)
                     intentVolver.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intentVolver)

@@ -23,7 +23,6 @@ class NuevoNoSocioActivity : AppCompatActivity() {
 
         helper = SQLiteHelper(this)
 
-        // Capturamos los elementos del xml que vamos a necesitar
         val evNombre = findViewById<EditText>(R.id.evNombre)
         val evApellido = findViewById<EditText>(R.id.evApellido)
         val evDni = findViewById<EditText>(R.id.evDni)
@@ -32,7 +31,6 @@ class NuevoNoSocioActivity : AppCompatActivity() {
         val chkFicha = findViewById<CheckBox>(R.id.chkFichaMedica)
         val btnContinuar = findViewById<Button>(R.id.btnContinuar)
 
-        // ---------- FECHA ----------
         val btnFecha = findViewById<Button>(R.id.btnFecha)
         val tvFecha = findViewById<TextView>(R.id.tvFecha)
 
@@ -57,9 +55,7 @@ class NuevoNoSocioActivity : AppCompatActivity() {
                 .create()
             dialogFecha.show()
         }
-        // ---------- FECHA ----------
 
-        // ---------- BOTON CONTINUAR (NUEVO FLUJO MODULAR) ----------
         btnContinuar.setOnClickListener {
             if (
                 chkFicha.isChecked &&
@@ -70,7 +66,6 @@ class NuevoNoSocioActivity : AppCompatActivity() {
                 evMail.text.isNotEmpty() &&
                 tvFecha.text != "--/--/--"
             ) {
-                // Creamos la instancia con los datos ingresados
                 val noSocio = NoSocio(
                     nombre = evNombre.text.toString(),
                     apellido = evApellido.text.toString(),
@@ -81,27 +76,21 @@ class NuevoNoSocioActivity : AppCompatActivity() {
                     fichaMedica = chkFicha.isChecked
                 )
 
-                // Guardamos localmente en memoria y en la base de datos persistente
                 RepositorioNoSocios.listaNoSocios.add(noSocio)
                 helper.insertarNoSocio(noSocio)
 
                 Toast.makeText(this, "No Socio guardado correctamente", Toast.LENGTH_SHORT).show()
 
-                // RETORNO SEGURO AL MENÚ PRINCIPAL (Igual que en NuevoSocioActivity)
                 val intentMenu = Intent(this, MenuPrincipalActivity::class.java).apply {
-                    // FLAG_ACTIVITY_CLEAR_TOP barre las pantallas intermedias del alta (como la de elección)
-                    // FLAG_ACTIVITY_SINGLE_TOP trae al frente tu Menú Principal existente
                     flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 }
                 startActivity(intentMenu)
 
-                // Cerramos el alta definitivamente
                 finish()
 
             } else {
                 Toast.makeText(this, "Información incompleta", Toast.LENGTH_LONG).show()
             }
         }
-        // ---------- BOTON CONTINUAR ----------
     }
 }

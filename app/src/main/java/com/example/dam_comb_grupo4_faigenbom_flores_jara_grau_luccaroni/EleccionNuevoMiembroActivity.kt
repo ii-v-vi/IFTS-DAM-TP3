@@ -20,13 +20,13 @@ class EleccionNuevoMiembroActivity : AppCompatActivity() {
         btnSocio.setOnClickListener {
             val intent = Intent(this, NuevoSocioActivity::class.java)
             startActivity(intent)
-            finish() // 🔥 CLAVE: Matamos la pantalla de elección para sacarla de la pila
+            finish()
         }
 
         btnNoSocio.setOnClickListener {
             val intent = Intent(this, NuevoNoSocioActivity::class.java)
             startActivity(intent)
-            finish() // 🔥 CLAVE: Matamos la pantalla de elección aquí también
+            finish()
         }
     }
 }

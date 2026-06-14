@@ -17,7 +17,6 @@ class PerfilNoSocioActivity : AppCompatActivity() {
     private lateinit var helper: SQLiteHelper
     private var dniRecibido: String? = null
 
-    // Declaramos las vistas de la cabecera y datos principales
     private lateinit var txtIniciales: TextView
     private lateinit var txtNombreCompleto: TextView
     private lateinit var tvDni: TextView
@@ -26,7 +25,6 @@ class PerfilNoSocioActivity : AppCompatActivity() {
     private lateinit var tvNacimiento: TextView
     private lateinit var tvActividad: TextView
 
-    // Declaramos las vistas del historial inferior
     private lateinit var tvUltimoPago: TextView
     private lateinit var tvUltimaActividad: TextView
 
@@ -36,8 +34,6 @@ class PerfilNoSocioActivity : AppCompatActivity() {
 
         helper = SQLiteHelper(this)
 
-        // Vinculación de vistas de cabecera y datos
-        val btnVolver = findViewById<LinearLayout>(R.id.btn_volver_a_miembros)
         txtIniciales = findViewById<TextView>(R.id.txt_iniciales_no_socio)
         txtNombreCompleto = findViewById<TextView>(R.id.txt_nombre_no_socio)
 
@@ -46,21 +42,16 @@ class PerfilNoSocioActivity : AppCompatActivity() {
         tvTelefono = findViewById<TextView>(R.id.datos_no_socio_telefono)
         tvNacimiento = findViewById<TextView>(R.id.datos_no_socio_nacimiento)
         tvActividad = findViewById<TextView>(R.id.datos_no_socio_ficha_medica)
-
-        // Vinculación de vistas del Historial de Pagos
         tvUltimoPago = findViewById<TextView>(R.id.datos_no_socio_ultimo_pago)
         tvUltimaActividad = findViewById<TextView>(R.id.datos_no_socio_ultima_actividad)
 
-        // Vinculación de botones de acción
         val btnCobrarActividad = findViewById<CardView>(R.id.btn_datos_no_socios_cobrar_actividad)
         val btnEditarNoSocio = findViewById<CardView>(R.id.btn_datos_no_socios_editar)
-
-        // ---------- SOLUCIÓN XML: VINCULACIÓN DEL NUEVO BOTÓN ----------
+        val btnVolver = findViewById<LinearLayout>(R.id.btn_volver_a_miembros)
         val btnEliminarNoSocio = findViewById<CardView>(R.id.btn_datos_no_socios_eliminar)
 
         dniRecibido = intent.getStringExtra("MEMBER_DNI")
 
-        // Primera carga de datos
         cargarDatosNoSocio()
 
         btnVolver.setOnClickListener {
@@ -77,31 +68,26 @@ class PerfilNoSocioActivity : AppCompatActivity() {
             mostrarDialogoEditar()
         }
 
-        // ---------- SOLUCIÓN KOTLIN: DISPARADOR DE ACCIÓN ----------
         btnEliminarNoSocio.setOnClickListener {
             mostrarDialogoConfirmarEliminar()
         }
     }
 
-    // Encapsulado en una función para poder llamarlo de nuevo luego de editar
     private fun cargarDatosNoSocio() {
         if (dniRecibido != null) {
             val noSocio = helper.obtenerNoSocioPorDni(dniRecibido!!)
 
             if (noSocio != null) {
-                // Seteo de datos principales
                 txtNombreCompleto.text = String.format("%s %s", noSocio.nombre, noSocio.apellido)
                 tvDni.text = noSocio.dni
                 tvEmail.text = noSocio.mail
                 tvTelefono.text = noSocio.telefono
                 tvNacimiento.text = noSocio.fechaNacimiento
 
-                // Iniciales del Avatar
                 val iniN = noSocio.nombre.take(1).uppercase()
                 val iniA = noSocio.apellido.take(1).uppercase()
                 txtIniciales.text = String.format("%s%s", iniN, iniA)
 
-                // Condición de ficha médica en tarjeta de datos
                 if (noSocio.fichaMedica) {
                     tvActividad.text = "Pase Libre (Apto)"
                     tvActividad.setTextColor(getColor(R.color.titan_text_primary))
@@ -110,7 +96,6 @@ class PerfilNoSocioActivity : AppCompatActivity() {
                     tvActividad.setTextColor(getColor(R.color.titan_red))
                 }
 
-                // --- NUEVO: Carga del historial desde la base de datos de pases diarios ---
                 val (fechaPago, ultimaActividad) = helper.obtenerUltimoPagoNoSocio(dniRecibido!!)
                 tvUltimoPago.text = fechaPago
                 tvUltimaActividad.text = ultimaActividad
@@ -121,7 +106,6 @@ class PerfilNoSocioActivity : AppCompatActivity() {
         }
     }
 
-    // ---------- SOLUCIÓN LÓGICA: CUADRO DE DIÁLOGO DE BAJA PERMANENTE ----------
     private fun mostrarDialogoConfirmarEliminar() {
         if (dniRecibido == null) return
 
@@ -134,7 +118,6 @@ class PerfilNoSocioActivity : AppCompatActivity() {
                 if (filasAfectadas > 0) {
                     Toast.makeText(this, "No Socio eliminado correctamente", Toast.LENGTH_SHORT).show()
 
-                    // Retornamos al menú principal reseteando la pila lúdica para refrescar las vistas globales
                     val intentVolver = Intent(this, MenuPrincipalActivity::class.java)
                     intentVolver.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intentVolver)
@@ -151,7 +134,6 @@ class PerfilNoSocioActivity : AppCompatActivity() {
             .show()
     }
 
-    // Cuadro de diálogo interactivo para actualizar los datos personales
     private fun mostrarDialogoEditar() {
         if (dniRecibido == null) return
         val noSocio = helper.obtenerNoSocioPorDni(dniRecibido!!) ?: return
@@ -159,7 +141,6 @@ class PerfilNoSocioActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Editar Datos No Socio")
 
-        // Contenedor interno del diálogo
         val contenedorInputs = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             setPadding(50, 20, 50, 20)
@@ -177,7 +158,6 @@ class PerfilNoSocioActivity : AppCompatActivity() {
             isClickable = true
         }
 
-        // Despliegue del DatePickerDialog para el input de nacimiento
         inputNacimiento.setOnClickListener {
             val cal = Calendar.getInstance()
             val fechaPartida = inputNacimiento.text.toString().split("/")
@@ -211,7 +191,6 @@ class PerfilNoSocioActivity : AppCompatActivity() {
             val nac = inputNacimiento.text.toString().trim()
 
             if (nom.isNotEmpty() && ape.isNotEmpty() && nac.isNotEmpty()) {
-                // Ejecuta la actualización pasando los 6 parámetros correspondientes en SQLiteHelper
                 val exito = helper.editarNoSocio(dniRecibido!!, nom, ape, tel, mail, nac)
                 if (exito) {
                     Toast.makeText(this, "Cambios guardados con éxito", Toast.LENGTH_SHORT).show()
@@ -229,7 +208,6 @@ class PerfilNoSocioActivity : AppCompatActivity() {
         builder.show()
     }
 
-    // Refresco de ciclo de vida por si vuelve de pagar una actividad y debe actualizar el historial inferior
     override fun onResume() {
         super.onResume()
         cargarDatosNoSocio()

@@ -19,11 +19,9 @@ class ActividadCobradaActivity : AppCompatActivity() {
         val monto = intent.getStringExtra("ACTIVIDAD_PRECIO") ?: "0"
         val medio = intent.getStringExtra("FORMA_PAGO") ?: "Efectivo"
 
-        // Seteamos la fecha y hora exacta actual del cobro
         val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
         val fechaActual = sdf.format(Date())
 
-        // Calcular iniciales a partir del nombre completo enviado
         val partes = nombre.split(" ")
         val iniciales = (partes.getOrNull(0)?.firstOrNull() ?: 'I').toString() +
                 (partes.getOrNull(1)?.firstOrNull() ?: 'A').toString()
@@ -32,7 +30,6 @@ class ActividadCobradaActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.pago_registrado_monto_pagado).text = if (monto.contains("$")) monto else "$$monto"
         findViewById<TextView>(R.id.pago_registrado_medio_de_pago).text = medio
 
-        // ---------- SOLUCIÓN: BOTÓN COMPARTIR COMPROBANTE ----------
         findViewById<View>(R.id.btn_pago_registrado_compartir_comprobante).setOnClickListener {
             val textoACompartir = """
                 COMPROBANTE DE ACTIVIDAD (NO SOCIO) - TITAN CLUB
@@ -54,10 +51,9 @@ class ActividadCobradaActivity : AppCompatActivity() {
             startActivity(Intent.createChooser(shareIntent, "Compartir comprobante vía:"))
         }
 
-        // ---------- SOLUCIÓN: BOTÓN VOLVER AL INICIO (Limpia el Historial) ----------
         findViewById<View>(R.id.btn_pago_registrado_volver_a_inicio).setOnClickListener {
             val intentarVolver = Intent(this, MenuPrincipalActivity::class.java)
-            // Estas flags destruyen todas las pantallas intermedias del flujo de cobro
+
             intentarVolver.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intentarVolver)
             finish()
