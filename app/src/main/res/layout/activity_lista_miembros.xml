@@ -7,26 +7,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/rootListaMiembros"
-    android:padding="16dp"
     android:background="@color/titan_background">
-    <!--Volver -->
-    <TextView
-        android:id="@+id/tvVolver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/flecha_atras_negra"
-        android:drawablePadding="6dp"
-        android:text="Volver"/>
-    <!--Miembro - Agregar -->
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingTop="30dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:gravity="center_vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="MIEMBRO"
             android:textStyle="bold"
             android:textSize="16sp"/>
@@ -35,550 +30,197 @@
             android:id="@+id/btnAgregarMiembro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
             android:text="Agregar" />
     </LinearLayout>
-    <!--Buscador-->
+
     <EditText
+        android:id="@+id/etBuscar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Buscar Nombre Apeliido o DNI"
-        />
-    <!--Botones-->
+        android:layout_marginTop="4dp"
+        android:layout_marginHorizontal="16dp"
+        android:hint="Buscar Nombre Apellido o DNI" />
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:paddingHorizontal="16dp"
+        android:layout_marginTop="16dp">
+
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/btnFiltroTodos"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minWidth="0dp"
             android:text="Todos"
-            android:textSize="10sp"
-            android:minWidth="0dp"/>
+            android:textSize="10sp" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/btnSocios"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="6dp"
+            android:minWidth="0dp"
             android:text="Socios"
-            android:textSize="10sp"
-            android:minWidth="0dp"/>
+            android:textSize="10sp" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/btnNoSocios"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="6dp"
+            android:minWidth="0dp"
             android:text="No Socios"
-            android:textSize="10sp"
-            android:minWidth="0dp"/>
+            android:textSize="10sp" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/btnFiltroVencenHoy"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="6dp"
+            android:minWidth="0dp"
             android:text="Vencen Hoy"
-            android:textSize="10sp"
-            android:minWidth="0dp"/>
+            android:textSize="10sp" />
     </LinearLayout>
-    <!--Cant. Miembros-->
+
     <TextView
+        android:id="@+id/tvContadorMiembros"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="23 Miembros"
+        android:text="0 Miembros"
         android:layout_marginTop="16dp"
+        android:paddingLeft="16dp"
         android:layout_marginBottom="16dp"/>
-    <!--Lista Miembros-->
-    <ScrollView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMiembros"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:paddingHorizontal="10dp"
+        tools:listitem="@layout/item_miembro_card" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <androidx.cardview.widget.CardView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="6dp"
-                app:contentPadding="6dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        app:cardBackgroundColor="@color/titan_avatar"
-                        app:cardCornerRadius="40dp"
-                        app:cardElevation="14dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="LL"
-                            android:textAlignment="center"
-                            android:textColor="@color/titan_card"
-                            android:textSize="26sp"
-                            android:textStyle="bold"
-                            tools:ignore="DuplicateIds" />
-                    </androidx.cardview.widget.CardView>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:text="Lucas Luccaroni"
-                            android:layout_width="150dp"
-                            android:layout_weight="1"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:shadowColor="#000000"
-                            android:shadowDx="0.5"
-                            android:shadowDy="0.5"
-                            android:shadowRadius="1.5"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:text="DNI 12345678"
-                            android:layout_weight="1"/>
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/cardview1"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="Vence Hoy"
-                        android:textSize="10sp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/flecha_atras_negra"
-                        android:rotation="180"
-                        android:layout_marginLeft="5dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-               android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="6dp"
-                app:contentPadding="6dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        app:cardBackgroundColor="@color/titan_avatar"
-                        app:cardCornerRadius="40dp"
-                        app:cardElevation="14dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="IF"
-                            android:textAlignment="center"
-                            android:textColor="@color/titan_card"
-                            android:textSize="26sp"
-                            android:textStyle="bold" />
-                    </androidx.cardview.widget.CardView>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:text="Ivan Faigenbom"
-                            android:layout_weight="1"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:shadowColor="#000000"
-                            android:shadowDx="0.5"
-                            android:shadowDy="0.5"
-                            android:shadowRadius="1.5"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:text="DNI 12345678"
-                            android:layout_weight="1"/>
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/cardview2"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="Vence Hoy"
-                        android:textSize="10sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/flecha_atras_negra"
-                        android:rotation="180"
-                        android:layout_marginLeft="5dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="6dp"
-                app:contentPadding="6dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        app:cardBackgroundColor="@color/titan_avatar"
-                        app:cardCornerRadius="40dp"
-                        app:cardElevation="14dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="MF"
-                            android:textAlignment="center"
-                            android:textColor="@color/titan_card"
-                            android:textSize="26sp"
-                            android:textStyle="bold" />
-                    </androidx.cardview.widget.CardView>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:text="Matias Jara"
-                            android:layout_weight="1"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:shadowColor="#000000"
-                            android:shadowDx="0.5"
-                            android:shadowDy="0.5"
-                            android:shadowRadius="1.5"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:text="DNI 12345678"
-                            android:layout_weight="1"/>
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/cardview3"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="Vence Hoy"
-                        android:textSize="10sp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/flecha_atras_negra"
-                        android:rotation="180"
-                        android:layout_marginLeft="5dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="6dp"
-                app:contentPadding="6dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        app:cardBackgroundColor="@color/titan_avatar"
-                        app:cardCornerRadius="40dp"
-                        app:cardElevation="14dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="MJ"
-                            android:textAlignment="center"
-                            android:textColor="@color/titan_card"
-                            android:textSize="26sp"
-                            android:textStyle="bold"
-                            tools:ignore="DuplicateIds" />
-                    </androidx.cardview.widget.CardView>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:text="Mauro Flores"
-                            android:layout_weight="1"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:shadowColor="#000000"
-                            android:shadowDx="0.5"
-                            android:shadowDy="0.5"
-                            android:shadowRadius="1.5"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:text="DNI 12345678"
-                            android:layout_weight="1"/>
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/cardview4"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:text="Socio"
-                        android:textSize="16sp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/flecha_atras_negra"
-                        android:rotation="180"
-                        android:layout_marginLeft="25dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="6dp"
-                app:contentPadding="6dp"
-                >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        app:cardBackgroundColor="@color/titan_avatar"
-                        app:cardCornerRadius="40dp"
-                        app:cardElevation="14dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="JG"
-                            android:textAlignment="center"
-                            android:textColor="@color/titan_card"
-                            android:textSize="26sp"
-                            android:textStyle="bold"
-                            tools:ignore="DuplicateIds" />
-                    </androidx.cardview.widget.CardView>
-
-                    <LinearLayout
-                        android:layout_width="164dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:layout_weight="1"
-                            android:shadowColor="#000000"
-                            android:shadowDx="0.5"
-                            android:shadowDy="0.5"
-                            android:shadowRadius="1.5"
-                            android:text="Judith Grau"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:layout_weight="1"
-                            android:text="DNI 12345678" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/cardview5"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:text="No Socio"
-                        android:textSize="16sp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/flecha_atras_negra"
-                        android:rotation="180"
-                        android:layout_marginLeft="10dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-    </ScrollView>
-    <!--Barra inferior-->
-    <androidx.cardview.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="72dp"
-        app:cardCornerRadius="0dp"
-        app:cardBackgroundColor="@color/titan_background">
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/nav_inicio"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/nav_inicio"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:clickable="true"
-                android:focusable="true">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/home"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Inicio"
-                    android:textSize="12sp"
-                    android:textColor="#9E9E9E" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/nav_miembros"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:clickable="true"
-                android:focusable="true">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/nav_bg_inicio"
+                android:layout_width="38dp"
+                android:layout_height="42dp"
+                app:cardBackgroundColor="@color/titan_nav_inactive_background"
+                app:cardCornerRadius="21dp"
+                app:cardElevation="0.1dp"
+                app:tint="@color/titan_nav_inactive">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/people"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/nav_ic_inicio"
+                    android:layout_width="22dp"
                     android:layout_height="wrap_content"
-                    android:text="Miembros"
-                    android:textSize="12sp"
-                    android:textColor="#9E9E9E" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/nav_cobrar"
-                android:layout_width="0dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_casita"
+                    app:tint="@color/titan_nav_inactive" />
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/nav_text_inicio"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
+                android:fontFamily="@font/montserrat_bold"
                 android:gravity="center"
-                android:clickable="true"
-                android:focusable="true">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/money"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cobrar"
-                    android:textSize="12sp"
-                    android:textColor="#9E9E9E" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/nav_mas"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:clickable="true"
-                android:focusable="true">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/menu"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Más"
-                    android:textSize="12sp"
-                    android:textColor="#9E9E9E" />
-            </LinearLayout>
-
+                android:text="Inicio"
+                android:textColor="@color/titan_nav_inactive"
+                android:textSize="14sp" />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/nav_miembros"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/nav_bg_miembros"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                app:cardBackgroundColor="@color/titan_red"
+                app:cardCornerRadius="21dp"
+                app:cardElevation="0.1dp">
+                <ImageView
+                    android:id="@+id/nav_ic_miembros"
+                    android:layout_width="28dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_miembros"/>
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/nav_text_miembros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:text="Miembros"
+                android:textColor="@color/titan_red"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/nav_mas"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/nav_bg_mas"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                app:cardBackgroundColor="@color/titan_nav_inactive_background"
+                app:cardCornerRadius="21dp"
+                app:cardElevation="0.1dp">
+                <ImageView
+                    android:id="@+id/nav_ic_mas"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_mas"
+                    app:tint="@color/titan_nav_inactive" />
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/nav_text_mas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:text="Más"
+                android:textColor="@color/titan_nav_inactive"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

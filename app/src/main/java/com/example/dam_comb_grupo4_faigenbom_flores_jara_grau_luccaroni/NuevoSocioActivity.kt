@@ -7,19 +7,20 @@ import android.widget.CheckBox
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-
 import androidx.appcompat.app.AppCompatActivity
 
 class NuevoSocioActivity : AppCompatActivity() {
+
+    lateinit var helper: SQLiteHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nuevo_socio)
 
+        helper = SQLiteHelper(this)
 
-        // Capturamos los elementos del xml que vamos a necesitar
         val evNombre = findViewById<EditText>(R.id.evNombre)
         val evApellido = findViewById<EditText>(R.id.evApellido)
         val evDni = findViewById<EditText>(R.id.evDni)
@@ -27,21 +28,14 @@ class NuevoSocioActivity : AppCompatActivity() {
         val evMail = findViewById<EditText>(R.id.evMail)
         val chkFicha = findViewById<CheckBox>(R.id.chkFichaMedica)
         val btnContinuar = findViewById<Button>(R.id.btnContinuar)
-        val btnVolver = findViewById<TextView>(R.id.tvVolver)
-
-
-
-        // ---------- FECHA ----------
-        // --- Creamos un dialog para que el usuario pueda selecionar una fecha y nosotros podamos capturarla
         val btnFecha = findViewById<Button>(R.id.btnFecha)
         val tvFecha = findViewById<TextView>(R.id.tvFecha)
 
         btnFecha.setOnClickListener {
-            //btnContinuar.setBackgroundColor(colorActivo)
             val modalSeleccionarFecha = layoutInflater.inflate(R.layout.dialog_seleccionar_fecha, null)
             val calendario = modalSeleccionarFecha.findViewById<DatePicker>(R.id.calendario)
 
-            val dialogFecha = AlertDialog.Builder(this)
+            AlertDialog.Builder(this)
                 .setTitle("Fecha de nacimiento")
                 .setView(modalSeleccionarFecha)
                 .setPositiveButton("Guardar") { _, _ ->
@@ -51,47 +45,63 @@ class NuevoSocioActivity : AppCompatActivity() {
 
                     val fechaFormateada = "$dia/$mes/$anio"
                     tvFecha.text = fechaFormateada
-
-                    Toast.makeText(this, "Fecha: $fechaFormateada", Toast.LENGTH_LONG)
-                        .show()
+                    Toast.makeText(this, "Fecha seleccionada: $fechaFormateada", Toast.LENGTH_SHORT).show()
                 }
                 .setNegativeButton("Cancelar", null)
                 .create()
-            dialogFecha.show()
+                .show()
         }
-        // ---------- FECHA ----------
 
-
-
-
-        // ---------- BOTON CONTINUAR ----------
         btnContinuar.setOnClickListener {
+            val dniIngresado = evDni.text.toString().trim()
+
             if (
-                (chkFicha.isChecked) &&
-                (evNombre.text.isNotEmpty()) &&
-                (evApellido.text.isNotEmpty()) &&
-                (evDni.text .isNotEmpty()) &&
-                (evTelefono.text .isNotEmpty()) &&
-                (evMail.text .isNotEmpty()) &&
-                (tvFecha.text != "--/--/--")
+                chkFicha.isChecked &&
+                evNombre.text.isNotEmpty() &&
+                evApellido.text.isNotEmpty() &&
+                dniIngresado.isNotEmpty() &&
+                evTelefono.text.isNotEmpty() &&
+                evMail.text.isNotEmpty() &&
+                tvFecha.text != "--/--/--"
             ) {
-                Toast.makeText(this , "Creando usuario", Toast.LENGTH_LONG).show()
-                val intentNuevoSocio = Intent(this, CobrarCuotaActivity::class.java)
-                startActivity(intentNuevoSocio)
+
+                val socio = Socio(
+                    nombre = evNombre.text.toString().trim(),
+                    apellido = evApellido.text.toString().trim(),
+                    dni = dniIngresado,
+                    telefono = evTelefono.text.toString().trim(),
+                    mail = evMail.text.toString().trim(),
+                    fechaNacimiento = tvFecha.text.toString(),
+                    fichaMedica = chkFicha.isChecked
+                )
+
+
+                val idGenerado = helper.insertarSocio(socio)
+
+                if (idGenerado != -1L) {
+                    Toast.makeText(
+                        this,
+                        "Socio guardado con éxito",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    val intentMenu = Intent(this, MenuPrincipalActivity::class.java).apply {
+                        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    }
+                    startActivity(intentMenu)
+
+                    finish()
+                } else {
+                    Toast.makeText(this, "Error al guardar en la base de datos", Toast.LENGTH_LONG).show()
+                }
+
             } else {
-                Toast.makeText(this , "Información incompleta", Toast.LENGTH_LONG).show()
+                if (!chkFicha.isChecked) {
+                    Toast.makeText(this, "Es obligatorio presentar la Ficha Médica", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_LONG).show()
+                }
             }
         }
-        // ---------- BOTON CONTINUAR ----------
-
-
-
-        // ---------- BOTON VOLVER ----------
-        btnVolver.setOnClickListener {
-            val intentarVolver = Intent(this, EleccionNuevoMiembroActivity::class.java)
-            startActivity(intentarVolver)
-        }
-        // ---------- BOTON VOLVER ----------
-
     }
 }

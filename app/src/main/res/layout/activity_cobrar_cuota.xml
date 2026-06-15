@@ -1,56 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:background="@color/fondoApp"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:background="@color/fondoApp">
 
-    <!-- HEADER ROJO REUTILIZABLE -->
     <LinearLayout
         android:id="@+id/llTitulo"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_alignParentTop="true"
         android:gravity="start"
         android:orientation="vertical"
         android:background="#D63A27">
 
-        <!-- SUBCONTENEDOR BOTON VOLVER -->
-        <LinearLayout
-            android:id="@+id/llVolver"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingLeft="15dp"
-            android:orientation="horizontal">
-
-            <!-- ICONO FLECHA -->
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/flechitavolver">
-            </ImageView>
-
-            <!-- VOLVER -->
-            <TextView
-                android:id="@+id/tvVolver"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="15dp"
-                android:text="@string/volver"
-                android:textSize="15sp"
-                android:textColor="@color/white">
-            </TextView>
-        </LinearLayout>
-
-        <!-- TITULO DEL HEADER -->
         <TextView
             android:id="@+id/tvTituloNav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
+            android:paddingTop="15dp"
             android:text="@string/cobrarCuota"
             android:textStyle="bold"
             android:textSize="22sp"
@@ -58,291 +29,213 @@
         </TextView>
     </LinearLayout>
 
-    <!-- PASOS 1 - 2 -->
-    <LinearLayout
-        android:id="@+id/llpasos"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="12dp">
+        android:layout_height="match_parent"
+        android:layout_below="@id/llTitulo"
+        android:fillViewport="true">
 
-        <!-- PASO 1 -->
         <LinearLayout
-            android:id="@+id/llPaso1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/tvPaso1"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:text="✓"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:background="@drawable/circulo_completo">
-            </TextView>
-
-            <TextView
-                android:id="@+id/tvDatos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Datos"
-                android:textSize="12sp"
-                android:layout_marginTop="4dp">
-            </TextView>
-        </LinearLayout>
-
-        <!-- LINEA -->
-        <View
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_weight="1"
-            android:layout_marginBottom="16dp"
-            android:layout_marginHorizontal="16dp"
-            android:background="#CCCCCC">
-        </View>
-
-
-        <!-- PASO 2 -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/tvPaso3"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:text="2"
-                android:gravity="center"
-                android:textColor="#F2F2F2"
-                android:textStyle="bold"
-                android:background="@drawable/circulo_activo">
-            </TextView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cobrar"
-                android:textSize="12sp"
-                android:layout_marginTop="4dp">
-            </TextView>
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- CONTENEDOR CON DATOS DEL SOCIO -->
-    <LinearLayout
-        android:id="@+id/llSocio"
-        android:layout_marginHorizontal="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SOCIO"
-            android:textStyle="bold"
-            android:textSize="18sp">
-        </TextView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="N° de socio"
-            android:textSize="16sp">
-        </TextView>
-
-        <!-- SUBCONTENEDOR N°SOCIO -->
-        <LinearLayout
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:orientation="vertical"
-            android:elevation="5dp"
-            android:background="@color/white">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="2"
-                android:textSize="20sp">
-            </TextView>
-        </LinearLayout>
-
-        <!-- SUBCONTENEDOR SOCIO - ICONO - INFO - CUOTA -->
-        <LinearLayout
-            android:id="@+id/llInfoSocio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:padding="10dp"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:elevation="5dp"
-            android:background="@color/white">
-
-            <!-- ICONO DEL SOCIO -->
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp">
             <LinearLayout
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:orientation="vertical"
-                android:background="@drawable/circulo_activo"
-                android:gravity="center|center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="LL"
-                    android:textColor="@color/white">
-                </TextView>
-            </LinearLayout>
-
-            <!-- NOMBRE - SOCIO - CUOTA -->
-            <LinearLayout
-                android:layout_weight="1"
-                android:id="@+id/nombreNroActividad"
-                android:layout_width="wrap_content"
+                android:id="@+id/llSocio"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginHorizontal="15dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/nombreSocio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="15dp"
-                    android:text="Lucas Luccaroni">
+                    android:text="SOCIO"
+                    android:textStyle="bold"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="N° de socio"
+                    android:textSize="16sp">
                 </TextView>
 
                 <LinearLayout
-                    android:id="@+id/llSocioActividad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:orientation="horizontal">
-
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:orientation="vertical"
+                    android:elevation="5dp"
+                    android:background="@color/white">
                     <TextView
-                        android:id="@+id/nroSocio"
+                        android:id="@+id/textView_nro_socio_cuadrado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:text="Socio #2   -">
-                    </TextView>
-                    <TextView
-                        android:id="@+id/tvActividad"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:textSize="18sp"
-                        android:text="Cuota N°1">
+                        android:layout_marginLeft="15dp"
+                        android:text=""
+                        android:textSize="20sp">
                     </TextView>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llInfoSocio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:padding="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:elevation="5dp"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/circulo_activo"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/txt_iniciales_socio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="@color/white">
+                        </TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/nombreNroActividad"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="15dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/nombreSocio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:text="">
+                        </TextView>
+
+                        <LinearLayout
+                            android:id="@+id/llSocioActividad"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/nroSocio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="15sp"
+                                android:textColor="#555555"
+                                android:text="">
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/tvActividad"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="1dp"
+                                android:textSize="15sp"
+                                android:textStyle="italic"
+                                android:textColor="@color/titan_red"
+                                android:text="">
+                            </TextView>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
 
-    <!-- CONTENEDOR TIPOS DE PAGO -->
-    <LinearLayout
-        android:id="@+id/llTipoDePago"
-        android:layout_width="match_parent"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tipo de Pago"
-            android:textStyle="bold"
-            android:textSize="18sp">
-        </TextView>
-
-        <!-- SUBCONTENEDOR PARA RADIOPGROUP / RADIOBUTTONS -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <!-- RADIO GROUP PARA TIPOS DE PAGO -->
-            <RadioGroup
-                android:id="@+id/rgTipoDePago"
+            <LinearLayout
+                android:id="@+id/llTipoDePago"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <!-- RADIOGROUP EFECTIVO -->
-                <RadioButton
-                    android:id="@+id/rbtEfectivo"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="15dp"
-                    android:elevation="5dp"
-                    android:background="@color/white"
-                    android:text="Efectivo">
-                </RadioButton>
+                    android:text="Tipo de Pago"
+                    android:textStyle="bold"
+                    android:textSize="18sp">
+                </TextView>
 
-                <!-- RADIOGROUP TARJETA 1 CUOTA -->
-                <RadioButton
-                    android:id="@+id/rbtTarjetaUnaCuota"
+                <RadioGroup
+                    android:id="@+id/rgTipoDePago"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="15dp"
-                    android:background="@color/white"
-                    android:elevation="5dp"
-                    android:text="Tarjeta - 1 cuota">
-                </RadioButton>
+                    android:layout_marginTop="10dp">
 
-                <!-- RADIOGROUP TARJETA 3 CUOTAS -->
-                <RadioButton
-                    android:id="@+id/rbtTarjetaTresCutoas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="15dp"
-                    android:background="@color/white"
-                    android:elevation="5dp"
-                    android:text="Tarjeta - 3 cuotas">
-                </RadioButton>
+                    <RadioButton
+                        android:id="@+id/rbtEfectivo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
+                        android:elevation="5dp"
+                        android:background="@color/white"
+                        android:padding="10dp"
+                        android:text="Efectivo">
+                    </RadioButton>
 
-                <!-- RADIOGROUP TARJETA 6 CUOTAS -->
-                <RadioButton
-                    android:id="@+id/rbtTarjetaSeisCutoas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="15dp"
-                    android:background="@color/white"
-                    android:elevation="5dp"
-                    android:text="Tarjeta - 6 cuotas">
-                </RadioButton>
-            </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rbtTarjetaUnaCuota"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
+                        android:background="@color/white"
+                        android:elevation="5dp"
+                        android:padding="10dp"
+                        android:text="Tarjeta - 1 cuota">
+                    </RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/rbtTarjetaTresCutoas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
+                        android:background="@color/white"
+                        android:elevation="5dp"
+                        android:padding="10dp"
+                        android:text="Tarjeta - 3 cuotas">
+                    </RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/rbtTarjetaSeisCutoas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
+                        android:background="@color/white"
+                        android:elevation="5dp"
+                        android:padding="10dp"
+                        android:text="Tarjeta - 6 cuotas">
+                    </RadioButton>
+                </RadioGroup>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnContinuar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:paddingHorizontal="80dp"
+                android:text="@string/continuar"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/rojoFuerte">
+            </Button>
+
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
-
-    <!-- VIEW PARA RELLENAR EL ESPACIO -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-    </View>
-
-    <!-- BOTON CONTINUAR -->
-    <Button
-        android:id="@+id/btnContinuar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="90dp"
-        android:paddingHorizontal="100dp"
-        android:text="@string/continuar"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:backgroundTint="@color/rojoFuerte">
-    </Button>
-
-</LinearLayout>
+</RelativeLayout>
