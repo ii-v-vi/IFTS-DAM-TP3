@@ -27,12 +27,51 @@ class SQLiteHelper(context: Context): SQLiteOpenHelper(context, "clubdeportivo.d
         onCreate(db)
     }
 
+    fun seedDatosDePruebaSiFaltanVencidos() {
+        val db = readableDatabase
+        val hoy = LocalDate.now().toString()
+        val cursor = db.rawQuery("SELECT COUNT(*) FROM Socios WHERE activo = 1 AND fechaVencimiento <= ?", arrayOf(hoy))
+        var cantidadVencidos = 0
+        if (cursor.moveToFirst()) cantidadVencidos = cursor.getInt(0)
+        cursor.close()
+        db.close()
+
+        if (cantidadVencidos == 0) {
+            val dbWritable = writableDatabase
+            val ayer = LocalDate.now().minusDays(1).toString()
+            val semanaPasada = LocalDate.now().minusDays(7).toString()
+
+            val sociosPrueba = listOf(
+                ContentValues().apply {
+                    put("nombre", "Juan"); put("apellido", "Pérez"); put("dni", "111");
+                    put("telefono", "1122334455"); put("mail", "juan@ejemplo.com");
+                    put("fechaNacimiento", "1990-01-01"); put("fichaMedica", 1);
+                    put("fechaVencimiento", hoy); put("activo", 1)
+                },
+                ContentValues().apply {
+                    put("nombre", "Ana"); put("apellido", "Gómez"); put("dni", "222");
+                    put("telefono", "1199887766"); put("mail", "ana@ejemplo.com");
+                    put("fechaNacimiento", "1995-05-15"); put("fichaMedica", 1);
+                    put("fechaVencimiento", ayer); put("activo", 1)
+                },
+                ContentValues().apply {
+                    put("nombre", "Luis"); put("apellido", "López"); put("dni", "333");
+                    put("telefono", "1155443322"); put("mail", "luis@ejemplo.com");
+                    put("fechaNacimiento", "1985-10-20"); put("fichaMedica", 0);
+                    put("fechaVencimiento", semanaPasada); put("activo", 1)
+                }
+            )
+            for (socio in sociosPrueba) { dbWritable.insert("Socios", null, socio) }
+            dbWritable.close()
+        }
+    }
+
     private fun registrarActividad(db: SQLiteDatabase, descripcion: String, tipoPunto: String) {
         val horaActual = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"))
         val valores = ContentValues().apply {
             put("descripcion", descripcion)
             put("hora", horaActual)
-            put("tipoPunto", tipoPunto) // "verde", "azul", "marron", "rojo"
+            put("tipoPunto", tipoPunto)
         }
         db.insert("Actividades", null, valores)
     }
@@ -128,28 +167,6 @@ class SQLiteHelper(context: Context): SQLiteOpenHelper(context, "clubdeportivo.d
         return id
     }
 
-    fun registrarPagoNoSocio(dni: String, actividad: String, monto: Double): Boolean {
-        val db = writableDatabase
-        val valores = ContentValues().apply {
-            put("dniNoSocio", dni)
-            put("fechaPago", LocalDate.now().toString())
-            put("actividad", actividad)
-            put("monto", monto)
-        }
-        val id = db.insert("PagosNoSocios", null, valores)
-        if (id != -1L) {
-            val cursor = db.rawQuery("SELECT nombre, apellido FROM NoSocios WHERE dni = ?", arrayOf(dni))
-            var nombreCompleto = "No Socio"
-            if (cursor.moveToFirst()) {
-                nombreCompleto = "${cursor.getString(0)} ${cursor.getString(1).take(1)}."
-            }
-            cursor.close()
-            registrarActividad(db, "Pago actividad · $nombreCompleto · $actividad", "marron")
-        }
-        db.close()
-        return id != -1L
-    }
-
     fun actualizarEstadoSocio(dni: String, nuevoEstado: Boolean): Boolean {
         val db = writableDatabase
         val valores = ContentValues().apply { put("activo", if (nuevoEstado) 1 else 0) }
@@ -220,7 +237,27 @@ class SQLiteHelper(context: Context): SQLiteOpenHelper(context, "clubdeportivo.d
             true
         } catch (e: Exception) { false } finally { db.endTransaction(); db.close() }
     }
-
+    fun registrarPagoNoSocio(dni: String, actividad: String, monto: Double): Boolean {
+        val db = writableDatabase
+        val valores = ContentValues().apply {
+            put("dniNoSocio", dni)
+            put("fechaPago", LocalDate.now().toString())
+            put("actividad", actividad)
+            put("monto", monto)
+        }
+        val id = db.insert("PagosNoSocios", null, valores)
+        if (id != -1L) {
+            val cursor = db.rawQuery("SELECT nombre, apellido FROM NoSocios WHERE dni = ?", arrayOf(dni))
+            var nombreCompleto = "No Socio"
+            if (cursor.moveToFirst()) {
+                nombreCompleto = "${cursor.getString(0)} ${cursor.getString(1).take(1)}."
+            }
+            cursor.close()
+            registrarActividad(db, "Pago actividad · $nombreCompleto · $actividad", "marron")
+        }
+        db.close()
+        return id != -1L
+    }
     fun eliminarSocio(dni: String): Int {
         val db = writableDatabase
         val cursor = db.rawQuery("SELECT nombre, apellido FROM Socios WHERE dni = ?", arrayOf(dni))
@@ -255,6 +292,68 @@ class SQLiteHelper(context: Context): SQLiteOpenHelper(context, "clubdeportivo.d
         return resultado
     }
 
+    fun esSocioActivo(dni: String): Boolean {
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT activo FROM Socios WHERE dni = ?", arrayOf(dni))
+        var activo = true
+        if (cursor.moveToFirst()) { activo = cursor.getInt(0) == 1 }
+        cursor.close(); db.close()
+        return activo
+    }
+
+    fun obtenerSocioPorDni(dni: String): Socio? {
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT nombre, apellido, dni, telefono, mail, fechaNacimiento, fichaMedica FROM Socios WHERE dni = ?", arrayOf(dni))
+        var socio: Socio? = null
+
+        if (cursor.moveToFirst()) {
+            fun getStringSafe(index: Int): String = cursor.getString(index) ?: ""
+
+            socio = Socio(
+                nombre = getStringSafe(0),
+                apellido = getStringSafe(1),
+                dni = getStringSafe(2),
+                telefono = getStringSafe(3),
+                mail = getStringSafe(4),
+                fechaNacimiento = getStringSafe(5),
+                fichaMedica = cursor.getInt(6) == 1 // Si es 1, es true
+            )
+        }
+        cursor.close()
+        db.close()
+        return socio
+    }
+
+    fun obtenerNoSocioPorDni(dni: String): NoSocio? {
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM NoSocios WHERE dni = ?", arrayOf(dni))
+        var noSocio: NoSocio? = null
+        if (cursor.moveToFirst()) { noSocio = NoSocio(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getInt(7) == 1) }
+        cursor.close(); db.close()
+        return noSocio
+    }
+    fun obtenerNoSociosCompleto(): MutableList<WrapperMiembro> {
+        val lista = mutableListOf<WrapperMiembro>()
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT nombre, apellido, dni FROM NoSocios", null)
+        if (cursor.moveToFirst()) {
+            do {
+                lista.add(
+                    WrapperMiembro(
+                        nombre = cursor.getString(0),
+                        apellido = cursor.getString(1),
+                        dni = cursor.getString(2),
+                        esSocio = false,
+                        deudorVencido = false,
+                        fechaVencimiento = null
+                    )
+                )
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+        return lista
+    }
     fun obtenerSociosCompleto(): MutableList<WrapperMiembro> {
         val lista = mutableListOf<WrapperMiembro>()
         val db = readableDatabase
@@ -277,56 +376,6 @@ class SQLiteHelper(context: Context): SQLiteOpenHelper(context, "clubdeportivo.d
         cursor.close(); db.close()
         return lista
     }
-
-    fun esSocioActivo(dni: String): Boolean {
-        val db = readableDatabase
-        val cursor = db.rawQuery("SELECT activo FROM Socios WHERE dni = ?", arrayOf(dni))
-        var activo = true
-        if (cursor.moveToFirst()) { activo = cursor.getInt(0) == 1 }
-        cursor.close(); db.close()
-        return activo
-    }
-
-    fun obtenerSocios(): MutableList<Socio> {
-        val lista = mutableListOf<Socio>()
-        val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM Socios", null)
-        if (cursor.moveToFirst()) {
-            do { lista.add(Socio(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getInt(7) == 1)) } while (cursor.moveToNext())
-        }
-        cursor.close(); db.close()
-        return lista
-    }
-
-    fun obtenerNoSocios(): MutableList<NoSocio> {
-        val lista = mutableListOf<NoSocio>()
-        val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM NoSocios", null)
-        if (cursor.moveToFirst()) {
-            do { lista.add(NoSocio(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getInt(7) == 1)) } while (cursor.moveToNext())
-        }
-        cursor.close(); db.close()
-        return lista
-    }
-
-    fun obtenerSocioPorDni(dni: String): Socio? {
-        val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM Socios WHERE dni = ?", arrayOf(dni))
-        var socio: Socio? = null
-        if (cursor.moveToFirst()) { socio = Socio(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getInt(7) == 1) }
-        cursor.close(); db.close()
-        return socio
-    }
-
-    fun obtenerNoSocioPorDni(dni: String): NoSocio? {
-        val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM NoSocios WHERE dni = ?", arrayOf(dni))
-        var noSocio: NoSocio? = null
-        if (cursor.moveToFirst()) { noSocio = NoSocio(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getInt(7) == 1) }
-        cursor.close(); db.close()
-        return noSocio
-    }
-
     fun obtenerUltimoPagoNoSocio(dni: String): Pair<String, String> {
         val db = readableDatabase
         val query = "SELECT fechaPago, actividad FROM PagosNoSocios WHERE dniNoSocio = ? ORDER BY id DESC LIMIT 1"

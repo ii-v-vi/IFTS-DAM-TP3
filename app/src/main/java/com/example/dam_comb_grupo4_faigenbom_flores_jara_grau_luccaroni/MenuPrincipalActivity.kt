@@ -29,6 +29,9 @@ class MenuPrincipalActivity : AppCompatActivity() {
 
         helper = SQLiteHelper(this)
 
+        // Se ejecuta solo si detecta que faltan vencidos para testeo
+        helper.seedDatosDePruebaSiFaltanVencidos()
+
         tvFechaInicio = findViewById(R.id.datetime_inicio)
         tvCantSociosActivos = findViewById(R.id.card_cantidad_socios_activos)
         tvCantNoSocios = findViewById(R.id.card_cantidad_no_socios)
@@ -83,7 +86,7 @@ class MenuPrincipalActivity : AppCompatActivity() {
                 text = "No se registraron movimientos recientes."
                 try {
                     typeface = ResourcesCompat.getFont(context, R.font.montserrat_regular)
-                } catch (e: Exception) { /* Por si no encuentra la fuente */ }
+                } catch (e: Exception) { }
                 setTextColor(ContextCompat.getColor(context, R.color.titan_nav_inactive))
                 textSize = 14f
                 setPadding(0, 20, 0, 0)

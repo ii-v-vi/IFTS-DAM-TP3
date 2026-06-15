@@ -112,23 +112,8 @@ class ActivityListaMiembros : AppCompatActivity() {
 
     private fun cargarDatosDesdeBaseDeDatos() {
         listaCompletaUnificada.clear()
-
-        val sociosUnificados = helper.obtenerSociosCompleto()
-        listaCompletaUnificada.addAll(sociosUnificados)
-
-        val noSociosBD = helper.obtenerNoSocios()
-        for (ns in noSociosBD) {
-            listaCompletaUnificada.add(
-                WrapperMiembro(
-                    nombre = ns.nombre,
-                    apellido = ns.apellido,
-                    dni = ns.dni,
-                    esSocio = false,
-                    deudorVencido = false,
-                    fechaVencimiento = null
-                )
-            )
-        }
+        listaCompletaUnificada.addAll(helper.obtenerSociosCompleto())
+        listaCompletaUnificada.addAll(helper.obtenerNoSociosCompleto())
     }
 
     private fun aplicarBusquedaYFiltro(textoBusqueda: String) {
