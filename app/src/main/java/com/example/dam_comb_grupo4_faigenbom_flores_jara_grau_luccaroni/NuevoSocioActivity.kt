@@ -75,7 +75,6 @@ class NuevoSocioActivity : AppCompatActivity() {
                     fichaMedica = chkFicha.isChecked
                 )
 
-                RepositorioSocios.listaSocios.add(socio)
 
                 val idGenerado = helper.insertarSocio(socio)
 

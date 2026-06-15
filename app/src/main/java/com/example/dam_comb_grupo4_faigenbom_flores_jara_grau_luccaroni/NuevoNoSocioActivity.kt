@@ -76,7 +76,6 @@ class NuevoNoSocioActivity : AppCompatActivity() {
                     fichaMedica = chkFicha.isChecked
                 )
 
-                RepositorioNoSocios.listaNoSocios.add(noSocio)
                 helper.insertarNoSocio(noSocio)
 
                 Toast.makeText(this, "No Socio guardado correctamente", Toast.LENGTH_SHORT).show()
